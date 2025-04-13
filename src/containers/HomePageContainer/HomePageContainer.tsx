@@ -46,15 +46,15 @@ const HomePageContainer: React.FC = () => (
               advancedSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings,
                 withBg: true,
-                bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, #135200)`,
-                textColor: "var(--white)",
+                bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, ${SITE_PRIMARY_COLOR})`,
+                textColor: "var(--text-dark)",
               },
               buttonSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings,
                 buttonText: "Start right now",
                 buttonLink: ROUTES.customize,
                 buttonColor: PRIMARY_COLOR,
-                buttonType: "dashed",
+                buttonType: "default",
               },
             },
           }}

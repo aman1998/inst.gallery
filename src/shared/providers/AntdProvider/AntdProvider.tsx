@@ -4,7 +4,7 @@ import { ConfigProvider, App } from "antd";
 
 export const SITE_PRIMARY_COLOR = "#d5ac8a";
 // export const PRIMARY_COLOR = "rgb(120, 0, 22)";
-export const PRIMARY_COLOR = "#7cb305";
+export const PRIMARY_COLOR = "#FFD106";
 
 export const ERROR_COLOR = "rgb(255, 77, 79)";
 
@@ -32,13 +32,14 @@ const AntdProvider: React.FC<Props> = ({ children, primaryColor = PRIMARY_COLOR 
           },
           Button: {
             fontWeight: 500,
-            fontSize: 15,
+            fontSize: 16,
             lineHeight: 20,
             borderRadius: 8,
             paddingInline: 32,
             primaryShadow: "none",
 
             colorPrimary: primaryColor,
+            colorTextLightSolid: "#2D2D2D",
 
             colorLink: primaryColor,
             colorLinkHover: primaryColor,
