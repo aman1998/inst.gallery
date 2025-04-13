@@ -139,17 +139,24 @@
 
   &-card {
     @include flex-column-gap(4px);
-    max-height: 200px;
   }
 
   &--1 {
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
     max-width: var(--post-max-width);
+
+    .grid-card {
+      max-height: 280px;
+    }
   }
 
   &--2 {
     grid-template-columns: repeat(2, 1fr);
+
+    .grid-card {
+      max-height: 280px;
+    }
   }
 
   &--3 {
