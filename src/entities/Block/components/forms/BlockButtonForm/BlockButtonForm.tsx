@@ -11,7 +11,7 @@ import { createdBlockSelector } from "@features/Block/CreateBlock/model/selector
 import { TCustomizeBlocks } from "@entities/Block/model/customizeTypes";
 import { useBlockStore } from "@entities/Block/model/store";
 import { selectedBlockSelector } from "@entities/Block/model/selectors";
-import { EBlockType, isBlock1 } from "@entities/Block/model/types";
+import { isBlock1, isBlock2 } from "@entities/Block/model/types";
 
 import SelectControl from "@shared/controllers/SelectControl";
 import { BUTTON_SIZE_OPTIONS, BUTTON_TAB_OPTIONS, BUTTON_TYPE_OPTIONS } from "@shared/constants/options";
@@ -64,7 +64,7 @@ const BlockButtonForm = <T extends TButtonCustomizationSchema>({ control, errors
 
   // Нужно проверить на все блоки, где используется кнопка.
   // TODO: Возможно стоит придумать более изящный способ.
-  if (!block || (!isBlock1(block))) return null;
+  if (!block || (!isBlock1(block) && !isBlock2(block))) return null;
 
   return (
     <>

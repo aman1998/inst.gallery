@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import { ConfigProvider } from "antd";
-import cn from "classnames";
 
 import BlockWidget from "@widgets/Block/components/BlockWidget";
 
@@ -11,7 +10,6 @@ import { SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
 
 import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import { SITE_PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
-import { blocksFontFamily } from "@shared/config/fonts";
 import { ROUTES } from "@shared/config/routes";
 import Button from "@shared/ui/Button";
 
@@ -51,7 +49,7 @@ const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
           },
         }}
       >
-        <div className={cn(s.page, blocksFontFamily.className)}>
+        <div className={s.page}>
           <Head>
             <title>My page title</title>
           </Head>

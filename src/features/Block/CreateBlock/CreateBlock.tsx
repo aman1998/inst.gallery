@@ -20,7 +20,6 @@ import {
   createdBlockSelector,
   setCreatedBlockSelector,
 } from "@features/Block/CreateBlock/model/selectors";
-import CreateBlock1Widget from "@features/Block/CreateBlock/components/CreateBlock1Widget";
 import SelectInstagramPosts from "@features/Instagram/SelectInstagramPosts";
 
 import { EBlockType } from "@entities/Block/model/types";
@@ -29,6 +28,8 @@ import { TCustomizeBlock } from "@entities/Block/model/customizeTypes";
 
 import { useModal } from "@shared/hooks/useModal";
 
+import CreateBlock1Widget from "./components/CreateBlock1Widget";
+import CreateBlock2Widget from "./components/CreateBlock2Widget";
 import s from "./CreateBlock.module.scss";
 
 interface Props {
@@ -93,8 +94,10 @@ const CreateBlock: React.FC<Props> = ({ className }) => {
     if (!createdBlock) return <div>Block not selected</div>;
 
     switch (createdBlock.type) {
-      case EBlockType.type1:
+      case EBlockType.type2:
         return <CreateBlock1Widget />;
+      case EBlockType.type2:
+        return <CreateBlock2Widget />;
       case EBlockType.type4:
       default:
         return null;

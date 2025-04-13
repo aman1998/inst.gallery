@@ -17,7 +17,6 @@ import { useProjectStore } from "@entities/Project/model/store";
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import Spinner from "@shared/ui/Spinner";
 import AntdProvider, { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
-import { blocksFontFamily } from "@shared/config/fonts";
 
 const BlockWidget = dynamic(() => import("@widgets/Block/components/BlockWidget"), {
   ssr: false,
@@ -47,7 +46,7 @@ const BlockPageContainer: React.FC = () => {
     <AntdProvider primaryColor={project?.primary_color ?? PRIMARY_COLOR}>
       <AnimatePresence mode="wait">
         <motion.section
-          className={blocksFontFamily.className}
+          // className={blocksFontFamily.className}
           key={block.block_id}
           initial="hidden"
           animate="visible"

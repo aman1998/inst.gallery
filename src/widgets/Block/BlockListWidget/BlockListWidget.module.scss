@@ -1,0 +1,27 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 32px;
+  background: var(--lk-bg);
+  padding: var(--block-padding);
+  flex: 1;
+  overflow: hidden;
+}
+
+.block {
+  @include blockWrapperNew;
+  @include flex-column-gap(16px);
+
+  @include respond(mobile) {
+    // @include flex-column-gap(16px);
+  }
+
+  &__title {
+    @include textEllipsis;
+  }
+
+
+  &__text {
+    @include textEllipsisWithLineClamp(2);
+  }
+}

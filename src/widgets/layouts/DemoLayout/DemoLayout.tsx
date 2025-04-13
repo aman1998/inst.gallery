@@ -41,7 +41,6 @@ const CreateBlockLayout = dynamic(() => import("../LKLayout/components/CreateBlo
 
 const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomizeWidget"), {
   ssr: false,
-  loading: () => <div>"loading"</div>
 });
 
 const LKLayoutSubNavigation = dynamic(() => import("@widgets/layouts/LKLayout/components/LKLayoutSubNavigation"), {

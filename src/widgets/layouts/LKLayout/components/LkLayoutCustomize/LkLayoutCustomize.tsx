@@ -6,6 +6,7 @@ import { selectedBlockSelector } from "@entities/Block/model/selectors";
 import { EBlockType } from "@entities/Block/model/types";
 
 import CustomizeBlock1Widget from "../../../../../features/Block/CustomizationBlock/components/CustomizeBlock1Widget";
+import CustomizeBlock2Widget from "@/features/Block/CustomizationBlock/components/CustomizeBlock2Widget";
 
 const LkLayoutCustomize = () => {
   const selectedBlock = useBlockStore(selectedBlockSelector);
@@ -16,6 +17,8 @@ const LkLayoutCustomize = () => {
     switch (selectedBlock.type) {
       case EBlockType.type1:
         return <CustomizeBlock1Widget />;
+      case EBlockType.type2:
+        return <CustomizeBlock2Widget />;
       case EBlockType.type4:
         return <div>Collapse</div>;;
       default:

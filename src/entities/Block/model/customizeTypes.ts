@@ -8,12 +8,18 @@ import { IInstagramDownloadedPost } from "@entities/Instagram/model/types";
 export type TCustomizeBlocks = ICustomizeBlock1 &
   ICustomizeBlock4;
 
-export type TCustomizeBlock = ICustomizeBlock1 | ICustomizeBlock4
+export type TCustomizeBlock = ICustomizeBlock1 | ICustomizeBlock2 | ICustomizeBlock4
 
 // BLOCK 1
 export interface ICustomizeBlock1 extends ICustomizeImage, ICustomizeHeader {
   advancedSettings: ICustomizeAdvanced;
 
+  posts: IInstagramDownloadedPost[];
+  postsSettings: ICustomizePosts;
+}
+
+// BLOCK 2
+export interface ICustomizeBlock2 extends ICustomizeImage, ICustomizeHeader {
   posts: IInstagramDownloadedPost[];
   postsSettings: ICustomizePosts;
 }

@@ -2,6 +2,7 @@ import {
   EPostsListType,
   ICustomizeAdvanced,
   ICustomizeBlock1,
+  ICustomizeBlock2,
   ICustomizeBlock4,
   ICustomizeButton,
   ICustomizePosts,
@@ -60,7 +61,34 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
   postsSettings,
 };
 
+export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
+  advancedSettings,
+  buttonSettings,
 
+  headerStyle: {
+    alignItems: "center",
+  },
+
+  title: "Visualize Your Instagram posts",
+  titleLevel: 2,
+  subtitle:
+    "Upload your Instagram posts and turn them into stunning landing pages in seconds. " +
+    "Showcase your content, engage your audience, and grow your brand effortlessly.",
+
+  imageWrapperStyle: {
+    borderRadius: 12,
+  },
+  imageStyle: {},
+
+  posts: [],
+  postsSettings: {
+    postsLength: 3,
+    postsType: EPostsListType.grid,
+    postsStyle: {
+      gap: 12,
+    },
+  },
+};
 
 export const MOCK_BLOCK_4_CUSTOMIZATION: ICustomizeBlock4 = {
   advancedSettings: { ...advancedSettings, withBg: false, textColor: "#2D2D2D" },

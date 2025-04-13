@@ -12,7 +12,7 @@ import BlockInstagramPostsSettings from "@features/Instagram/SettingsBlockInstag
 import { TCustomizeBlocks } from "@entities/Block/model/customizeTypes";
 import { useBlockStore } from "@entities/Block/model/store";
 import { selectedBlockSelector } from "@entities/Block/model/selectors";
-import { isBlock1 } from "@entities/Block/model/types";
+import { isBlock1, isBlock2 } from "@entities/Block/model/types";
 
 import { EMPTY_ERROR_TEXT } from "@shared/constants/validation";
 import SelectControl from "@shared/controllers/SelectControl";
@@ -64,7 +64,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
   const block = type === "add" ? createdBlock : selectedBlock;
 
   // TODO: Возможно стоит придумать более изящный способ.
-  if (!block || (!isBlock1(block))) return null;
+  if (!block || (!isBlock1(block) && !isBlock2(block))) return null;
 
   return (
     <>

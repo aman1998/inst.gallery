@@ -7,6 +7,7 @@ import BlockCollapseWidget from "@widgets/Block/BlockCollapseWidget";
 import { EBlockType, IBlock } from "@entities/Block/model/types";
 
 import { TNullable } from "@shared/types/common";
+import BlockListWidget from "../../BlockListWidget";
 
 interface Props {
   block: TNullable<IBlock>;
@@ -18,6 +19,8 @@ const BlockWidget: React.FC<Props> = ({ block }) => {
     switch (block.type) {
       case EBlockType.type1:
         return <BlockFlexWidget block={block} />;
+      case EBlockType.type2:
+        return <BlockListWidget block={block} />;
       case EBlockType.type4:
         return <BlockCollapseWidget block={block} />;
       default:

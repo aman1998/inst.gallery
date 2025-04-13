@@ -2,6 +2,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
+  width: 100%;
 
   &__item {
     width: 100%;
@@ -120,12 +121,12 @@
 
     .gallery__item:nth-child(3) {
       grid-column: 1 / span 2;
-      grid-row: 2 / 3 ;
+      grid-row: 2 / 3;
     }
 
     .gallery__item:nth-child(4) {
       grid-column: 3 / span 4;
-      grid-row: 2 / 3 ;
+      grid-row: 2 / 3;
     }
   }
 }
@@ -134,6 +135,7 @@
   display: grid;
   align-items: stretch;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 100%;
 
   &-card {
     @include flex-column-gap(4px);
@@ -168,17 +170,21 @@
 
 .masonry {
   display: grid;
+  width: 100%;
 
   &-card {
     &--short {
       grid-row: span 1;
     }
+
     &--tall {
       grid-row: span 2;
     }
+
     &--taller {
       grid-row: span 3;
     }
+
     &--tallest {
       grid-row: span 4;
     }

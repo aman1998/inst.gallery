@@ -2,7 +2,8 @@ $spacing-desktop: 75px;
 $spacing-tablet: 50px;
 $spacing-mobile: 25px;
 
-.page, .main {
+.page,
+.main {
   //@include respond(desktop) {
   //  @include flex-column-gap($spacing-desktop);
   //}
@@ -29,5 +30,6 @@ $spacing-mobile: 25px;
 }
 
 .main {
+  display: flex;
   flex-grow: 1;
 }
