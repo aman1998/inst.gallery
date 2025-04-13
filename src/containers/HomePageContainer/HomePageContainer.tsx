@@ -45,18 +45,16 @@ const HomePageContainer: React.FC = () => (
               posts: MOCK_INSTAGRAM_POSTS.slice(0, 6),
               advancedSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings,
-                withBg: false,
-                bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, ${SITE_PRIMARY_COLOR})`,
-                // textColor: "var(--text-dark)",
-
-                // textColor: "rgb(233, 192, 233)",
+                withBg: true,
+                bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, #135200)`,
+                textColor: "var(--white)",
               },
               buttonSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings,
                 buttonText: "Start right now",
                 buttonLink: ROUTES.customize,
                 buttonColor: PRIMARY_COLOR,
-                buttonType: "link",
+                buttonType: "dashed",
               },
             },
           }}
@@ -68,7 +66,6 @@ const HomePageContainer: React.FC = () => (
           </Button>
         </section>
       </div>
-      {/*<Parallax className={blocksFontFamily.className} />*/}
       <SubscriptionPlans />
       <BlockCollapseWidget
         block={{

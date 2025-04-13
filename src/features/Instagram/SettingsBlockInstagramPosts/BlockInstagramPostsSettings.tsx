@@ -85,7 +85,7 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
                             setEditableIndex(index);
                           }}
                           size="small"
-                          type="primary"
+                          type="default"
                           icon={<EditOutlined />}
                         />
                         <DeleteBlockInstagramPost

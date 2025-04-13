@@ -13,6 +13,7 @@ export enum ELink {
   customize = "/customize",
   profile = "/profile",
   posts = "/profile/posts",
+  works = "/profile/works",
   error = "/error",
 
   signIn = "/auth/signIn",
@@ -71,6 +72,7 @@ export const ROUTES: TRoutes = {
   customize: ELink.customize,
   profile: ELink.profile,
   posts: ELink.posts,
+  works: ELink.works,
   error: ELink.error,
 
   signIn: ELink.signIn,

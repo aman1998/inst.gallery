@@ -24,18 +24,18 @@ const LKLayoutNavigation: React.FC<Props> = ({ className }) => {
   const { setNavigation, setSubNavigation, isDemo } = useLKLayout();
 
   const navigation = [
-    {
-      label: "Blocks",
-      type: EBlockNavigation.blocks,
-      icon: <BlockOutlined />,
-    },
+    // {
+    //   label: "Blocks",
+    //   type: EBlockNavigation.blocks,
+    //   icon: <BlockOutlined />,
+    // },
     {
       label: "Customize",
       type: EBlockNavigation.customize,
       icon: <DesktopOutlined />,
     },
     {
-      label: "Posts",
+      label: "Works",
       type: EBlockNavigation.posts,
       icon: <InstagramOutlined />,
     },

@@ -91,17 +91,17 @@ const BlockLinkInfo: React.FC = () => {
         <QRCode id="myqrcode" value={fullUrl} type="svg" />
       </div>
       <div className={s.info__footer}>
-        <Button className={s.info__link} size="small" type="default" onClick={handleLinkClick}>
+        <Button className={s.info__link} size="small" type="text" onClick={handleLinkClick}>
           {url}
         </Button>
         <Button
           className={s.info__copy}
           size="small"
-          type="default"
+          type="text"
           onClick={() => copyToClipboard(fullUrl)}
           icon={<CopyOutlined />}
         />
-        <Button size="small" type="default" onClick={downloadSvgQRCodeAsPng} icon={<DownloadOutlined />} />
+        <Button size="small" type="text" onClick={downloadSvgQRCodeAsPng} icon={<DownloadOutlined />} />
       </div>
     </section>
   );

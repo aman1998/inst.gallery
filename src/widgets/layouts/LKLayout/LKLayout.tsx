@@ -147,7 +147,7 @@ const LKLayout: React.FC<Props> = ({ children }) => {
                   ActionComponent={
                     <Button
                       onClick={() => {
-                        router.push(ROUTES.profile);
+                        router.push(ROUTES.works);
                       }}
                       size="small"
                       type="primary"

@@ -1,5 +1,6 @@
 :root {
-  --primary-color: rgb(120, 0, 22);
+  // --primary-color: rgb(120, 0, 22);
+  --primary-color: #7cb305;
 
   --default-hover: #f3f3ed;
 
@@ -39,7 +40,7 @@
   --block-bg: #f3f3ed;
   --block-bg-hover: #ecece3;
 
-  --img-loading-bg:  rgba(243, 243, 237, 0.7);
+  --img-loading-bg: rgba(243, 243, 237, 0.7);
 
   --header-height: 82px;
   --lk-header-height: 60px;
@@ -48,6 +49,5 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-  }
+  :root {}
 }

@@ -53,14 +53,14 @@ const BlockFloatSettings: React.FC = () => {
             />
           </Tooltip>
         )}
-        {selectedBlock?.block_id &&
+        {/* {selectedBlock?.block_id &&
           (subNavigation !== EBlockNavigation.advanced || navigation !== ELKLayoutNavigation.sub) && (
             <Tooltip placement="left" title="Delete block">
               <div>
                 <DeleteBlock isFloating id={selectedBlock?.block_id} />
               </div>
             </Tooltip>
-          )}
+          )} */}
       </FloatButton.Group>
       <Modal destroyOnClose title={null} footer={null} open={isOpen} onCancel={closeModal}>
         <BlockLinkInfo />

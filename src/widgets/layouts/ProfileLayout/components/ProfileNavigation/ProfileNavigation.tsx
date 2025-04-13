@@ -41,14 +41,9 @@ const ProfileNavigation: React.FC<Props> = ({ className }) => {
 
   const links: ILinks[] = [
     {
-      icon: <ProfileOutlined />,
-      link: ROUTES.profile,
-      text: "IG Accounts",
-    },
-    {
       icon: <InstagramOutlined />,
-      link: ROUTES.posts,
-      text: "My posts",
+      link: ROUTES.works,
+      text: "My works",
       // count: 0,
     },
     {
