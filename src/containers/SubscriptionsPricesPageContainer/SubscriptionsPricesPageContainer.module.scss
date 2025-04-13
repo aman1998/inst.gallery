@@ -1,0 +1,11 @@
+.page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-gap: 64px;
+  width: 100%;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+    grid-gap: 32px;
+  }
+}

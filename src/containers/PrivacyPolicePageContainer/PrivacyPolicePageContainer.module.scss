@@ -1,0 +1,22 @@
+.page {
+  h1 {
+    @include h2;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    @include h4;
+  }
+
+  p,
+  ul {
+    margin-bottom: 15px;
+  }
+
+  ul {
+    padding-left: 20px;
+    li {
+      list-style: disc;
+    }
+  }
+}

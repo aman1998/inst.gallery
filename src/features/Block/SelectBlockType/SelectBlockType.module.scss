@@ -1,0 +1,37 @@
+.groups {
+  @include flex-column-gap(16px);
+}
+.group {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 12px;
+  }
+  &__item {
+    position: relative;
+    height: auto;
+    border-radius: 12px;
+    aspect-ratio: 9 / 3;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: var(--block-bg);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+
+    img {
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    @include respond(desktop) {
+      &:hover {
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+    @include respond(tablet) {
+      &:active {
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}

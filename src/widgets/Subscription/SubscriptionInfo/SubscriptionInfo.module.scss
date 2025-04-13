@@ -1,0 +1,22 @@
+.info {
+  @include flex-column-gap(8px);
+  padding: 16px;
+  height: max-content;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  &__item {
+    @include flex-space-between;
+
+    span {
+      &:last-child {
+
+      }
+    }
+
+    .includedIcon {
+      color: var(--primary-color) !important;
+    }
+  }
+}

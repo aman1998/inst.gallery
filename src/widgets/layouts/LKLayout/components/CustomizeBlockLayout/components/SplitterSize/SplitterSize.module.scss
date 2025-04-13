@@ -1,0 +1,22 @@
+.size{
+  @include flex-gap(30px);
+  position: sticky;
+  top: 0;
+  justify-content: center;
+  //margin-bottom: 32px;
+  padding: 32px;
+  background: var(--white);
+  z-index: 10;
+  &__left, &__right {
+    @include flex-gap(8px);
+  }
+  &__dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--elements-gray-60);
+  }
+  svg {
+    color: var(--elements-gray-60);
+  }
+}

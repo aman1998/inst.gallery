@@ -1,0 +1,10 @@
+.block {
+  &__text {
+    @include h4;
+    margin-bottom: 16px;
+  }
+  &__link {
+    @include bodyM;
+    @include link;
+  }
+}

@@ -1,0 +1,11 @@
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--block-bg);
+  &__header {
+    @include flex-space-between;
+  }
+  &__title {
+    @include h4;
+  }
+}

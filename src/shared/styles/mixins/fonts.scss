@@ -1,0 +1,101 @@
+@mixin h1 {
+  font-size: 4rem;
+  line-height: 4.5rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin h2 {
+  font-size: 2rem; // 32px
+  line-height: 2.5rem; // 40px
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin h3 {
+  font-size: 1.5rem; // 24px
+  line-height: 2rem; // 32px
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin h4 {
+  font-size: 1.25rem; // 20px
+  line-height: 1.75rem; // 28px
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@mixin bodyXs {
+  font-size: 0.75rem; // 12px
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem; // 16px
+  letter-spacing: 0;
+}
+
+@mixin bodyXsM {
+  @include bodyXs;
+  font-weight: 500;
+}
+
+@mixin bodyXsB {
+  @include bodyXs;
+  font-weight: 700;
+}
+
+@mixin bodyS {
+  font-size: 0.875rem; // 14px
+  line-height: 1rem; // 16px
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin bodySM {
+  @include bodyS;
+  font-weight: 500;
+}
+
+@mixin bodySB {
+  @include bodyS;
+  font-weight: 700;
+}
+
+@mixin bodyM {
+  font-size: 1rem; // 16px
+  line-height: 1.125rem; // 18px
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin bodyMM {
+  @include bodyM;
+  font-weight: 600;
+}
+
+@mixin bodyMB {
+  @include bodyM;
+  font-weight: 700;
+}
+
+@mixin bodyL {
+  font-size: 1.25rem; // 20px
+  line-height: 1.75rem; // 28px
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin paragraphM {
+  font-size: 1rem; // 16px
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; // 24px
+  letter-spacing: 0;
+}

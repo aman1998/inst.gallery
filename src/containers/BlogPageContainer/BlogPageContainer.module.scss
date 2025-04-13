@@ -1,0 +1,6 @@
+.page {
+  &__title {
+    @include h2;
+    margin-bottom: 32px;
+  }
+}

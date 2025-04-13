@@ -1,0 +1,91 @@
+.image {
+  &-wrapper {
+    position: relative;
+    display: block;
+    margin: -1px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 12px;
+    contain: content;
+    width: 100%;
+    height: 100%;
+
+    img {
+      object-fit: cover;
+      transition: all 0.3s ease-in-out;
+      backface-visibility: hidden;
+    }
+
+
+    &:hover {
+      .image__action {
+        opacity: 1;
+      }
+    }
+
+    &--loading {
+      background-color: var(--block-bg);
+
+      img {
+        opacity: 0;
+      }
+    }
+
+    @include respond(desktop) {
+      &:hover {
+        img {
+          @include instagramPostHover;
+        }
+      }
+    }
+
+    @include respond(tablet) {
+      &:active {
+        img {
+          filter: brightness(0.5) contrast(1.2);
+        }
+      }
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 12px;
+    right: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    @include respond(tablet) {
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+
+    &:hover {
+      svg {
+        color: var(--elements-gray);
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: color 0.3s ease-in-out;
+    }
+
+  }
+
+  &__type {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

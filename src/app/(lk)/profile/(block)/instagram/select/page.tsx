@@ -1,0 +1,3 @@
+import InstagramAccountsSelectPageContainer from "@containers/InstagramAccountsSelectPageContainer";
+
+export default InstagramAccountsSelectPageContainer;

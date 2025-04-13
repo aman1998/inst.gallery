@@ -1,0 +1,16 @@
+.header {
+  @include flex-column-gap(16px);
+  margin-bottom: 32px;
+
+  &--small {
+    margin-bottom: 16px;
+  }
+
+  @include respond(mobile) {
+    margin-bottom: 16px;
+  }
+
+  &__title, &__text {
+    max-width: 600px;
+  }
+}

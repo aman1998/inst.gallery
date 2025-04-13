@@ -1,0 +1,21 @@
+.create {
+  position: relative;
+  height: 100%;
+
+  &__btn {
+    @include bodyM;
+    display: flex;
+    justify-content: flex-start !important;
+    height: var(--lk-header-height);
+    width: 100%;
+
+    span {
+      align-self: auto !important;
+    }
+  }
+
+  &__content {
+    @include scrollYWithResetScrollBar;
+    height: calc(100vh - 120px);
+  }
+}

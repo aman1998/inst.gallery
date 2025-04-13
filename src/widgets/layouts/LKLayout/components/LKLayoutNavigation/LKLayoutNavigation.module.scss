@@ -1,0 +1,22 @@
+.navigation {
+  &__btn {
+    @include bodyM;
+    display: flex;
+    justify-content: flex-start;
+    height: 60px !important;
+    width: 100%;
+    span {
+      align-self: auto !important;
+    }
+    &:hover {
+      .navigation__arrow {
+        opacity: 1;
+      }
+    }
+  }
+  &__arrow {
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}

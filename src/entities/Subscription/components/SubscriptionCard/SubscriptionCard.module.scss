@@ -1,0 +1,35 @@
+.card {
+  padding: 18px;
+  background: var(--white);
+  border-radius: 10px;
+  &__extra {
+    span {
+      margin-right: 0;
+    }
+  }
+  &__header {
+    @include flex-space-between;
+  }
+  &__title {
+    @include bodyMM;
+    color: var(--text-gray);
+  }
+  &__status {
+  }
+  &__description {
+    @include bodyM;
+    margin-bottom: 8px;
+  }
+  &__text {
+    @include bodyM;
+    color: var(--text-gray);
+  }
+  &__link {
+    @include link;
+  }
+  &__icon {
+  }
+  &__footer {
+    @include flex-space-between;
+  }
+}

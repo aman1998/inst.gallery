@@ -1,0 +1,9 @@
+.input {
+  svg {
+    color: var(--primary-color);
+  }
+
+  &--error svg {
+    color: var(--elements-red-90);
+  }
+}

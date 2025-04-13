@@ -1,0 +1,19 @@
+.info {
+  @include flex-column-gap(8px);
+  &__header {
+    @include flex-gap(8px);
+    align-items: flex-start;
+  }
+  &__footer {
+    @include flex-gap(8px);
+  }
+  &__link {
+    width: max-content;
+    max-width: 90%;
+
+    span {
+      @include textEllipsis;
+      max-width: 100%;
+    }
+  }
+}

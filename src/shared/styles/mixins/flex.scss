@@ -1,0 +1,51 @@
+@mixin flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-space-between {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-space-between-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// у safari <= 14.1 нету поддержки gap.
+@mixin flex-gap($gap) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+  grid-gap: $gap;
+}
+
+// у safari <= 14.1 нету поддержки gap.
+@mixin flex-column-gap($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-margin($margin) {
+  display: flex;
+  align-items: center;
+  > *:not(:first-child) {
+    margin-left: $margin;
+  }
+}
+
+@mixin flex-column-margin($margin) {
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-left: 0 !important;
+  }
+  > *:not(:first-child) {
+    margin-top: $margin;
+  }
+}

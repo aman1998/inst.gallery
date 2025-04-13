@@ -1,0 +1,17 @@
+.footer {
+  @include flex-centered;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 32px;
+
+  @include respond(mobile) {
+    padding: 16px;
+  }
+
+  span, a {
+    @include bodyS;
+    @include flex-centered;
+    //color: inherit;
+    color: var(--elements-gray-60);
+  }
+}

@@ -1,0 +1,39 @@
+.block {
+  @include flex-gap(16px);
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--elements-gray);
+  }
+
+  &--active {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: none;
+
+    &:hover {
+      color: var(--white);
+      background: var(--primary-color);
+    }
+  }
+
+  &__text {
+    @include bodyS;
+  }
+  &__btns {
+    @include flex-gap(8px);
+    margin-left: auto;
+  }
+
+  &__icon {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

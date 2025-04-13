@@ -1,0 +1,6 @@
+.page {
+  @include flex-centered;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}

@@ -1,0 +1,51 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 15px;
+  min-height: 100vh;
+  background: #f5f5fa;
+
+  &__logo {
+    @include flex-centered;
+    width: 317px;
+    height: 108px;
+    gap: 4px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(189, 131, 84, 0.16) 0%, rgba(115, 115, 115, 0) 90%);
+
+    @include respond(mobile) {
+      height: 60px;
+    }
+  }
+  &__content {
+    flex-grow: 1;
+    margin: 24px 0 40px 0;
+    padding: 40px 40px 44px 40px;
+    background-color: var(--white);
+    border-radius: 18px;
+
+    max-width: 419px;
+    width: 100%;
+
+    @include respond(mobile) {
+      margin: 0;
+      padding: 0;
+      background: inherit;
+    }
+
+    &--centered {
+      @include flex-centered;
+    }
+
+    input {
+      font-size: 16px;
+    }
+
+    //@include respond(mobile) {
+    //  input {
+    //    font-size: 16px;
+    //  }
+    //}
+  }
+}

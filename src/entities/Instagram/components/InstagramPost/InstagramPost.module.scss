@@ -1,0 +1,102 @@
+$borderRadius: 12px;
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 500px);
+  height: 80vh;
+  width: 70vw;
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+    width: 50vw;
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+    width: 300px;
+  }
+
+  &__media {
+    position: relative;
+    width: 100%;
+    border-radius: $borderRadius 0 0 $borderRadius;
+    overflow: hidden;
+    background-color: var(--block-bg);
+
+    @include respond(tablet) {
+      border-radius:  $borderRadius $borderRadius 0 0;
+    }
+  }
+  &__image {
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  &-carousel-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    :global {
+      .slick-slider {
+        height: 100% !important;
+      }
+    }
+  }
+  &-carousel {
+    &__item {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    background: #292929;
+    width: 100%;
+    height: 100%;
+    color: var(--white);
+    overflow: hidden;
+    border-radius: 0 $borderRadius $borderRadius 0;
+
+    @include respond(tablet) {
+      border-radius: 0 0  $borderRadius $borderRadius;
+    }
+  }
+  &__header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--separator-color);
+  }
+  &__username {
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--white);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--elements-gray);
+    }
+  }
+  &__content {
+    @include scrollY;
+    @include bodyS;
+    padding: 16px;
+    white-space: break-spaces;
+  }
+  &__btn {
+    justify-content: flex-start !important;
+    margin-top: auto;
+    border-top: 1px solid var(--separator-color) !important;
+    text-transform: uppercase;
+  }
+}
+

@@ -1,0 +1,27 @@
+.block {
+  @include flex-gap(16px);
+  padding: 20px 32px;
+  background: var(--block-bg);
+  border-radius: 12px;
+  border: 1.5px solid var(--block-bg);
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--block-bg-hover);
+  }
+
+  &--active {
+    border: 1.5px solid var(--primary-color);
+    background: var(--white);
+
+    &:hover {
+      background: var(--white);
+    }
+  }
+
+  &__end {
+    @include flex-column-gap(8px);
+    margin-left: auto;
+  }
+}

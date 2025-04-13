@@ -1,0 +1,95 @@
+.antd-instagram-carousel {
+  .ant-modal-content {
+   padding: 0 24px 20px 24px !important;
+  }
+  .ant-modal-close {
+    color: var(--white) !important;
+  }
+
+  .slick-arrow {
+    color: var(--white) !important;
+    &::before, &::after {
+      content: "";
+    }
+  }
+  .slick-prev {
+    @include respond(mobile) {
+      left: -10px !important;
+    }
+  }
+  .slick-next {
+    @include respond(mobile) {
+      right: -10px !important;
+    }
+  }
+
+  .slick-dots-bottom {
+    bottom: 0 !important;
+
+    li button {
+      &::before, &::after {
+        display: none !important;
+      }
+    }
+  }
+  .slick-list, .slick-track {
+    height: 100% !important;
+  }
+  .slick-slide  {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.antd-user-card {
+  .ant-dropdown-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .ant-btn-compact-first-item {
+    display: none !important;
+  }
+  .ant-dropdown-trigger {
+    border-start-start-radius: 4px !important;
+    border-end-start-radius: 4px !important;
+  }
+}
+
+.ant-input-number-input-wrap {
+  height: 100% !important;
+  input {
+    height: 100% !important;
+  }
+}
+
+.ant-splitter .ant-splitter-panel {
+  @include resetScrollBar;
+}
+
+.ant-modal-confirm-body, .ant-popconfirm-message {
+  svg {
+    color: var(--primary-color) !important;
+  }
+}
+
+.antd-advanced-tabs {
+  .ant-tabs-nav {
+    margin: 0 !important;
+  }
+  .ant-tabs-nav-list {
+    width: 100%;
+    color: var(--text-dark);
+  }
+  .ant-tabs-tab-btn {
+    color: var(--text-dark) !important;
+  }
+}
+
+//.antd-block {
+//  .ant-btn {
+//    &:hover {
+//      opacity: 0.9 !important;
+//    }
+//  }
+//}

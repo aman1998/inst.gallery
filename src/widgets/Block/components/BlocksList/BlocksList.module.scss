@@ -1,0 +1,10 @@
+.list {
+  @include flex-column-gap(8px);
+  @include scrollYWithResetScrollBar;
+  height: 100%;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

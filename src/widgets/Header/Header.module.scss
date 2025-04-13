@@ -1,0 +1,44 @@
+.header {
+  @include flex-space-between;
+  @include container;
+  width: 100%;
+  max-width: 1100px;
+
+  @include respond(mobile) {
+    display: none;
+  }
+
+  &-wrapper {
+    @include flex-centered;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    flex-shrink: 0;
+    z-index: 10;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--white);
+    transition: all 0.4s ease-in-out;
+
+    &--hide {
+      transform: translateY(-100%);
+    }
+
+    &--shadow {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__links {
+    @include flex-gap(8px);
+  }
+
+  &__link {
+
+  }
+
+  &__btns {
+    @include flex-gap(8px);
+  }
+}

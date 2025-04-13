@@ -1,0 +1,27 @@
+.card {
+  @include flex-gap(8px);
+  padding: 8px;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  transition: background  0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--default-hover);
+  }
+
+  &__image {
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  &__caption {
+    @include textEllipsis;
+    max-width: 100%;
+  }
+  &__actions {
+    @include flex-gap(8px);
+    margin-left: auto;
+  }
+}

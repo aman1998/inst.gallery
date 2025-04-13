@@ -1,0 +1,22 @@
+.card {
+  &__btns {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  &__btn {
+    @include flex-centered;
+    height: 60px !important;
+    width: 100%;
+    > span {
+      align-self: center !important;
+    }
+
+    &--disabled {
+      background: var(--elements-gray) !important;
+      opacity: 1 !important;
+    }
+  }
+}

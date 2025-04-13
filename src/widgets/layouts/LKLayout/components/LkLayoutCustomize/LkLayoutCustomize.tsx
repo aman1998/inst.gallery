@@ -1,0 +1,27 @@
+import React from "react";
+import { Empty } from "antd";
+
+import { useBlockStore } from "@entities/Block/model/store";
+import { selectedBlockSelector } from "@entities/Block/model/selectors";
+import { EBlockType } from "@entities/Block/model/types";
+
+import CustomizeBlock1Widget from "../../../../../features/Block/CustomizationBlock/components/CustomizeBlock1Widget";
+
+const LkLayoutCustomize = () => {
+  const selectedBlock = useBlockStore(selectedBlockSelector);
+
+  return React.useMemo(() => {
+    if (!selectedBlock) return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Create/Select block" />;
+
+    switch (selectedBlock.type) {
+      case EBlockType.type1:
+        return <CustomizeBlock1Widget />;
+      case EBlockType.type4:
+        return <div>Collapse</div>;;
+      default:
+        return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Create/Select block" />;
+    }
+  }, [selectedBlock]);
+};
+
+export default LkLayoutCustomize;

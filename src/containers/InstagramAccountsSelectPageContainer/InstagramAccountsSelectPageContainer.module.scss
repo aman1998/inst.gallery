@@ -1,0 +1,12 @@
+.page {
+  @include flex-column-gap(32px);
+  width: 100%;
+
+  @include respond(mobile) {
+    @include flex-column-gap(16px);
+  }
+
+  &__header {
+    @include flex-space-between;
+  }
+}

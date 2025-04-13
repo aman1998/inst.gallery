@@ -1,0 +1,3 @@
+import SubscriptionSuccessPageContainer from "@containers/SubscriptionSuccessPageContainer";
+
+export default SubscriptionSuccessPageContainer;

@@ -1,0 +1,140 @@
+@import "fonts";
+@import "flex";
+@import "scroll";
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == desktop {
+    @media (min-width: 1200px) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: 1199px) { @content; }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 767px) { @content; }
+  }
+}
+
+@mixin container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: calc(1170px + 15px + 15px);
+  width: 100%;
+}
+
+@mixin blockWrapper {
+  @include flex-centered;
+  flex-direction: column;
+  padding: 128px 0;
+  min-height: 100vh;
+
+  @include respond(mobile) {
+    padding: 64px 0;
+    min-height: auto;
+  }
+}
+
+@mixin collapseContainer {
+  @include container;
+  max-width: 1000px;
+}
+
+@mixin buttonReset {
+  border: none;
+  padding: 0;
+  overflow: visible;
+
+  background: transparent;
+  outline: none;
+
+  color: inherit;
+
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+@mixin textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin textEllipsisWithLineClamp($val) {
+  display: -webkit-box;
+  -webkit-line-clamp: $val;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin blurContent($blur: 3px, $opacity: 0.15) {
+  filter: blur($blur);
+  opacity: $opacity;
+}
+
+@mixin link {
+  color: var(--primary-color);
+  transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+    color: var(--primary-color);
+  }
+}
+
+@mixin hoverBlock {
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    box-shadow:
+      1px 1px 5px var(--elements-blue-35),
+      -1px -1px 5px var(--elements-blue-35);
+  }
+}
+
+@mixin boxShadowGradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--block-bg));
+}
+
+@mixin instagramPostHover {
+  transform: scale(1.1) translateZ(0);
+  filter: brightness(0.5) contrast(1.2);
+  //will-change: transform, filter;
+}
+
+//@mixin textGradient {
+//  color:  #6AEA77;
+//  line-height: 16px;
+//  --effect-shine-text-color:  var(--lk-bg);
+//  --effect-shine-highlight-color: var(--text-dark);
+//  --effect-shine-start-x: -20px;
+//  --effect-shine-end-x: 156px;
+//  background: linear-gradient(to right, var(--effect-shine-text-color) 0, var(--effect-shine-highlight-color) 10%, var(--effect-shine-text-color) 20%);
+//  background-position: var(--effect-shine-start-x);
+//  -webkit-background-clip: text;
+//  -webkit-text-fill-color: transparent;
+//  animation: effect-shine 3s infinite linear;
+//
+//  @keyframes effect-shine {
+//    0% {
+//      background-position: var(--effect-shine-start-x);
+//    }
+//    60% {
+//      background-position: var(--effect-shine-end-x);
+//    }
+//    100% {
+//      background-position: var(--effect-shine-end-x);
+//    }
+//  }
+//}
+

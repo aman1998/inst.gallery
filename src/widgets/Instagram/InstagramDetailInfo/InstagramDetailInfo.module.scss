@@ -1,0 +1,23 @@
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--block-bg);
+  min-height: 184px;
+
+  &__content {
+    @include flex-centered;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__btns {
+    @include flex-gap(8px);
+  }
+
+  &__add {
+    display: flex !important;
+    width: max-content;
+    margin: 8px auto 0 auto;
+  }
+}

@@ -1,0 +1,25 @@
+import { revalidatePath } from "next/cache";
+import { type NextRequest, NextResponse } from "next/server";
+
+import { createClient } from "@shared/config/supabase/server";
+import { ROUTES } from "@shared/config/routes";
+
+export async function POST(req: NextRequest) {
+  const supabase = createClient();
+
+  // Check if a user's logged in
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    await supabase.auth.signOut();
+  }
+
+  revalidatePath("/", "layout");
+  return NextResponse.redirect(new URL(ROUTES.home, req.url), 302);
+
+  // return NextResponse.redirect(new URL('/login', req.url), {
+  //   status: 302,
+  // })
+}

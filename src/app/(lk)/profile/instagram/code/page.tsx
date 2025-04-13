@@ -1,0 +1,3 @@
+import InstagramCodeVerificationContainer from "@containers/InstagramCodeVerificationContainer";
+
+export default InstagramCodeVerificationContainer;

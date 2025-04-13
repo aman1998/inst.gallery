@@ -1,0 +1,7 @@
+.title {
+  @include h1;
+
+  @include respond(mobile) {
+    @include h2;
+  }
+}

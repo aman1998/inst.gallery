@@ -1,0 +1,33 @@
+$spacing-desktop: 75px;
+$spacing-tablet: 50px;
+$spacing-mobile: 25px;
+
+.page, .main {
+  //@include respond(desktop) {
+  //  @include flex-column-gap($spacing-desktop);
+  //}
+  //@include respond(tablet) {
+  //  @include flex-column-gap($spacing-tablet);
+  //}
+  //@include respond(mobile) {
+  //  @include flex-column-gap($spacing-mobile);
+  //}
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__home-btn {
+    position: fixed !important;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-dark) !important;
+  }
+}
+
+.main {
+  flex-grow: 1;
+}

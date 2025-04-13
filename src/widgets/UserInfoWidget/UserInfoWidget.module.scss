@@ -1,0 +1,25 @@
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--block-bg);
+  &__header {
+    @include flex-space-between;
+    margin-bottom: 16px;
+  }
+  &__title {
+    @include h4;
+  }
+  &__content {
+    @include flex-column-gap(8px);
+  }
+  &-item {
+    @include flex-gap(8px);
+    &__title {
+      @include bodyM;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

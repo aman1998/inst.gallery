@@ -1,0 +1,46 @@
+.posts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 16px;
+
+  &__link {
+    min-height: 280px;
+  }
+
+  &__skeleton {
+    background-color: var(--block-bg);
+    border-radius: 12px;
+  }
+}
+
+.post {
+  &-wrapper {
+    position: relative;
+    height: 280px;
+  }
+  width: 100%;
+  height: 100%;
+
+  &__image-wrapper {
+    &--checked {
+      span {
+        @include flex-centered;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
+        background: var(--primary-color);
+        width: 20px;
+        height: 20px;
+        svg {
+          display: none;
+        }
+        &::after {
+          content: "✓";;
+        }
+      }
+    }
+  }
+
+
+}
+
+

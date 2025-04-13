@@ -1,0 +1,19 @@
+$spacing-desktop: 100px;
+$spacing-tablet: 75px;
+$spacing-mobile: 50px;
+
+.container {
+  @include container;
+  max-width: 1100px;
+  margin-top: $spacing-desktop;
+
+  //@include respond(desktop) {
+  //  margin-top: $spacing-desktop;
+  //}
+  //@include respond(tablet) {
+  //  margin-top: $spacing-tablet;
+  //}
+  //@include respond(mobile) {
+  //  margin-top: $spacing-mobile;
+  //}
+}

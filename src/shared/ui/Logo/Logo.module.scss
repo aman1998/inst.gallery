@@ -1,0 +1,6 @@
+.logo {
+  @include flex-gap(16px);
+  &__name {
+    @include h4;
+  }
+}

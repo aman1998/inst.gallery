@@ -1,0 +1,52 @@
+.subscriptionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.subscriptionDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.productName {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.paymentInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.priceDetails {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.frequency {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.startDate {
+  color: #6b7280;
+  font-size: 1rem;
+}

@@ -1,0 +1,51 @@
+import { CheckoutEventsData } from "@paddle/paddle-js/types/checkout/events";
+
+import { QuantityField } from "@entities/Subscription/components/checkout/quantity-field";
+
+import { formatMoney } from "@shared/config/paddle/parse-money";
+
+interface LoadingTextProps {
+  value: number | undefined;
+  currencyCode: string | undefined;
+}
+
+function LoadingText({ value, currencyCode }: LoadingTextProps) {
+  if (value === undefined) {
+    return <div>loading...</div>;
+  } else {
+    return formatMoney(value, currencyCode);
+  }
+}
+
+interface Props {
+  checkoutData: CheckoutEventsData | null;
+  quantity: number;
+  handleQuantityChange: (quantity: number) => void;
+}
+
+export function CheckoutLineItems({ handleQuantityChange, checkoutData, quantity }: Props) {
+  return (
+    <>
+      <div className={"md:pt-12 text-base leading-[20px] font-medium"}>{checkoutData?.items[0].price_name}</div>
+      <QuantityField quantity={quantity} handleQuantityChange={handleQuantityChange} />
+      <div className={"pt-6 flex justify-between"}>
+        <span className={"text-base leading-[20px] font-medium text-muted-foreground"}>Subtotal</span>
+        <span className={"text-base leading-[20px] font-semibold"}>
+          <LoadingText currencyCode={checkoutData?.currency_code} value={checkoutData?.totals.subtotal} />
+        </span>
+      </div>
+      <div className={"pt-6 flex justify-between"}>
+        <span className={"text-base leading-[20px] font-medium text-muted-foreground"}>Tax</span>
+        <span className={"text-base leading-[20px] font-semibold"}>
+          <LoadingText currencyCode={checkoutData?.currency_code} value={checkoutData?.totals.tax} />
+        </span>
+      </div>
+      <div className={"pt-6 flex justify-between"}>
+        <span className={"text-base leading-[20px] font-medium text-muted-foreground"}>Due today</span>
+        <span className={"text-base leading-[20px] font-semibold"}>
+          <LoadingText currencyCode={checkoutData?.currency_code} value={checkoutData?.totals.total} />
+        </span>
+      </div>
+    </>
+  );
+}

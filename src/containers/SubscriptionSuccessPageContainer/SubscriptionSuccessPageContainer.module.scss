@@ -1,0 +1,6 @@
+.page {
+  @include flex-centered;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}

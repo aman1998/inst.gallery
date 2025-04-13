@@ -1,0 +1,27 @@
+.navigation {
+  position: relative;
+  height: 100%;
+  &__btn {
+    @include bodyM;
+    display: flex;
+    justify-content: flex-start !important;
+    height: var(--lk-header-height);
+    width: 100%;
+
+    span {
+      align-self: auto !important;
+    }
+  }
+  &__content {
+    @include scrollYWithResetScrollBar;
+    margin-top: 8px;
+    height: calc(100% - 60px);
+  }
+  &__blocks {
+    @include flex-column-gap(8px);
+    height: 100%;
+  }
+  &__add {
+    width: 100%;
+  }
+}

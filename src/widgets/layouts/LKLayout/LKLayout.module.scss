@@ -1,0 +1,54 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--lk-bg);
+
+  &__sider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sider-width);
+    padding: 32px 16px;
+  }
+
+  &__user-info {
+    margin-bottom: 8px;
+  }
+
+  &__navigation {
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    flex: 1;
+    margin: 32px 32px 32px var(--sider-width);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  &__dropdown {
+    li {
+      height: 34px;
+    }
+    button {
+      justify-content: flex-start;
+    }
+  }
+
+  &__splitter {
+    @include scrollYWithResetScrollBar;
+    flex: 1;
+    height: auto !important;
+
+    max-height: calc(100vh - 64px);
+  }
+
+  &__logout {
+    width: 100%;
+  }
+}

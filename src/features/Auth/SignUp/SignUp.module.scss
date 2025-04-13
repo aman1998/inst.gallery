@@ -1,0 +1,26 @@
+.form {
+  @include flex-column-gap(16px);
+  &__title {
+    @include h2;
+    text-align: center;
+
+    @include respond(mobile) {
+      @include h3;
+    }
+  }
+  &__btn {
+    width: 100%;
+  }
+  &__agreement {
+    font-weight: 500;
+  }
+  &__footer {
+    @include flex-gap(4px);
+    justify-content: center;
+    color: var(--text-dark-20);
+
+    a {
+      @include link;
+    }
+  }
+}

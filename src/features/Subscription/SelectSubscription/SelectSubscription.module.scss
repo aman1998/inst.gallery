@@ -1,0 +1,11 @@
+.plans {
+  @include flex-column-gap(16px);
+
+  &__btns {
+    @include flex-gap(8px);
+    margin-top: 24px;
+  }
+  &__btn {
+    width: max-content;
+  }
+}

@@ -1,0 +1,5 @@
+.download {
+  &__link {
+    @include link;
+  }
+}

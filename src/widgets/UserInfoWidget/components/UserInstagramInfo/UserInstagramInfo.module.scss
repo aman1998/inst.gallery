@@ -1,0 +1,18 @@
+.info {
+  @include flex-gap(8px);
+  &__text {
+    @include bodyM;
+
+    &--sync {
+      color: var(--elements-gray-60);
+
+      &:hover {
+        color: var(--elements-gray-60);
+      }
+    }
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

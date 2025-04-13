@@ -1,0 +1,3 @@
+import RestorePasswordConfirmPageContainer from "@containers/RestorePasswordConfirmPageContainer";
+
+export default RestorePasswordConfirmPageContainer;

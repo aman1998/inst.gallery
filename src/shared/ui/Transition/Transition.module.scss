@@ -1,0 +1,26 @@
+$transition-delay: 0.3s;
+
+.bounceInUp {
+  transform: translateY(18px);
+  opacity: 0;
+  transition:
+    opacity $transition-delay,
+    transform $transition-delay;
+
+  &.mounted {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.bounceOutUp {
+  transform: translateY(-30px);
+  opacity: 0;
+  transition:
+    opacity $transition-delay,
+    transform $transition-delay;
+
+  &.mounted {
+    position: absolute;
+  }
+}

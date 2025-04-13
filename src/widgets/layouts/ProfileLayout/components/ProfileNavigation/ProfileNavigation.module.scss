@@ -1,0 +1,53 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  background: var(--block-bg);
+  border-radius: 24px;
+
+  &__content {
+    padding: 32px;
+    width: 100%;
+  }
+  &__header {
+    @include flex-space-between;
+    margin-bottom: 32px;
+  }
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  ul {
+    @include flex-column-gap(8px);
+  }
+
+  &__link {
+    justify-content: flex-start !important;
+    width: 100%;
+
+    &--active {
+      background-color: var(--block-bg-hover)!important;
+    }
+  }
+  &__profile-btn {
+    display: flex;
+    align-items: center;
+    //justify-content: flex-end !important;
+    padding: 16px 32px !important;
+    width: 100%;
+    height: 80px !important;
+
+    :global {
+      .ant-btn-icon {
+        margin-left: auto;
+      }
+    }
+  }
+  &__arrow {
+    //margin-bottom: 20px;
+    margin-left: auto;
+  }
+}

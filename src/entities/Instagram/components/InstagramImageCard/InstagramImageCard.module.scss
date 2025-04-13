@@ -1,0 +1,83 @@
+.image {
+  &-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    //aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 3;
+    overflow: hidden;
+    cursor: pointer;
+    margin: -1px;
+    transition: background-color 0.5s ease-in-out;
+    contain: content;
+
+    // box-shadow: 0 0 54px var(--primary-color);
+
+    img {
+      object-fit: cover;
+      backface-visibility: hidden;
+    }
+
+    &--loading {
+      background-color: var(--img-loading-bg);
+
+      img {
+        opacity: 0;
+      }
+    }
+
+    &--selected {
+      img {
+        @include instagramPostHover;
+      }
+
+      .image__icon {
+        opacity: 1;
+      }
+    }
+
+    img {
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .image__icon {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    @include respond(desktop) {
+      &:hover {
+        .image__icon {
+          opacity: 1;
+        }
+
+        img {
+          @include instagramPostHover;
+        }
+      }
+    }
+
+    @include respond(tablet) {
+      &:active {
+        .image__icon {
+          opacity: 1;
+        }
+
+        img {
+          filter: brightness(0.5) contrast(1.2);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    @include absoluteCenter;
+    opacity: 0;
+
+    svg {
+      color: var(--white);
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

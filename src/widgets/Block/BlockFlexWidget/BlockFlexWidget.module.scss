@@ -1,0 +1,97 @@
+$left-max-width: 45%;
+$left-max-width-column: 600px;
+
+$right-max-width: 55%;
+$right-max-width-column: 768px;
+
+
+.block {
+  @include container;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+
+  @include respond(mobile) {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &-wrapper {
+    @include blockWrapper;
+    @include flex-centered;
+    flex-direction: column;
+
+    // background-image: url('https://optim.tildacdn.one/tild6366-3633-4038-a164-336661313431/-/format/webp/4_1_1.png');
+    // transform-origin: center center;
+    // background-position: center center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+  }
+
+  &__left {
+    @include flex-column-gap(16px);
+    max-width: $left-max-width;
+
+    @include respond(mobile) {
+      @include flex-column-gap(8px);
+      align-items: center;
+      max-width: $left-max-width-column;
+    }
+  }
+
+  &__right {
+    margin: 0 auto;
+    width: 100%;
+    max-width: $right-max-width;
+
+    @include respond(mobile) {
+      max-width: $right-max-width-column;
+    }
+  }
+
+  &__title {
+    @include respond(mobile) {
+      text-align: center;
+    }
+  }
+
+  &__text {
+    @include respond(mobile) {
+      text-align: center;
+    }
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+
+    @include respond(mobile) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+    gap: 32px;
+
+    &-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &--column,
+  &--column-reverse {
+    .block__left {
+      align-items: center;
+      max-width: $left-max-width-column;
+    }
+
+    .block__right {
+      max-width: $right-max-width-column;
+    }
+
+    .block__title,
+    .block__text {
+      text-align: center;
+    }
+  }
+}

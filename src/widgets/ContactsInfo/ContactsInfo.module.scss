@@ -1,0 +1,8 @@
+.widget {
+  h2 {
+    @include h4;
+  }
+  a {
+    @include link;
+  }
+}
