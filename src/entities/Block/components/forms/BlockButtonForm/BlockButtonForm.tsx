@@ -64,7 +64,7 @@ const BlockButtonForm = <T extends TButtonCustomizationSchema>({ control, errors
 
   // Нужно проверить на все блоки, где используется кнопка.
   // TODO: Возможно стоит придумать более изящный способ.
-  if (!block || (!isBlock1(block) && !isBlock2(block))) return null;
+  if (!block || (!isBlock1(block))) return null;
 
   return (
     <>

@@ -19,24 +19,11 @@ interface Props {
 const BlockListWidget: React.FC<Props> = ({ block }) => {
   if (!block || !isBlock2(block)) return null;
 
-  const { headerStyle, title, subtitle, titleLevel, advancedSettings, buttonSettings } = block.customization;
-  const { withBg, bgColor, textColor } = advancedSettings;
-
   return (
     <div className={s.layout}>
       <div ></div>
       <div className={s.block}>
-        <Show show={!!title}>
-          <Title level={titleLevel} className={s.block__title} style={{ color: textColor }}>
-            {title}
-          </Title>
-        </Show>
-        <Show show={!!subtitle}>
-          <Typography.Text className={s.block__text} style={{ color: textColor }}>
-            {subtitle}
-          </Typography.Text>
-        </Show>
-        <Title level={3}>My works</Title>
+        {/* <Title level={2}>Portfolio</Title> */}
         <BlockPosts customization={block.customization} />
       </div>
     </div>

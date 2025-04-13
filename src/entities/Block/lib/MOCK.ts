@@ -62,19 +62,6 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
 };
 
 export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
-  advancedSettings,
-  buttonSettings,
-
-  headerStyle: {
-    alignItems: "center",
-  },
-
-  title: "Visualize Your Instagram posts",
-  titleLevel: 2,
-  subtitle:
-    "Upload your Instagram posts and turn them into stunning landing pages in seconds. " +
-    "Showcase your content, engage your audience, and grow your brand effortlessly.",
-
   imageWrapperStyle: {
     borderRadius: 12,
   },

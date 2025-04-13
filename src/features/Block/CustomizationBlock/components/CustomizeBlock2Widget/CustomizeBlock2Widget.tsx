@@ -56,15 +56,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
   const values: TNullable<TCustomizeBlock2WidgetSchema> = React.useMemo(() => {
     if (!selectedOriginalBlock || !isBlock2(selectedOriginalBlock)) return null;
     return {
-      headerAlignItems: selectedOriginalBlock.customization.headerStyle?.alignItems,
-      title: selectedOriginalBlock.customization.title,
-      titleLevel: selectedOriginalBlock.customization.titleLevel,
-      subtitle: selectedOriginalBlock.customization.subtitle,
       borderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
-
-      withBg: selectedOriginalBlock.customization.advancedSettings.withBg,
-      bgColor: selectedOriginalBlock.customization.advancedSettings.bgColor,
-      textColor: selectedOriginalBlock.customization.advancedSettings.textColor,
 
       postBorderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
       postsGap: Number(selectedOriginalBlock.customization.postsSettings.postsStyle.gap),
@@ -72,15 +64,6 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
       postsType: selectedOriginalBlock.customization.postsSettings.postsType,
 
       posts: selectedOriginalBlock.customization.posts,
-
-      buttonVisible: selectedOriginalBlock.customization.buttonSettings.buttonVisible,
-      buttonWithArrow: selectedOriginalBlock.customization.buttonSettings.buttonWithArrow,
-      buttonText: selectedOriginalBlock.customization.buttonSettings.buttonText,
-      buttonTab: selectedOriginalBlock.customization.buttonSettings.buttonTab,
-      buttonLink: selectedOriginalBlock.customization.buttonSettings.buttonLink,
-      buttonSize: selectedOriginalBlock.customization.buttonSettings.buttonSize as string,
-      buttonType: selectedOriginalBlock.customization.buttonSettings.buttonType,
-      buttonColor: selectedOriginalBlock.customization.buttonSettings.buttonColor,
     };
   }, [selectedOriginalBlock]);
 
@@ -113,9 +96,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
 
       {!isPosts ? (
         <>
-          <BlockAdvancedForm type="edit" control={control} errors={errors} />
           <BlockPostsForm control={control} errors={errors} type="edit" />
-          <BlockButtonForm control={control} errors={errors} type="edit" />
         </>
       ) : (
         <>

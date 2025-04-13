@@ -4,13 +4,13 @@ import cn from "classnames";
 
 import InstagramImageCard from "@entities/Instagram/components/InstagramImageCard";
 import { getInstagramPostImage } from "@entities/Instagram/lib/utils";
-import { EPostsListType, ICustomizeBlock1 } from "@entities/Block/model/customizeTypes";
+import { EPostsListType, ICustomizeBlock1, ICustomizeBlock2 } from "@entities/Block/model/customizeTypes";
 
 import s from "./BlockPosts.module.scss";
 
 interface Props {
   unoptimized?: boolean;
-  customization: ICustomizeBlock1;
+  customization: ICustomizeBlock1 | ICustomizeBlock2;
 }
 
 const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
@@ -19,7 +19,6 @@ const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
     postsSettings: { postsStyle, postsLength, postsType },
     imageStyle,
     imageWrapperStyle,
-    headerStyle,
   } = customization;
 
   if (postsType === EPostsListType.masonry) {

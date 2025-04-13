@@ -139,6 +139,7 @@
 
   &-card {
     @include flex-column-gap(4px);
+    max-height: 200px;
   }
 
   &--1 {

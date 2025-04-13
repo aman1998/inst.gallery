@@ -13,13 +13,14 @@ export type TCustomizeBlock = ICustomizeBlock1 | ICustomizeBlock2 | ICustomizeBl
 // BLOCK 1
 export interface ICustomizeBlock1 extends ICustomizeImage, ICustomizeHeader {
   advancedSettings: ICustomizeAdvanced;
+  buttonSettings: ICustomizeButton;
 
   posts: IInstagramDownloadedPost[];
   postsSettings: ICustomizePosts;
 }
 
 // BLOCK 2
-export interface ICustomizeBlock2 extends ICustomizeImage, ICustomizeHeader {
+export interface ICustomizeBlock2 extends ICustomizeImage {
   posts: IInstagramDownloadedPost[];
   postsSettings: ICustomizePosts;
 }
@@ -45,9 +46,6 @@ export interface ICustomizeHeader {
   title: string;
   titleLevel: 1 | 2 | 3 | 4 | 5;
   subtitle: string;
-
-  advancedSettings: ICustomizeAdvanced;
-  buttonSettings: ICustomizeButton;
 }
 
 export interface ICustomizeButton {

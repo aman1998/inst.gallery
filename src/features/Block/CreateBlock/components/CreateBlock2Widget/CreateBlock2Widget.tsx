@@ -22,9 +22,6 @@ import { isBlock2 } from "@entities/Block/model/types";
 import BlockSaveCard from "@entities/Block/components/BlockSaveCard";
 import { MOCK_BLOCK_2_CUSTOMIZATION } from "@entities/Block/lib/MOCK";
 import BlockPostsForm from "@entities/Block/components/forms/BlockPostsForm";
-import BlockButtonForm from "@entities/Block/components/forms/BlockButtonForm";
-import BlockAdvancedForm from "@entities/Block/components/forms/BlockAdvancedForm";
-
 
 import s from "./CreateBlock2Widget.module.scss";
 import BlockInstagramPostsSettings from "@/features/Instagram/SettingsBlockInstagramPosts/BlockInstagramPostsSettings";
@@ -39,30 +36,11 @@ const CreateBlock2Widget: React.FC = () => {
   const { handleConfirm, handleCreateChange, resetCreatedBlockCustomization, isLoading } = useCreateBlock();
 
   const defaultValues: TCreateBlock2WidgetSchema = {
-    headerAlignItems: MOCK_BLOCK_2_CUSTOMIZATION.headerStyle?.alignItems as string,
-    title: MOCK_BLOCK_2_CUSTOMIZATION.title,
-    titleLevel: MOCK_BLOCK_2_CUSTOMIZATION.titleLevel,
-    subtitle: MOCK_BLOCK_2_CUSTOMIZATION.subtitle,
-
     postBorderRadius: Number(MOCK_BLOCK_2_CUSTOMIZATION.imageWrapperStyle.borderRadius),
     postsGap: Number(MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsStyle.gap),
     postsLength: Number(MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsLength),
     postsType: MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsType,
-
     posts: selectedPosts?.length ? selectedPosts : MOCK_BLOCK_2_CUSTOMIZATION.posts,
-
-    withBg: MOCK_BLOCK_2_CUSTOMIZATION.advancedSettings.withBg,
-    bgColor: MOCK_BLOCK_2_CUSTOMIZATION.advancedSettings.bgColor,
-    textColor: MOCK_BLOCK_2_CUSTOMIZATION.advancedSettings.textColor,
-
-    buttonVisible: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonVisible,
-    buttonWithArrow: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonWithArrow,
-    buttonText: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonText,
-    buttonTab: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonTab,
-    buttonLink: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonLink,
-    buttonSize: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonSize as string,
-    buttonType: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonType,
-    buttonColor: MOCK_BLOCK_2_CUSTOMIZATION.buttonSettings.buttonColor,
   };
 
   const {
@@ -114,9 +92,7 @@ const CreateBlock2Widget: React.FC = () => {
           transition={{ duration: 0.3 }}
           style={{ marginTop: 0, height: "100%" }}
         >
-          <BlockAdvancedForm type="add" control={control} errors={errors} />
           <BlockPostsForm control={control} errors={errors} type="add" />
-          <BlockButtonForm control={control} errors={errors} type="add" />
         </motion.div>
       ) : (
         <motion.div
