@@ -34,7 +34,7 @@ export const BUTTON_TAB_OPTIONS = [
 ];
 
 export const POSTS_TYPE_OPTIONS = [
-  { label: "Gallery", value: EPostsListType.gallery },
+  // { label: "Gallery", value: EPostsListType.gallery },
   { label: "Grid", value: EPostsListType.grid },
   { label: "Masonry", value: EPostsListType.masonry },
 ];
