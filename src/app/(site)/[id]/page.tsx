@@ -89,7 +89,7 @@ const Page: React.FC<Props> = async ({ params }) => {
   const subscriptions = await geSubscriptions(project.email);
   const plan: ESubscriptionPlan = getUserSubscriptionType(subscriptions);
 
-  return <SitePageContainer project={project} plan={plan} />;
+  return <SitePageContainer project={project} plan={ESubscriptionPlan.free} />;
 };
 
 export default Page;

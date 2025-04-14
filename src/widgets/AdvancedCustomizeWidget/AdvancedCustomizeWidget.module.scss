@@ -2,12 +2,15 @@
   :global {
     .ant-tabs-tab {
       border-bottom: none !important;
-      background: #F1F3F4 !important;
+      background: var(--lk-bg) !important;
+
       &-active {
         background: var(--white) !important;
       }
-      .ant-tabs-tab-remove  {
+
+      .ant-tabs-tab-remove {
         color: rgba(0, 0, 0, 0.45) !important;
+
         &:hover {
           color: rgba(0, 0, 0, 0.75) !important;
         }
@@ -18,7 +21,7 @@
   &__topPanel {
     @include flex-column-gap(10px);
     padding: 10px;
-    background: #F1F3F4;
+    background: var(--lk-bg);
   }
 
   &__windowControls {
@@ -34,9 +37,11 @@
     &:nth-child(1) {
       background-color: #4CAF50;
     }
+
     &:nth-child(2) {
       background-color: #FFBB33;
     }
+
     &:nth-child(3) {
       background-color: #FF5C5C;
     }

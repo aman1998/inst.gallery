@@ -3,12 +3,6 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
-import { ELKLayoutNavigation } from "@widgets/layouts/LKLayout/model/types";
-
-import { createdBlockSelector } from "@features/Block/CreateBlock/model/selectors";
-import { useCreateBlockStore } from "@features/Block/CreateBlock/model/store";
-
 import { useBlockStore } from "@entities/Block/model/store";
 import { selectedBlockSelector } from "@entities/Block/model/selectors";
 import { projectSelector } from "@entities/Project/model/selectors";
@@ -17,6 +11,7 @@ import { useProjectStore } from "@entities/Project/model/store";
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import Spinner from "@shared/ui/Spinner";
 import AntdProvider, { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
+import AdvancedCustomizeWidget from "@/widgets/AdvancedCustomizeWidget";
 
 const BlockWidget = dynamic(() => import("@widgets/Block/components/BlockWidget"), {
   ssr: false,
@@ -32,13 +27,12 @@ const animationVariants = {
 const BlockPageContainer: React.FC = () => {
   const project = useProjectStore(projectSelector);
   const selectedBlock = useBlockStore(selectedBlockSelector);
-
-  const createdBlock = useCreateBlockStore(createdBlockSelector);
+  // const createdBlock = useCreateBlockStore(createdBlockSelector);
 
   const { user } = useUserInfo();
-  const { navigation } = useLKLayout();
 
-  const block = navigation === ELKLayoutNavigation.create ? createdBlock : selectedBlock;
+  // const block = navigation === ELKLayoutNavigation.create ? createdBlock : selectedBlock;
+  const block = selectedBlock;
 
   if (!user || !block) return null;
 
@@ -53,6 +47,7 @@ const BlockPageContainer: React.FC = () => {
           exit="exit"
           variants={animationVariants}
           transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{ zoom: "0.5" }}
         >
           <BlockWidget block={block} />
         </motion.section>

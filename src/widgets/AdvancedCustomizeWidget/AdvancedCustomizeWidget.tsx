@@ -20,7 +20,7 @@ import s from "./AdvancedCustomizeWidget.module.scss";
 interface Props {
   className?: string;
   wrapperClassName?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AdvancedCustomizeWidget: React.FC<Props> = ({ className, wrapperClassName, children }) => {

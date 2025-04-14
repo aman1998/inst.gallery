@@ -53,7 +53,7 @@ const AdvancedCustomizeLayout: React.FC<Props> = ({ className, wrapperClassName,
             />
             <div className={s.splitter__content}>{children}</div>
             <Splitter.Panel
-              className={s.splitter__left}
+              className={s.splitter__right}
               min={SPLITTER_WIDTH}
               max={SPLITTER_WIDTH}
               resizable={false}

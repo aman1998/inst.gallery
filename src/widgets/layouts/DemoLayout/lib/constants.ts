@@ -1,4 +1,4 @@
-import { MOCK_BLOCK_1_CUSTOMIZATION } from "@entities/Block/lib/MOCK";
+import { MOCK_BLOCK_2_CUSTOMIZATION } from "@entities/Block/lib/MOCK";
 import { EBlockType, IBlock } from "@entities/Block/model/types";
 import { MOCK_INSTAGRAM_POSTS } from "@entities/Instagram/lib/constants";
 import { IProject } from "@entities/Project/model/types";
@@ -9,10 +9,10 @@ import { SITE_DESCRIPTION, SITE_EMAIL } from "@shared/config/appConfig";
 
 export const DEMO_BLOCKS: IBlock[] = [
   {
-    type: EBlockType.type1,
+    type: EBlockType.type2,
     created_at: new Date(),
     block_id: "1",
-    customization: { ...MOCK_BLOCK_1_CUSTOMIZATION, posts: MOCK_INSTAGRAM_POSTS.slice(0, 9) },
+    customization: { ...MOCK_BLOCK_2_CUSTOMIZATION, posts: MOCK_INSTAGRAM_POSTS.slice(0, 9) },
   },
 ];
 

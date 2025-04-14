@@ -2,10 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 32px;
-  background: var(--lk-bg);
+  background: var(--block-bg);
   padding: var(--block-padding);
   flex: 1;
-  overflow: hidden;
+
+  &__user {
+    position: sticky;
+    top: 100px;
+    max-height: max-content;
+  }
 }
 
 .block {

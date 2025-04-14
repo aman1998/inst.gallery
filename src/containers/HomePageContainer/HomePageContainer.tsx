@@ -10,7 +10,6 @@ import { MOCK_INSTAGRAM_POSTS } from "@entities/Instagram/lib/constants";
 import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import { ROUTES } from "@shared/config/routes";
 import { PRIMARY_COLOR, SITE_PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
-import { blocksFontFamily } from "@shared/config/fonts";
 import Button from "@shared/ui/Button";
 
 import VideoPlayer from "../../shared/ui/VideoPlayer";
@@ -35,7 +34,6 @@ const HomePageContainer: React.FC = () => (
       <div>
         <BlockFlexWidget
           classNameWrapper={s.page__block}
-          className={blocksFontFamily.className}
           block={{
             type: EBlockType.type1,
             created_at: new Date(),

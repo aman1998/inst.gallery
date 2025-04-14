@@ -4,12 +4,9 @@ import React from "react";
 import { Button } from "antd";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import cn from "classnames";
 
-// eslint-disable-next-line max-len
-import LKLayoutSubNavigationStyles from "@widgets/layouts/LKLayout/components/LKLayoutSubNavigation/LKLayoutSubNavigation.module.scss";
 import LKLayoutNavigation from "@widgets/layouts/LKLayout/components/LKLayoutNavigation";
 import { ELKLayoutNavigation } from "@widgets/layouts/LKLayout/model/types";
 import { LKLayoutContext } from "@widgets/layouts/LKLayout/lib/useLKLayout";
@@ -33,15 +30,10 @@ import { useMessage } from "@shared/hooks/useMessage";
 import { ESupabaseDB } from "@shared/config/supabase/types";
 import { ROUTES } from "@shared/config/routes";
 
-import CreateBlock from "../../../features/Block/CreateBlock";
-
 import s from "./LKLayout.module.scss";
+import LKLayoutSubNavigation from "./components/LKLayoutSubNavigation";
 
 const CustomizeBlockLayout = dynamic(() => import("./components/CustomizeBlockLayout"), {
-  ssr: false,
-});
-
-const CreateBlockLayout = dynamic(() => import("./components/CreateBlockLayout"), {
   ssr: false,
 });
 
@@ -49,22 +41,22 @@ const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomize
   ssr: false,
 });
 
-const LKLayoutSubNavigation = dynamic(() => import("@widgets/layouts/LKLayout/components/LKLayoutSubNavigation"), {
-  ssr: false,
-  loading: () => (
-    <div>
-      <Button
-        style={{ width: "100%", height: 60 }}
-        type="text"
-        icon={<ArrowLeftOutlined />}
-        size="large"
-        className={LKLayoutSubNavigationStyles.navigation__btn}
-      >
-        Back
-      </Button>
-    </div>
-  ),
-});
+// const LKLayoutSubNavigation = dynamic(() => import("@widgets/layouts/LKLayout/components/LKLayoutSubNavigation"), {
+//   ssr: false,
+//   loading: () => (
+//     <div>
+//       <Button
+//         style={{ width: "100%", height: 60 }}
+//         type="text"
+//         icon={<ArrowLeftOutlined />}
+//         size="large"
+//         className={LKLayoutSubNavigationStyles.navigation__btn}
+//       >
+//         Back
+//       </Button>
+//     </div>
+//   ),
+// });
 
 interface Props {
   children: React.ReactNode;
@@ -172,17 +164,6 @@ const LKLayout: React.FC<Props> = ({ children }) => {
                 <LKLayoutSubNavigation />
               </motion.div>
             )}
-            {navigation === ELKLayoutNavigation.create && (
-              <motion.div
-                key={navigation}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <CreateBlock />
-              </motion.div>
-            )}
           </AnimatePresence>
         </div>
         <main>
@@ -195,9 +176,7 @@ const LKLayout: React.FC<Props> = ({ children }) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {navigation === ELKLayoutNavigation.create ? (
-                <CreateBlockLayout className={s.layout__splitter}>{children}</CreateBlockLayout>
-              ) : navigation === ELKLayoutNavigation.sub && subNavigation === EBlockNavigation.advanced ? (
+              {navigation === ELKLayoutNavigation.sub && subNavigation === EBlockNavigation.advanced ? (
                 <AdvancedCustomizeWidget>{children}</AdvancedCustomizeWidget>
               ) : (
                 <CustomizeBlockLayout className={s.layout__splitter}>{children}</CustomizeBlockLayout>
