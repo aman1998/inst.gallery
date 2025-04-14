@@ -91,7 +91,7 @@ const BlockLinkInfo: React.FC = () => {
         <QRCode id="myqrcode" value={fullUrl} type="svg" />
       </div>
       <div className={s.info__footer}>
-        <Button className={s.info__link} size="small" type="primary" onClick={handleLinkClick}>
+        <Button className={s.info__link} size="small" type="default" onClick={handleLinkClick}>
           {url}
         </Button>
         <Button

@@ -7,13 +7,37 @@
     width: 100%;
 
     &__avatar {
-        margin-top: -100px !important;
-        border-radius: 12px !important;
+        object-fit: cover;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &__avatar-wrapper {
+        margin-top: -100px;
+        border-radius: 12px;
+        transition: background-color 0.5s ease-in-out;
+        overflow: hidden;
+
+        &:hover {
+            .image__action {
+                opacity: 1;
+            }
+        }
+
+        &--loading {
+            background-color: var(--lk-bg);
+
+            img {
+                opacity: 0;
+            }
+        }
     }
 
     &__links {
-        @include flex-gap(8px);
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 56px);
+        grid-gap: 8px;
+        gap: 8px;
+
         margin: 8px 0 22px 0;
         max-width: 80%;
 
