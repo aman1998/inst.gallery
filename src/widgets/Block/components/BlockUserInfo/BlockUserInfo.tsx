@@ -51,7 +51,7 @@ const BlockUserInfo: React.FC<Props> = ({ className }) => {
                 />
             </div>
 
-            <Typography.Title level={2} style={{ textAlign: "center", margin: "8px 0" }}>Beatrice Wambui</Typography.Title>
+            <Typography.Title level={2} style={{ textAlign: "center", margin: "8px 0" }}>Myrzabekov Amangeldi</Typography.Title>
             <Typography.Text style={{ textAlign: "center", color: "gray" }}>FullStack Developer</Typography.Text>
             <div className={s.info__links}>
                 {links.map((item, i) => <a href={item.link} target="_blank" key={i}><FormItem>{item.icon}</FormItem></a>)}

@@ -1,6 +1,20 @@
-export const copyToClipboard = (text: string) => {
+import { IRequestCallbacks } from "../types/request";
+
+export const copyToClipboard = (text: string, callbacks?: IRequestCallbacks) => {
   navigator.clipboard.writeText(text).then(() => {
-    alert("Link copied!");
+    if (callbacks?.onSuccessCallback) {
+      callbacks.onSuccessCallback();
+    } else {
+      alert("Link copied!");
+    }
+  }).catch(() => {
+    if (callbacks?.onErrorCallback) {
+      callbacks.onErrorCallback();
+    }
+  }).finally(() => {
+    if (callbacks?.onFinallyCallback) {
+      callbacks.onFinallyCallback();
+    }
   });
 };
 

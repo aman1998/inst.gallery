@@ -16,11 +16,13 @@ import { SITE_URL } from "@shared/config/appConfig";
 import { copyToClipboard } from "@shared/utils/text";
 
 import s from "./BlockLinkInfo.module.scss";
+import { useMessage } from "@shared/hooks/useMessage";
 
 const BlockLinkInfo: React.FC = () => {
   const project = useProjectStore(projectSelector);
   const router = useRouter();
   const { isDemo } = useLKLayout();
+  const { successMessage, errorMessage } = useMessage();
 
   if (!project?.link) return <p>No link available</p>;
   const { link } = project;
@@ -98,7 +100,14 @@ const BlockLinkInfo: React.FC = () => {
           className={s.info__copy}
           size="small"
           type="text"
-          onClick={() => copyToClipboard(fullUrl)}
+          onClick={() => copyToClipboard(fullUrl, {
+            onSuccessCallback: () => {
+              successMessage(`Link "${fullUrl}" copied!`)
+            },
+            onErrorCallback: () => {
+              errorMessage("Error")
+            }
+          })}
           icon={<CopyOutlined />}
         />
         <Button size="small" type="text" onClick={downloadSvgQRCodeAsPng} icon={<DownloadOutlined />} />

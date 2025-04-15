@@ -2,6 +2,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
+import VideoPlayerWidget from "@widgets/VideoPlayerWidget";
 
 import { MOCK_BLOCK_1_CUSTOMIZATION, MOCK_BLOCK_4_CUSTOMIZATION } from "@entities/Block/lib/MOCK";
 import { EBlockType } from "@entities/Block/model/types";
@@ -10,9 +11,6 @@ import { MOCK_INSTAGRAM_POSTS } from "@entities/Instagram/lib/constants";
 import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import { ROUTES } from "@shared/config/routes";
 import { PRIMARY_COLOR, SITE_PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
-import Button from "@shared/ui/Button";
-
-import VideoPlayer from "../../shared/ui/VideoPlayer";
 
 import s from "./HomePageContainer.module.scss";
 
@@ -45,7 +43,7 @@ const HomePageContainer: React.FC = () => (
                 ...MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings,
                 withBg: true,
                 bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, ${SITE_PRIMARY_COLOR})`,
-                textColor: "var(--text-dark)",
+                textColor: "var(--white)",
               },
               buttonSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings,
@@ -57,12 +55,7 @@ const HomePageContainer: React.FC = () => (
             },
           }}
         />
-        <section className={s.page__video}>
-          <VideoPlayer src="/video/demo.mov" />
-          <Button href={ROUTES.demoCustomize} target="_blank" type="primary">
-            Try it live
-          </Button>
-        </section>
+        <VideoPlayerWidget className={s.page__video} />
       </div>
       <SubscriptionPlans />
       <BlockCollapseWidget

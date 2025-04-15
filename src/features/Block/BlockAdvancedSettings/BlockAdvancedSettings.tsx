@@ -94,6 +94,7 @@ const BlockAdvancedSettings: React.FC = () => {
         <Flex justify="space-between" gap={8}>
           <Typography.Text strong>Online</Typography.Text>
           <SwitchControl
+            disabled={isDemo}
             defaultValue={true}
             onChange={(val) => handleValueChange("isPublish", val)}
             control={control}
