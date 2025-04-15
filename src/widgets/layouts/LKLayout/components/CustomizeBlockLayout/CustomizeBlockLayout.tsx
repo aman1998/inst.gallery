@@ -12,7 +12,6 @@ import { blocksSelector, selectedBlockSelector, setSelectedBlockSelector } from 
 import Button from "@shared/ui/Button";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
-
 import s from "./CustomizeBlockLayout.module.scss";
 
 const SPLITTER_WIDTH = 60;
@@ -48,13 +47,13 @@ const CustomizeBlockLayout: React.FC<Props> = ({ children, className, wrapperCla
     <div style={{ display: "flex", height: "auto", width: "100%" }} className={wrapperClassName}>
       <Splitter className={cn(s.splitter, className)}>
         <Splitter.Panel className={s.splitter__left} resizable={false} defaultSize={SPLITTER_WIDTH}>
-          <Button
+          {/* <Button
             disabled={!canGoPrevious}
             onClick={handlePrevious}
             type="text"
             icon={<ArrowUpOutlined />}
             style={{ color: canGoPrevious ? PRIMARY_COLOR : "inherit" }}
-          />
+          /> */}
         </Splitter.Panel>
         {/*<Splitter.Panel min={MIN_SECOND_PANEL_WIDTH} style={{ padding: "0 16px 32px 16px" }}>*/}
         {/*  <SplitterSize size={Math.floor(sizes[1])} />*/}
@@ -68,13 +67,13 @@ const CustomizeBlockLayout: React.FC<Props> = ({ children, className, wrapperCla
           style={{ position: "relative" }}
         >
           <BlockFloatSettings />
-          <Button
+          {/* <Button
             disabled={!canGoNext}
             onClick={handleNext}
             type="text"
             icon={<ArrowDownOutlined />}
             style={{ color: canGoNext ? PRIMARY_COLOR : "inherit" }}
-          />
+          /> */}
         </Splitter.Panel>
       </Splitter>
     </div>

@@ -136,17 +136,17 @@ const LKLayout: React.FC<Props> = ({ children }) => {
               >
                 <UserInfoWidget
                   className={cn(s["layout__user-info"], "antd-user-card")}
-                // ActionComponent={
-                //   <Button
-                //     onClick={() => {
-                //       router.push(ROUTES.works);
-                //     }}
-                //     size="small"
-                //     type="primary"
-                //   >
-                //     Go to Profile
-                //   </Button>
-                // }
+                  // ActionComponent={
+                  //   <Button
+                  //     onClick={() => {
+                  //       router.push(ROUTES.works);
+                  //     }}
+                  //     size="small"
+                  //     type="primary"
+                  //   >
+                  //     Go to Profile
+                  //   </Button>
+                  // }
                 />
                 <LKLayoutNavigation className={s.layout__navigation} />
               </motion.div>
@@ -176,11 +176,9 @@ const LKLayout: React.FC<Props> = ({ children }) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {navigation === ELKLayoutNavigation.sub && subNavigation === EBlockNavigation.advanced ? (
+              <CustomizeBlockLayout className={s.layout__splitter}>
                 <AdvancedCustomizeWidget>{children}</AdvancedCustomizeWidget>
-              ) : (
-                <CustomizeBlockLayout className={s.layout__splitter}>{children}</CustomizeBlockLayout>
-              )}
+              </CustomizeBlockLayout>
             </motion.div>
           </AnimatePresence>
         </main>

@@ -21,6 +21,7 @@ import { ROUTES } from "@shared/config/routes";
 import { useModal } from "@shared/hooks/useModal";
 
 import s from "./BlockFloatSettings.module.scss";
+import SignOut from "@/features/Auth/SignOut";
 
 const BlockFloatSettings: React.FC = () => {
   const project = useProjectStore(projectSelector);
@@ -61,6 +62,13 @@ const BlockFloatSettings: React.FC = () => {
               </div>
             </Tooltip>
           )} */}
+        {!isDemo && (
+          <Tooltip placement="left" title="Logout">
+            <div>
+              <SignOut isFloating />
+            </div>
+          </Tooltip>
+        )}
       </FloatButton.Group>
       <Modal destroyOnClose title={null} footer={null} open={isOpen} onCancel={closeModal}>
         <BlockLinkInfo />

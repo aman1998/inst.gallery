@@ -119,17 +119,17 @@ const DemoLayout: React.FC<Props> = ({ children }) => {
                 >
                   <UserInfoWidget
                     className={s["layout__user-info"]}
-                  // ActionComponent={
-                  //   <Button
-                  //     onClick={() => {
-                  //       router.push(ROUTES.home);
-                  //     }}
-                  //     size="small"
-                  //     type="default"
-                  //   >
-                  //     Go to Home
-                  //   </Button>
-                  // }
+                    // ActionComponent={
+                    //   <Button
+                    //     onClick={() => {
+                    //       router.push(ROUTES.home);
+                    //     }}
+                    //     size="small"
+                    //     type="default"
+                    //   >
+                    //     Go to Home
+                    //   </Button>
+                    // }
                   />
                   <LKLayoutNavigation className={s.layout__navigation} />
                 </motion.div>
@@ -159,11 +159,9 @@ const DemoLayout: React.FC<Props> = ({ children }) => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {navigation === ELKLayoutNavigation.sub && subNavigation === EBlockNavigation.advanced ? (
+                <CustomizeBlockLayout className={s.layout__splitter}>
                   <AdvancedCustomizeWidget>{children}</AdvancedCustomizeWidget>
-                ) : (
-                  <CustomizeBlockLayout className={s.layout__splitter}>{children}</CustomizeBlockLayout>
-                )}
+                </CustomizeBlockLayout>
               </motion.div>
             </AnimatePresence>
           </main>

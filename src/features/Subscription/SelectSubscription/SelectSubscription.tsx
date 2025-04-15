@@ -18,12 +18,15 @@ import { useSubscriptionsInfo } from "@shared/providers/SubscriptionsProvider/li
 
 import s from "./SelectSubscription.module.scss";
 
-const SelectSubscriptionPaddle: React.FC = () => {
+interface Props {
+  selectedPlan: ESubscriptionPlan;
+  setSelectedPlan: (val: ESubscriptionPlan) => void;
+}
+const SelectSubscriptionPaddle: React.FC<Props> = ({ selectedPlan, setSelectedPlan }) => {
   const [paddle, setPaddle] = React.useState<TNullable<any>>(null);
   const [price, setPrice] = React.useState<TNullable<Record<ESubscriptionFrequency, string>>>(
     subscriptionPlans[1].priceId
   );
-  const [selectedPlan, setSelectedPlan] = React.useState(ESubscriptionPlan.personal);
 
   const { frequency, plan, subscriptions } = useSubscriptionsInfo();
   const { prices } = usePaddlePrices(paddle, "US");

@@ -49,12 +49,10 @@ const CreateBlock1Widget: React.FC = () => {
     isColumn: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.isColumn,
     isReverse: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.isReverse,
 
-
     postBorderRadius: Number(MOCK_BLOCK_1_CUSTOMIZATION.imageWrapperStyle.borderRadius),
     postsGap: Number(MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsStyle.gap),
     postsLength: Number(MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsLength),
     postsType: MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsType,
-
 
     withBg: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.withBg,
     bgColor: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.bgColor,
@@ -170,7 +168,7 @@ const CreateBlock1Widget: React.FC = () => {
           transition={{ duration: 0.3 }}
           style={{ marginTop: 0, height: "100%" }}
         >
-          <Divider>Posts</Divider>
+          <Divider>Works</Divider>
           <div className={s.form__item}>
             <BlockInstagramPostsSettings
               type="add"

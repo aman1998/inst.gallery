@@ -1,6 +1,6 @@
 :root {
   // --primary-color: rgb(120, 0, 22);
-  --primary-color: #d4b106;
+  --primary-color: #e3bf59;
 
   --default-hover: #f3f3ed;
 
@@ -11,7 +11,7 @@
 
   --text-gray: #7b8190;
   --text-gray-20: #4e5564;
-  --text-dark: #2D2D2D;
+  --text-dark: #2d2d2d;
   --text-dark-20: #2f2f2f;
 
   --elements-white: #ffffff;
@@ -50,5 +50,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {}
+  :root {
+  }
 }

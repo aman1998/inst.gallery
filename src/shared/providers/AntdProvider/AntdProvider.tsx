@@ -4,7 +4,7 @@ import { ConfigProvider, App } from "antd";
 
 export const SITE_PRIMARY_COLOR = "#d5ac8a";
 // export const PRIMARY_COLOR = "rgb(120, 0, 22)";
-export const PRIMARY_COLOR = "#d4b106";
+export const PRIMARY_COLOR = "#e3bf59";
 
 export const ERROR_COLOR = "rgb(255, 77, 79)";
 

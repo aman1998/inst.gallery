@@ -10,11 +10,13 @@ import { useSubscriptionsInfo } from "@shared/providers/SubscriptionsProvider/li
 
 import s from "./SubscriptionInfo.module.scss";
 
-const SubscriptionInfo: React.FC = () => {
-  const { plan } = useSubscriptionsInfo();
+interface Props {
+  selectedPlan: ESubscriptionPlan;
+}
 
+const SubscriptionInfo: React.FC<Props> = ({ selectedPlan }) => {
   const index = React.useMemo(() => {
-    switch (plan) {
+    switch (selectedPlan) {
       case ESubscriptionPlan.personal:
         return 1;
       case ESubscriptionPlan.business:
@@ -24,7 +26,7 @@ const SubscriptionInfo: React.FC = () => {
       default:
         return 0;
     }
-  }, [plan]);
+  }, [selectedPlan]);
 
   return (
     <article className={s.info}>

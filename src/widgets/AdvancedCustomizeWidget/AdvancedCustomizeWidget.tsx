@@ -3,7 +3,6 @@ import cn from "classnames";
 import { Tabs } from "antd";
 import Image from "next/image";
 
-import AdvancedCustomizeLayout from "@widgets/AdvancedCustomizeWidget/components/AdvancedCustomizeLayout";
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 
 import { projectSelector } from "@entities/Project/model/selectors";
@@ -39,7 +38,8 @@ const AdvancedCustomizeWidget: React.FC<Props> = ({ className, wrapperClassName,
   const favicon = project?.meta?.favicon ?? "/logo.png";
 
   return (
-    <AdvancedCustomizeLayout className={cn(s.widget, className)} wrapperClassName={wrapperClassName}>
+    <>
+      {/* <AdvancedCustomizeLayout className={cn(s.widget, className)} wrapperClassName={wrapperClassName}> */}
       <div className={s.widget__topPanel}>
         <div className={s.widget__windowControls}>
           <div className={s.widget__dot} />
@@ -77,8 +77,9 @@ const AdvancedCustomizeWidget: React.FC<Props> = ({ className, wrapperClassName,
           <Input value={fullUrl} readOnly />
         </div>
       </div>
-      {/*{children}*/}
-    </AdvancedCustomizeLayout>
+      {children}
+      {/* </AdvancedCustomizeLayout> */}
+    </>
   );
 };
 

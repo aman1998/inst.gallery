@@ -23,7 +23,6 @@ import SliderControl from "@shared/controllers/SliderControl";
 import s from "./BlockPostsForm.module.scss";
 
 export const postsCustomization = object({
-
   postsLength: number().min(1, { message: "Min 1" }).max(6, { message: "Max 6" }),
   postsType: string().min(1, { message: "Min 1" }),
   postsGap: number().min(0, { message: "Min 0" }).max(24, { message: "Max 24" }),
@@ -68,7 +67,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
 
   return (
     <>
-      <Divider>Posts</Divider>
+      <Divider>Works</Divider>
       <FormItem className={s.form__item}>
         <Flex justify="space-between" align="center" gap={8}>
           <Typography.Text strong>Type</Typography.Text>

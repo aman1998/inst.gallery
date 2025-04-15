@@ -5,12 +5,15 @@
   background: var(--lk-bg);
 
   &__sider {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: var(--sider-width);
     padding: 32px 16px;
+
+    @include respond(desktop) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: var(--sider-width);
+    }
   }
 
   &__user-info {
@@ -24,11 +27,18 @@
   main {
     display: flex;
     flex: 1;
-    margin: 32px 32px 32px var(--sider-width);
     border-radius: 12px;
     background: var(--block-bg);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+
+    @include respond(desktop) {
+      margin: 32px 32px 32px var(--sider-width);
+    }
+    @include respond(tablet) {
+      margin: 32px 16px;
+      zoom: 0.5;
+    }
   }
 
   &__dropdown {

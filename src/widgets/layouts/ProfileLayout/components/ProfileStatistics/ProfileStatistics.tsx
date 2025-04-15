@@ -47,8 +47,16 @@ const ProfileStatistics = () => {
         <p className={s.stat__text}>Free</p>
       </div>
       <div className={s.stat}>
-        <p className={s.stat__title}>Works</p>
+        <p className={s.stat__title}>Accounts</p>
+        <p className={s.stat__text}>1/1</p>
+      </div>
+      <div className={s.stat}>
+        <p className={s.stat__title}>Posts</p>
         <p className={s.stat__text}>1/10</p>
+      </div>
+      <div className={s.stat}>
+        <p className={s.stat__title}>Blocks</p>
+        <p className={s.stat__text}>1/3</p>
       </div>
     </motion.div>
   );
