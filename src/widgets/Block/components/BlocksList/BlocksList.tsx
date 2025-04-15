@@ -8,8 +8,7 @@ import BlockItem from "@widgets/Block/components/BlocksList/components/BlockItem
 import { useBlockStore } from "@entities/Block/model/store";
 import { blocksSelector, setBlocksSelector } from "@entities/Block/model/selectors";
 import { IBlock } from "@entities/Block/model/types";
-import { ESubscriptionPlan } from "@entities/Subscription/model/types";
-import { SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
+import { getSubscriptionsConfig } from "@entities/Subscription/lib/utils";
 
 import { ESupabaseDB } from "@shared/config/supabase/types";
 import { createClient } from "@shared/config/supabase/client";
@@ -72,7 +71,7 @@ const BlocksList: React.FC = () => {
 
   if (!blocks?.length) return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Create block" />;
 
-  const { maxBlocks } = SUBSCRIPTIONS_CONFIG[plan] ?? SUBSCRIPTIONS_CONFIG[ESubscriptionPlan.free];
+  const { maxBlocks } = getSubscriptionsConfig(plan);
 
   return (
     <Reorder.Group className={s.list} axis="y" values={blocks} onReorder={handleReorder}>

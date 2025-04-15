@@ -9,8 +9,7 @@ import {
   addInstagramDownloadedPostsInListSelector,
   instagramDownloadedPostsSelector,
 } from "@entities/Instagram/model/selectors";
-import { SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
-import { ESubscriptionPlan } from "@entities/Subscription/model/types";
+import { getSubscriptionsConfig } from "@entities/Subscription/lib/utils";
 
 import { createClient } from "@shared/config/supabase/client";
 import { ESupabaseBucket, ESupabaseDB } from "@shared/config/supabase/types";
@@ -37,8 +36,7 @@ const DownloadInstagramPost: React.FC<Props> = ({ post, slug }) => {
   const { successMessage, errorMessage, loadingMessage, destroyMessage } = useMessage();
 
   const { plan } = useSubscriptionsInfo();
-  const { maxUploadPosts, excludedInstagramType } =
-    SUBSCRIPTIONS_CONFIG[plan] ?? SUBSCRIPTIONS_CONFIG[ESubscriptionPlan.free];
+  const { maxUploadPosts, excludedInstagramType } = getSubscriptionsConfig(plan);
 
   const uploadFileToSupabase = async (fileUrl: string, filePath: string): Promise<string | null> => {
     try {

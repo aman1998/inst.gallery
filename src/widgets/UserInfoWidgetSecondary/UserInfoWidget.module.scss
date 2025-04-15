@@ -2,10 +2,40 @@
   padding: 16px;
   border-radius: 8px;
   background: var(--block-bg);
+
   &__header {
     @include flex-space-between;
   }
+
+  &__title {}
+
+  &__content {
+    @include flex-column-gap(4px);
+    margin-top: 8px;
+  }
+
+  &__item {
+    @include flex-gap(4px);
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.stat {
   &__title {
-    @include h4;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__text {
+    @include bodyM;
   }
 }

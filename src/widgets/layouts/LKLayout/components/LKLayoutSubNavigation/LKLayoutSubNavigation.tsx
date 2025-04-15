@@ -11,10 +11,9 @@ import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 import { ELKLayoutNavigation } from "@widgets/layouts/LKLayout/model/types";
 
 import { EBlockNavigation } from "@entities/Block/model/types";
-import { SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
-import { ESubscriptionPlan } from "@entities/Subscription/model/types";
 import { useBlockStore } from "@entities/Block/model/store";
 import { blocksSelector } from "@entities/Block/model/selectors";
+import { getSubscriptionsConfig } from "@entities/Subscription/lib/utils";
 
 import { useSubscriptionsInfo } from "@shared/providers/SubscriptionsProvider/lib/useSubscriptionsInfo";
 import { useMessage } from "@shared/hooks/useMessage";
@@ -31,7 +30,7 @@ const LKLayoutSubNavigation: React.FC<Props> = ({ className }) => {
   const { errorMessage } = useMessage();
 
   const { plan } = useSubscriptionsInfo();
-  const { maxBlocks } = SUBSCRIPTIONS_CONFIG[plan] ?? SUBSCRIPTIONS_CONFIG[ESubscriptionPlan.free];
+  const { maxBlocks } = getSubscriptionsConfig(plan);;
 
   const handleAddBlock = () => {
     if (maxBlocks <= blocks.length) {

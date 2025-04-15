@@ -100,7 +100,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
         </>
       ) : (
         <>
-          <Divider>Posts</Divider>
+          <Divider>Works</Divider>
           <div className={s.form__item}>
             <BlockInstagramPostsSettings
               type="edit"

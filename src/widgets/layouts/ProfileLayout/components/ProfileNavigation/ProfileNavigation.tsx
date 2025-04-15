@@ -102,9 +102,9 @@ const ProfileNavigation: React.FC<Props> = ({ className }) => {
         </ul>
       </div>
       <div className={s.navigation__footer}>
-        {/*<div className={s.navigation__content}>*/}
-        {/*  <ProfileStatistics />*/}
-        {/*</div>*/}
+        {/* <div className={s.navigation__content}>
+         <ProfileStatistics />
+        </div> */}
         <Dropdown
           overlayStyle={{ minWidth: 100 }}
           menu={{ items }}

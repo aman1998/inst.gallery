@@ -47,7 +47,7 @@ const BlockPageContainer: React.FC = () => {
           exit="exit"
           variants={animationVariants}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          style={{ zoom: "0.5" }}
+          style={{ zoom: "0.7" }}
         >
           <BlockWidget block={block} />
         </motion.section>

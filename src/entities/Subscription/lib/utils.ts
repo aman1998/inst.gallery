@@ -6,7 +6,7 @@ import {
   TSubscriptionPaddle,
   TTransaction,
 } from "@entities/Subscription/model/types";
-import { personalIds, businessIds, freeIds } from "@entities/Subscription/lib/constants";
+import { personalIds, businessIds, freeIds, SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
 
 import { TNullable } from "@shared/types/common";
 
@@ -45,3 +45,8 @@ export const getUserSubscriptionType = (subscriptions: TNullable<ISubscription[]
 
   return ESubscriptionPlan.free;
 };
+
+export const getSubscriptionsConfig = (plan: ESubscriptionPlan) => {
+  if (!plan) return SUBSCRIPTIONS_CONFIG[ESubscriptionPlan.free];
+  return SUBSCRIPTIONS_CONFIG[plan];
+}

@@ -92,7 +92,7 @@ const BlockAdvancedSettings: React.FC = () => {
       <Divider>Page</Divider>
       <FormItem>
         <Flex justify="space-between" gap={8}>
-          <Typography.Text strong>Publish</Typography.Text>
+          <Typography.Text strong>Online</Typography.Text>
           <SwitchControl
             defaultValue={true}
             onChange={(val) => handleValueChange("isPublish", val)}

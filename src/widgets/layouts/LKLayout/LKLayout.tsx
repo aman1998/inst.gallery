@@ -136,17 +136,17 @@ const LKLayout: React.FC<Props> = ({ children }) => {
               >
                 <UserInfoWidget
                   className={cn(s["layout__user-info"], "antd-user-card")}
-                  ActionComponent={
-                    <Button
-                      onClick={() => {
-                        router.push(ROUTES.works);
-                      }}
-                      size="small"
-                      type="primary"
-                    >
-                      Go to Profile
-                    </Button>
-                  }
+                // ActionComponent={
+                //   <Button
+                //     onClick={() => {
+                //       router.push(ROUTES.works);
+                //     }}
+                //     size="small"
+                //     type="primary"
+                //   >
+                //     Go to Profile
+                //   </Button>
+                // }
                 />
                 <LKLayoutNavigation className={s.layout__navigation} />
               </motion.div>

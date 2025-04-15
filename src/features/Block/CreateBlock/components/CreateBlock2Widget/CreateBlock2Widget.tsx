@@ -103,7 +103,7 @@ const CreateBlock2Widget: React.FC = () => {
           transition={{ duration: 0.3 }}
           style={{ marginTop: 0, height: "100%" }}
         >
-          <Divider>Posts</Divider>
+          <Divider>Works</Divider>
           <div className={s.form__item}>
             <BlockInstagramPostsSettings
               type="add"

@@ -5,7 +5,7 @@ import BlockWidget from "@widgets/Block/components/BlockWidget";
 
 import { IProject } from "@entities/Project/model/types";
 import { ESubscriptionPlan } from "@entities/Subscription/model/types";
-import { SUBSCRIPTIONS_CONFIG } from "@entities/Subscription/lib/constants";
+import { getSubscriptionsConfig } from "@entities/Subscription/lib/utils";
 
 import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import { ROUTES } from "@shared/config/routes";
@@ -21,7 +21,7 @@ interface Props {
 const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
   if (!project.blocks.length) return null;
 
-  const { maxBlocks, excludedBlocks } = SUBSCRIPTIONS_CONFIG[plan] ?? SUBSCRIPTIONS_CONFIG[ESubscriptionPlan.free];
+  const { maxBlocks, excludedBlocks } = getSubscriptionsConfig(plan);;
 
   const blocks = project.blocks.slice(0, maxBlocks).filter((item) => !excludedBlocks.includes(item.type));
 

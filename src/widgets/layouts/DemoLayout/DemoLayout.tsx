@@ -119,17 +119,17 @@ const DemoLayout: React.FC<Props> = ({ children }) => {
                 >
                   <UserInfoWidget
                     className={s["layout__user-info"]}
-                    ActionComponent={
-                      <Button
-                        onClick={() => {
-                          router.push(ROUTES.home);
-                        }}
-                        size="small"
-                        type="primary"
-                      >
-                        Go to Home
-                      </Button>
-                    }
+                  // ActionComponent={
+                  //   <Button
+                  //     onClick={() => {
+                  //       router.push(ROUTES.home);
+                  //     }}
+                  //     size="small"
+                  //     type="default"
+                  //   >
+                  //     Go to Home
+                  //   </Button>
+                  // }
                   />
                   <LKLayoutNavigation className={s.layout__navigation} />
                 </motion.div>
