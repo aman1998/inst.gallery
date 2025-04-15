@@ -51,7 +51,9 @@
   // @include scrollYWithResetScrollBar;
   // max-height: calc(100vh - var(--block-padding) - var(--block-padding));
 
-  @include respond(mobile) {}
+  @include respond(mobile) {
+    padding: 20px;
+  }
 }
 
 @mixin collapseContainer {

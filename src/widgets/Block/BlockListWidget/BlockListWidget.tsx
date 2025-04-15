@@ -29,7 +29,7 @@ const BlockListWidget: React.FC<Props> = ({ block }) => {
           My journey in the world of web development has been nothing short of exhilarating, and
           I constantly strive to enhance my skills and embrace emerging trends in the industry.
         </FormItem>
-        <BlockPosts customization={block.customization} />
+        <BlockPosts customization={block.customization} className={s.block__list} />
       </div>
     </div>
 

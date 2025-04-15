@@ -6,10 +6,20 @@
   padding: var(--block-padding);
   flex: 1;
 
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+    padding: 100px 16px 16px 16px;
+    grid-gap: 16px;
+  }
+
   &__user {
     position: sticky;
     top: 100px;
     max-height: max-content;
+
+    @include respond(tablet) {
+      position: static;
+    }
   }
 }
 
@@ -28,5 +38,10 @@
 
   &__text {
     @include textEllipsisWithLineClamp(2);
+  }
+
+  &__list {
+    // @include scrollYWithResetScrollBar;
+    // max-height: 300px;
   }
 }

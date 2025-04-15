@@ -9,11 +9,11 @@ import { EPostsListType, ICustomizeBlock1, ICustomizeBlock2 } from "@entities/Bl
 import s from "./BlockPosts.module.scss";
 
 interface Props {
-  unoptimized?: boolean;
   customization: ICustomizeBlock1 | ICustomizeBlock2;
+  className?: string;
 }
 
-const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
+const BlockPosts: React.FC<Props> = ({ customization, className }) => {
   const {
     posts,
     postsSettings: { postsStyle, postsLength, postsType },
@@ -24,7 +24,7 @@ const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
   if (postsType === EPostsListType.masonry) {
     return (
       <div
-        className={s.masonry}
+        className={cn(s.masonry, className)}
         style={{
           ...postsStyle,
           gridTemplateColumns: `repeat(auto-fill, minmax(calc(${100 / postsLength}% - ${postsStyle.gap}px), 1fr))`,
@@ -55,7 +55,7 @@ const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
 
   if (postsType === EPostsListType.grid) {
     return (
-      <div className={cn(s.grid, s[`grid--${postsLength}`])} style={postsStyle}>
+      <div className={cn(s.grid, s[`grid--${postsLength}`], className)} style={postsStyle}>
         {posts.map((post, index) => (
           <div key={index} className={s["grid-card"]}>
             <InstagramImageCard
@@ -75,7 +75,7 @@ const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
   }
 
   return (
-    <div className={cn(s.gallery, s[`gallery--${posts.length}`])} style={postsStyle}>
+    <div className={cn(s.gallery, s[`gallery--${posts.length}`], className)} style={postsStyle}>
       {posts?.map((item, index) => {
         const mediaUrl = getInstagramPostImage(item);
 
@@ -91,7 +91,6 @@ const BlockPosts: React.FC<Props> = ({ customization, unoptimized }) => {
               index={index}
               wrapperStyle={imageWrapperStyle}
               style={imageStyle}
-              unoptimized={unoptimized}
               posts={posts}
               src={mediaUrl}
               classNameWrapper={s.gallery__image}

@@ -144,10 +144,10 @@
   &--1 {
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
-    max-width: var(--post-max-width);
+    // max-width: var(--post-max-width);
 
     .grid-card {
-      max-height: 280px;
+      max-height: 400px;
     }
   }
 
