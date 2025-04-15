@@ -62,4 +62,10 @@
   &__logout {
     width: 100%;
   }
+
+  :global {
+    .block-user-info {
+      top: 250px !important;
+    }
+  }
 }

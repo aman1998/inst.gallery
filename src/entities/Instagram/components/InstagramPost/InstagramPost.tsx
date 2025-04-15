@@ -86,7 +86,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
           icon={<CaretRightFilled />}
           className={s.post__btn}
         >
-          Go to post
+          More details
         </Button>
       </div>
     </div>

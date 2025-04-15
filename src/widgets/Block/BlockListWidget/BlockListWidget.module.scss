@@ -1,9 +1,9 @@
 .layout {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-gap: 32px;
   background: var(--block-bg);
-  padding: var(--block-padding);
+  padding: 100px 50px;
   flex: 1;
 
   @include respond(tablet) {
@@ -34,7 +34,6 @@
   &__title {
     @include textEllipsis;
   }
-
 
   &__text {
     @include textEllipsisWithLineClamp(2);

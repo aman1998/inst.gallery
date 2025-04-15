@@ -61,7 +61,7 @@ const CustomizeBlockLayout: React.FC<Props> = ({ children, className, wrapperCla
         {/*</Splitter.Panel>*/}
         <div className={s.splitter__content}>{children}</div>
         <Splitter.Panel
-          className={s.splitter__left}
+          className={s.splitter__right}
           resizable={false}
           defaultSize={SPLITTER_WIDTH}
           style={{ position: "relative" }}

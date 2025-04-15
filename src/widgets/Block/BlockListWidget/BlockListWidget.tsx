@@ -24,15 +24,14 @@ const BlockListWidget: React.FC<Props> = ({ block }) => {
       <div className={s.block}>
         <Title level={2}>Portfolio</Title>
         <FormItem className={s.info__contacts}>
-          Hello there! I'm thrilled to welcome you to my portfolio. I am a passionate and versatile
-          full-stack developer with a keen interest in exploring the latest cutting-edge technologies.
-          My journey in the world of web development has been nothing short of exhilarating, and
-          I constantly strive to enhance my skills and embrace emerging trends in the industry.
+          Hello there! I'm thrilled to welcome you to my portfolio. I am a passionate and versatile full-stack developer
+          with a keen interest in exploring the latest cutting-edge technologies. My journey in the world of web
+          development has been nothing short of exhilarating, and I constantly strive to enhance my skills and embrace
+          emerging trends in the industry.
         </FormItem>
         <BlockPosts customization={block.customization} className={s.block__list} />
       </div>
     </div>
-
   );
 };
 export default BlockListWidget;

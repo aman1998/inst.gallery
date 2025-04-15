@@ -20,10 +20,11 @@
 
   &__topPanel {
     @include flex-column-gap(10px);
-    // position: sticky;
-    // top: 0;
+    position: sticky;
+    top: 0;
     padding: 10px;
     background: var(--lk-bg);
+    z-index: 10;
   }
 
   &__windowControls {
