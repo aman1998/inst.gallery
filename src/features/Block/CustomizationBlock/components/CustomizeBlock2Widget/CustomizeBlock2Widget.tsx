@@ -85,8 +85,6 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
 
   if (!selectedBlock || !isBlock2(selectedBlock)) return null;
 
-  console.log("hello");
-
   return (
     <form className={s.form}>
       <Show show={isDirty}>

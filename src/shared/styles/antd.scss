@@ -1,14 +1,25 @@
 .antd-instagram-carousel {
   .ant-modal-content {
-   padding: 0 24px 20px 24px !important;
+    padding: 0 24px 20px 24px !important;
   }
+}
+
+.antd-instagram-carousel-create {
+  .ant-modal-content {
+    padding: 0 !important;
+  }
+}
+
+.antd-instagram-carousel,
+.antd-instagram-carousel-create {
   .ant-modal-close {
     color: var(--white) !important;
   }
 
   .slick-arrow {
     color: var(--white) !important;
-    &::before, &::after {
+    &::before,
+    &::after {
       content: "";
     }
   }
@@ -27,15 +38,17 @@
     bottom: 0 !important;
 
     li button {
-      &::before, &::after {
+      &::before,
+      &::after {
         display: none !important;
       }
     }
   }
-  .slick-list, .slick-track {
+  .slick-list,
+  .slick-track {
     height: 100% !important;
   }
-  .slick-slide  {
+  .slick-slide {
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -67,7 +80,8 @@
   @include resetScrollBar;
 }
 
-.ant-modal-confirm-body, .ant-popconfirm-message {
+.ant-modal-confirm-body,
+.ant-popconfirm-message {
   svg {
     color: var(--primary-color) !important;
   }

@@ -16,7 +16,15 @@
     @include flex-centered;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    width: 70vw;
+
+    @include respond(tablet) {
+      width: 50vw;
+    }
+
+    @include respond(mobile) {
+      width: 100%;
+    }
 
     :global {
       .post__media {
@@ -26,5 +34,10 @@
         border-radius: 0 0 12px 0;
       }
     }
+  }
+  &__outside {
+    @include flex-centered;
+    width: 100%;
+    height: 100%;
   }
 }

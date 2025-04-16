@@ -1,23 +1,31 @@
 import React from "react";
 import cn from "classnames";
 import { Avatar, Typography } from "antd";
+import type { UploadProps } from "antd";
+import { message, Upload } from "antd";
 import Image from "next/image";
 import { CaretRightFilled } from "@ant-design/icons";
+import { InboxOutlined } from "@ant-design/icons";
+
+import { EInstagramType, IInstagramPost } from "@entities/Instagram/model/types";
 
 import Button from "@shared/ui/Button";
 import CarouselCustom from "@shared/ui/CarouselCustom";
-
-import { IInstagramPost, EInstagramType, IInstagramDownloadedPost } from "../../model/types";
-
-import s from "./InstagramPost.module.scss";
+import s from "./CreateInstagramPostForm.module.scss";
+import { uploadFileToSupabase } from "@/shared/config/supabase/actions";
+import UploadInstagramMedia from "@/features/Instagram/UploadInstagramMedia";
+import { TNullable } from "@/shared/types/common";
 
 interface Props {
-  post: IInstagramPost | IInstagramDownloadedPost;
   className?: string;
 }
 
-const InstagramPost: React.FC<Props> = ({ post, className }) => {
-  const renderMedia = () => {
+const CreateInstagramPostForm: React.FC<Props> = ({ className }) => {
+  const [post, setPost] = React.useState<TNullable<IInstagramPost>>(null);
+
+  const renderMedia = React.useMemo(() => {
+    if (!post) return null;
+
     switch (post.media_type) {
       case EInstagramType.IMAGE:
         if (!post.media_url) return null;
@@ -67,30 +75,27 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
       default:
         return null;
     }
-  };
+  }, [post]);
 
   return (
     <div className={cn(s.post, className)}>
-      <div className={cn(s.post__media, "post__media")}>{renderMedia()}</div>
+      <div className={cn(s.post__media, "post__media")}>
+        {post ? renderMedia : <UploadInstagramMedia onPostGenerated={setPost} />}
+      </div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
-          {/* <Avatar style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}>{post.username[0].toUpperCase()}</Avatar> */}
-          <Typography.Title level={5} onClick={() => window.open(post.permalink)} className={s.post__username}>
-            {post.username}
-          </Typography.Title>
+          <input placeholder="Name" />
         </div>
-        <div className={s.post__content}>{post.caption}</div>
-        <Button
-          onClick={() => window.open(post.permalink)}
-          type="text"
-          icon={<CaretRightFilled />}
-          className={s.post__btn}
-        >
-          More details
-        </Button>
+        <div className={s.post__content}>
+          <textarea placeholder="Content" />
+        </div>
+        <div className={s.post__btn}>
+          <input placeholder="Button text" />
+          <input placeholder="link" />
+        </div>
       </div>
     </div>
   );
 };
 
-export default InstagramPost;
+export default CreateInstagramPostForm;

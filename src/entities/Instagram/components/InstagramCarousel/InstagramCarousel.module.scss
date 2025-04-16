@@ -1,6 +1,6 @@
 .modal {
   &__mask {
-    background-color: rgb(23 23 22 / 85%)  !important;
+    background-color: rgb(23 23 22 / 85%) !important;
   }
   &__content {
     height: 100vh;
@@ -12,7 +12,8 @@
     @include flex-centered;
     height: 100%;
   }
-  &__carouser-wrapper, &__carousel {
+  &__carouser-wrapper,
+  &__carousel {
     height: 100%;
     width: 100%;
   }

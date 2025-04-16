@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal } from "antd";
-
-import InstagramPost from "@entities/Instagram/components/InstagramPost";
+import cn from "classnames";
 
 import s from "./CreateInstagramPost.module.scss";
 import { MOCK_INSTAGRAM_POSTS } from "@/entities/Instagram/lib/constants";
 import CreateInstagramPostHeader from "./components/CreateInstagramPostHeader";
+import CreateInstagramPostForm from "./components/CreateInstagramPostForm";
 
 const IGNORE_CLASS = "antd-instagram-post";
 
@@ -17,12 +17,8 @@ interface Props {
 const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
 
-  const handleMaskClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const target = event.target as HTMLElement;
-
-    if (!target.closest(".slick-arrow") && !target.closest(`.${IGNORE_CLASS}`) && !target.closest(".slick-dots li")) {
-      onClose();
-    }
+  const handleModalOutsideClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onClose();
   };
 
   return (
@@ -31,7 +27,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
       open={isOpen}
       onClose={onClose}
       onCancel={onClose}
-      rootClassName="antd-instagram-carousel"
+      rootClassName="antd-instagram-carousel-create"
       className={s.modal}
       classNames={{
         body: s.modal__body,
@@ -44,9 +40,11 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
       title={null}
       destroyOnClose
     >
-      <div className={s["modal__carousel-wrapper"]} onClick={handleMaskClick}>
-        <CreateInstagramPostHeader />
-        <InstagramPost className={IGNORE_CLASS} post={MOCK_INSTAGRAM_POSTS[0]} />
+      <div onClick={handleModalOutsideClick} className={s.modal__outside}>
+        <div className={cn(s["modal__carousel-wrapper"], IGNORE_CLASS)} onClick={(e) => e.stopPropagation()}>
+          <CreateInstagramPostHeader className={IGNORE_CLASS} />
+          <CreateInstagramPostForm className={IGNORE_CLASS} />
+        </div>
       </div>
     </Modal>
   );

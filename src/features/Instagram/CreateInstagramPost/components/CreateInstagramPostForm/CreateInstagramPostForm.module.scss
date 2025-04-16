@@ -4,16 +4,16 @@ $borderRadius: 12px;
   display: grid;
   grid-template-columns: 1fr minmax(300px, 500px);
   height: 80vh;
-  width: 70vw;
+  width: 100%;
 
   @include respond(tablet) {
     grid-template-columns: 1fr;
-    width: 50vw;
+    width: 100%;
   }
 
   @include respond(mobile) {
     grid-template-columns: 1fr;
-    width: 300px;
+    width: 100%;
   }
 
   &__media {
@@ -70,6 +70,16 @@ $borderRadius: 12px;
     @include respond(tablet) {
       border-radius: 0 0 $borderRadius $borderRadius;
     }
+
+    input,
+    textarea {
+      all: unset;
+      width: 100%;
+    }
+    textarea {
+      @include scrollYWithResetScrollBar;
+      height: calc(100% - 5px);
+    }
   }
   &__header {
     padding: 14px 16px;
@@ -77,7 +87,7 @@ $borderRadius: 12px;
   }
   &__username {
     display: inline-block;
-    // margin-left: 8px;
+    margin-left: 8px;
     color: var(--white);
     cursor: pointer;
 
@@ -90,11 +100,21 @@ $borderRadius: 12px;
     @include bodyS;
     padding: 16px;
     white-space: break-spaces;
+    flex: 1;
   }
   &__btn {
-    justify-content: flex-start !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     margin-top: auto;
+    padding: 0 16px;
     border-top: 1px solid var(--separator-color) !important;
     text-transform: uppercase;
+    height: 44px;
+
+    input {
+      font-size: 12px;
+    }
   }
 }

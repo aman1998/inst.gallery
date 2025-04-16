@@ -1,5 +1,5 @@
 import { createClient } from "@shared/config/supabase/client";
-import { ISupabaseFileData, TSupabaseFileObject } from "@shared/config/supabase/types";
+import { ESupabaseBucket, ISupabaseFileData, TSupabaseFileObject } from "@shared/config/supabase/types";
 
 const getUser = async (supabase: ReturnType<typeof createClient>) => {
   const {
@@ -90,5 +90,55 @@ export const deleteFileFromSupabase = async ({ filePath, bucket, hideUserPath }:
 
   if (error) {
     throw new Error(`Failed to remove file at ${path}: ${error.message}`);
+  }
+};
+
+export const uploadUrlToSupabase = async (fileUrl: string, filePath: string): Promise<string | null> => {
+  try {
+    const supabase = createClient();
+    const user = await getUser(supabase);
+    const id = user.id;
+
+    const response = await fetch(fileUrl);
+    const blob = await response.blob();
+
+    const fullPath = `${id}/${filePath}`;
+
+    const { data, error } = await supabase.storage
+      .from(ESupabaseBucket.instagramMedia)
+      .upload(fullPath, blob, { upsert: true });
+
+    if (error) return null;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    return `${supabaseUrl}/storage/v1/object/public/${ESupabaseBucket.instagramMedia}/${id}/${filePath}`;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    return null;
+  }
+};
+
+export const uploadFileToSupabase = async (file: File, filePath: string): Promise<string | null> => {
+  try {
+    const supabase = createClient();
+    const user = await getUser(supabase);
+    const id = user.id;
+
+    const fullPath = `${id}/${filePath}`;
+
+    const { data, error } = await supabase.storage
+      .from(ESupabaseBucket.instagramMedia)
+      .upload(fullPath, file, { upsert: true });
+
+    if (error) {
+      console.error("Upload error:", error);
+      return null;
+    }
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    return `${supabaseUrl}/storage/v1/object/public/${ESupabaseBucket.instagramMedia}/${fullPath}`;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    return null;
   }
 };

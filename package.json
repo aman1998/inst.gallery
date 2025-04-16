@@ -18,6 +18,7 @@
 		"@supabase/supabase-js": "^2.47.10",
 		"antd": "^5.22.5",
 		"axios": "^1.7.9",
+		"browser-image-compression": "^2.0.2",
 		"class-variance-authority": "^0.7.1",
 		"classnames": "^2.5.1",
 		"date-fns": "^4.1.0",

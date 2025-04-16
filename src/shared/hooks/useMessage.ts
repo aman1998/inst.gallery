@@ -52,9 +52,20 @@ export const useMessage = () => {
     [message]
   );
 
+  const infoMessage = React.useCallback(
+    (content: React.ReactNode, config?: Omit<ArgsProps, "content">) => {
+      message.open({
+        ...config,
+        type: "info",
+        content,
+      });
+    },
+    [message]
+  );
+
   const destroyMessage = React.useCallback(() => {
     message.destroy();
   }, [message]);
 
-  return { successMessage, warningMessage, errorMessage, loadingMessage, destroyMessage };
+  return { successMessage, warningMessage, errorMessage, loadingMessage, infoMessage, destroyMessage };
 };
