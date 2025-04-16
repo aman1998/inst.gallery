@@ -28,6 +28,9 @@ import BlockInstagramPostsSettings from "../../../../Instagram/SettingsBlockInst
 
 import s from "./CustomizeBlock2Widget.module.scss";
 import { log } from "console";
+import CreateInstagramPost from "@/features/Instagram/CreateInstagramPost";
+import { useModal } from "@/shared/hooks/useModal";
+import Button from "@/shared/ui/Button";
 
 interface Props {
   isPosts?: boolean;
@@ -39,6 +42,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
   const selectedOriginalBlock = useBlockStore(selectedOriginalBlockSelector);
 
   const { isLoading, changeBlock: handleSave } = useChangeBlock();
+  const { isOpen: isOpenAdd, closeModal: closeModalAdd, openModal: openModalAdd } = useModal();
 
   const {
     control,
@@ -101,14 +105,25 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
       ) : (
         <>
           <Divider>Works</Divider>
-          <div className={s.form__item}>
+          <Button
+            iconPosition="start"
+            // icon={<PlusOutlined />}
+            type="dashed"
+            onClick={openModalAdd}
+            style={{ marginBottom: 16, width: "100%" }}
+            size="large"
+          >
+            Add
+          </Button>
+          {/* <div className={s.form__item}>
             <BlockInstagramPostsSettings
               type="edit"
               control={control}
               name="posts"
               errorMessage={errors.posts?.message}
             />
-          </div>
+          </div> */}
+          <CreateInstagramPost isOpen={isOpenAdd} onClose={closeModalAdd} />
         </>
       )}
     </form>

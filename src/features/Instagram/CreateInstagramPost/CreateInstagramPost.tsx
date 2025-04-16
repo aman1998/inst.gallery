@@ -5,6 +5,7 @@ import InstagramPost from "@entities/Instagram/components/InstagramPost";
 
 import s from "./CreateInstagramPost.module.scss";
 import { MOCK_INSTAGRAM_POSTS } from "@/entities/Instagram/lib/constants";
+import CreateInstagramPostHeader from "./components/CreateInstagramPostHeader";
 
 const IGNORE_CLASS = "antd-instagram-post";
 
@@ -44,6 +45,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
       destroyOnClose
     >
       <div className={s["modal__carousel-wrapper"]} onClick={handleMaskClick}>
+        <CreateInstagramPostHeader />
         <InstagramPost className={IGNORE_CLASS} post={MOCK_INSTAGRAM_POSTS[0]} />
       </div>
     </Modal>

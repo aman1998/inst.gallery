@@ -71,8 +71,8 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
 
   return (
     <div className={cn(s.post, className)}>
-      <div className={s.post__media}>{renderMedia()}</div>
-      <div className={s.post__info}>
+      <div className={cn(s.post__media, "post__media")}>{renderMedia()}</div>
+      <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
           <Avatar style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}>{post.username[0].toUpperCase()}</Avatar>
           <Typography.Title level={5} onClick={() => window.open(post.permalink)} className={s.post__username}>

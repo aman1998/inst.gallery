@@ -12,9 +12,19 @@
     @include flex-centered;
     height: 100%;
   }
-  &__carousel-wrapper,
-  &__carousel {
+  &__carousel-wrapper {
+    @include flex-centered;
+    flex-direction: column;
     height: 100%;
     width: 100%;
+
+    :global {
+      .post__media {
+        border-radius: 0 0 0 12px;
+      }
+      .post__info {
+        border-radius: 0 0 12px 0;
+      }
+    }
   }
 }

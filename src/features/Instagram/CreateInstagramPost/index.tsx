@@ -1,1 +1,1 @@
-export { default } from "./InstagramCarousel";
+export { default } from "./CreateInstagramPost";
