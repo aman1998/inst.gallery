@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Divider, Empty, Flex, Typography } from "antd";
-import { type UploadProps } from "antd";
 
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 
@@ -23,21 +22,6 @@ import { SITE_NAME } from "@shared/config/appConfig";
 import s from "./UserSettings.module.scss";
 import { TUserSettingsSchema, userSettingsSchema } from "./lib/schema";
 
-const props: UploadProps = {
-  name: "file",
-  action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-  headers: {
-    authorization: "authorization-text",
-  },
-  onChange(info) {
-    if (info.file.status !== "uploading") {
-    }
-    if (info.file.status === "done") {
-    } else if (info.file.status === "error") {
-    }
-  },
-};
-
 const UserSettings: React.FC = () => {
   const [linkValue, setLinkValue] = React.useState<string>("");
 
@@ -52,8 +36,6 @@ const UserSettings: React.FC = () => {
     control,
     handleSubmit,
     formState: { isDirty, errors, isValid },
-    setError,
-    clearErrors,
     reset,
   } = useForm<TUserSettingsSchema>({
     defaultValues: {},
@@ -67,6 +49,7 @@ const UserSettings: React.FC = () => {
       name: originalProject?.user_info?.name,
       profession: originalProject?.user_info?.profession,
       description: originalProject?.user_info?.description,
+      avatar: originalProject?.user_info?.avatar,
     };
   }, [originalProject]);
 

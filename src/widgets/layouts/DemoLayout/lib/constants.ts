@@ -16,7 +16,7 @@ export const DEMO_BLOCKS: IBlock[] = [
   },
 ];
 
-export const DEMO_PROJECT: Omit<IProject, "blocks"> = {
+export const DEMO_PROJECT: IProject = {
   id: "1",
   primary_color: PRIMARY_COLOR,
   link: ROUTES.demoSite.slice(1, ROUTES.demoSite.length),
@@ -30,7 +30,9 @@ export const DEMO_PROJECT: Omit<IProject, "blocks"> = {
     profession: "FullStack Developer",
     description:
       "Hello and welcome to my portfolio! I’m a passionate full-stack developer with a love for crafting elegant, modern web experiences. My journey through the ever-evolving world of web development has been both dynamic and deeply rewarding. I thrive on learning new technologies, embracing innovation, and continuously refining my skills to stay at the forefront of the digital landscape.",
+    avatar: null,
   },
+  blocks: DEMO_BLOCKS,
   meta: {
     title: "Demo",
     description: SITE_DESCRIPTION,

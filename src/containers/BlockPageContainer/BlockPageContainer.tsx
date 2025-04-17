@@ -34,7 +34,7 @@ const BlockPageContainer: React.FC = () => {
   // const block = navigation === ELKLayoutNavigation.create ? createdBlock : selectedBlock;
   const block = selectedBlock;
 
-  if (!user || !block) return null;
+  if (!user || !block || !project) return null;
 
   return (
     <AntdProvider primaryColor={project?.primary_color ?? PRIMARY_COLOR}>

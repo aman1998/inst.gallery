@@ -5,13 +5,13 @@ import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
 import BlockCollapseWidget from "@widgets/Block/BlockCollapseWidget";
 
 import { EBlockType, IBlock } from "@entities/Block/model/types";
-import { IProject, TProjectInfo } from "@entities/Project/model/types";
+import { IProject } from "@entities/Project/model/types";
 
 import { TNullable } from "@shared/types/common";
 import BlockListWidget from "../../BlockListWidget";
 
 interface Props {
-  project: IProject | TProjectInfo;
+  project: IProject;
   block: TNullable<IBlock>;
 }
 const BlockWidget: React.FC<Props> = ({ block, project }) => {
@@ -28,7 +28,7 @@ const BlockWidget: React.FC<Props> = ({ block, project }) => {
       default:
         return null;
     }
-  }, [block]);
+  }, [block, project]);
 
   if (!block) return null;
 

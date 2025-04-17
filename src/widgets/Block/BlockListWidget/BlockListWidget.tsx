@@ -10,11 +10,11 @@ import Title from "@shared/ui/Title";
 
 import s from "./BlockListWidget.module.scss";
 import BlockUserInfo from "../components/BlockUserInfo";
-import { IProject, TProjectInfo } from "@/entities/Project/model/types";
+import { IProject } from "@/entities/Project/model/types";
 
 interface Props {
   block: IBlock;
-  project: TProjectInfo;
+  project: IProject;
 }
 
 const BlockListWidget: React.FC<Props> = ({ block, project }) => {

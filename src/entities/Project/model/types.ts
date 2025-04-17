@@ -16,7 +16,7 @@ export interface IProject {
   email: string;
 }
 
-export type TProjectInfo = Omit<IProject, "blocks">;
+// export type TProjectInfo = Omit<IProject, "blocks">;
 
 export interface IProjectMetadata {
   title: string;

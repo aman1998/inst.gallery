@@ -100,10 +100,10 @@ const LKLayout: React.FC<Props> = ({ children }) => {
     }
 
     const project = data[0] as IProject;
-    const { blocks: projectBlocks, ...projectInfo } = project;
+    const { blocks: projectBlocks } = project;
 
     setBlocks(projectBlocks);
-    setProject({ project: projectInfo, withOriginal: true });
+    setProject({ project, withOriginal: true });
 
     if (!selectedBlock && projectBlocks.length) {
       setSelectedBlock({ block: projectBlocks[0], withOriginal: true });

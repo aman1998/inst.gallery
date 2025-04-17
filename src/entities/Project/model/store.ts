@@ -2,21 +2,21 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { useShallow } from "zustand/react/shallow";
 
-import { IProject, TProjectInfo } from "@entities/Project/model/types";
+import { IProject } from "@entities/Project/model/types";
 
 import { TNullable } from "@shared/types/common";
 
 export interface IProjectStore {
-  project: TNullable<TProjectInfo>;
-  originalProject: TNullable<TProjectInfo>;
-  setProject: (val: { withOriginal?: boolean; project: TNullable<TProjectInfo> }) => void;
+  project: TNullable<IProject>;
+  originalProject: TNullable<IProject>;
+  setProject: (val: { withOriginal?: boolean; project: TNullable<IProject> }) => void;
   resetProject: () => void;
 }
 
 const useProjectStoreBase = create<IProjectStore>()(
   immer((set) => ({
-    project: null as TNullable<TProjectInfo>,
-    originalProject: null as TNullable<Omit<IProject, "blocks">>,
+    project: null as TNullable<IProject>,
+    originalProject: null as TNullable<IProject>,
     setProject: ({ withOriginal, project }) => {
       set((state) => {
         if (withOriginal) {

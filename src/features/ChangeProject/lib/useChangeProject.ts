@@ -7,7 +7,7 @@ import { useChangeProjectStore } from "@features/ChangeProject/model/store";
 
 import { useProjectStore } from "@entities/Project/model/store";
 import { projectSelector, setProjectSelector } from "@entities/Project/model/selectors";
-import { TProjectInfo } from "@entities/Project/model/types";
+import { IProject } from "@entities/Project/model/types";
 
 import { useMessage } from "@shared/hooks/useMessage";
 
@@ -21,7 +21,7 @@ export const useChangeProject = () => {
   const { loadingMessage, successMessage, destroyMessage, errorMessage } = useMessage();
   const { isDemo } = useLKLayout();
 
-  const handleValueChange = useDebouncedCallback((key: keyof TProjectInfo, value: any) => {
+  const handleValueChange = useDebouncedCallback((key: keyof IProject, value: any) => {
     if (!project) return;
 
     setProject({
