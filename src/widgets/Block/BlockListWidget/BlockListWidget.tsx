@@ -24,8 +24,10 @@ const BlockListWidget: React.FC<Props> = ({ block, project }) => {
     <div className={s.layout}>
       {project?.user_info ? <BlockUserInfo user_info={project.user_info} className={s.layout__user} /> : <div />}
       <div className={s.block}>
-        <Title level={2}>Portfolio</Title>
-        <FormItem className={s.info__contacts}>I'm thrilled to welcome my portfolio works</FormItem>
+        <Title level={3}>Portfolio</Title>
+        {block.customization.description && (
+          <FormItem className={s.info__contacts}>{block.customization.description}</FormItem>
+        )}
         <BlockPosts customization={block.customization} className={s.block__list} />
       </div>
     </div>

@@ -4,10 +4,7 @@ import React from "react";
 import cn from "classnames";
 import { Badge, Typography } from "antd";
 
-import { ESubscriptionFrequency, ESubscriptionPlan } from "@entities/Subscription/model/types";
-
 import Checkbox from "@shared/ui/Checkbox";
-import Button from "@shared/ui/Button";
 import { TNullable } from "@shared/types/common";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
@@ -21,6 +18,7 @@ interface Props {
   annualPrice: React.ReactNode;
   discount?: TNullable<number>;
   isActive?: boolean;
+  isPaused?: boolean;
 }
 
 const SubscriptionCheckbox: React.FC<Props> = ({
@@ -31,6 +29,7 @@ const SubscriptionCheckbox: React.FC<Props> = ({
   annualPrice,
   discount,
   isActive,
+  isPaused,
 }) => (
   <div className={cn(s.block, checked && s["block--active"])} onClick={() => setChecked(!checked)}>
     <Checkbox checked={checked} />
@@ -41,6 +40,7 @@ const SubscriptionCheckbox: React.FC<Props> = ({
       <Badge count={`Save ${discount}%`} style={{ backgroundColor: PRIMARY_COLOR }} />
     ) : null}
     {isActive && <Badge count="Active plan" style={{ backgroundColor: PRIMARY_COLOR }} />}
+    {isPaused && <Badge count="Soon" style={{ backgroundColor: "#8c8c8c" }} />}
 
     <div className={s.block__end}>
       <Typography.Text strong>{monthPrice} / mo</Typography.Text>

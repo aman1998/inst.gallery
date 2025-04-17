@@ -33,14 +33,19 @@
   }
 
   &__links {
-    display: grid;
-    // grid-template-columns: repeat(auto-fill, 56px);
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     grid-gap: 8px;
     gap: 8px;
 
     margin-top: 8px;
     max-width: 80%;
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
 
     svg {
       width: 16px;

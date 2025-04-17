@@ -38,6 +38,7 @@ export interface ISubscriptionPlan {
   mainFeatures: ISubscriptionPlanFeatureMain[];
   detailedFeatures: ISubscriptionPlanFeatureDetailed[];
   popular?: boolean;
+  isPaused?: boolean;
   buttonText: string;
   buttonType?: "default" | "primary" | "link" | "text" | "dashed";
   priceId: Record<ESubscriptionFrequency, string>;
@@ -51,5 +52,5 @@ export interface ISubscriptionPlanFeatureMain {
 
 export interface ISubscriptionPlanFeatureDetailed {
   title: string;
-  included: boolean;
+  included: boolean | "soon";
 }

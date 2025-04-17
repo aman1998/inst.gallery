@@ -24,6 +24,12 @@ export const BUSINESS_ANNUAL_PRICE = 8;
 export const PRO_BLOCKS = [] as EBlockType[];
 export const PERSONAL_BLOCKS = [EBlockType.type4] as EBlockType[];
 
+export const FREE_MAX_POSTS = 10;
+export const PERSONAL_MAX_POSTS = 100;
+
+export const FREE_MAX_BLOCKS = 1;
+export const PERSONAL_MAX_BLOCKS = 10;
+
 export const subscriptionPlans: ISubscriptionPlan[] = [
   {
     name: "Free",
@@ -31,15 +37,14 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     monthlyPrice: 0,
     annualPrice: 0,
     mainFeatures: [
-      { title: "Blocks", value: 2 },
-      { title: "Instagram Posts", value: 10 },
-      // { title: "Cache update", value: "Every 1 hour" },
-      { title: "Type", value: " Image" },
+      { title: "Works", value: FREE_MAX_POSTS },
+      { title: "Blocks", value: FREE_MAX_BLOCKS },
+      { title: "Image type", value: "Single" },
+      { title: "Widget type", value: "Basic" },
     ],
     detailedFeatures: [
-      { title: "Multiple Instagram accounts", included: false },
       { title: "Priority support", included: false },
-      // { title: "Analytics", included: false },
+      { title: "Analytics", included: false },
     ],
     buttonText: "Get Started",
     buttonType: "default",
@@ -51,18 +56,19 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     monthlyPrice: PERSONAL_MONTHLY_PRICE,
     annualPrice: PERSONAL_ANNUAL_PRICE,
     mainFeatures: [
-      { title: "Blocks", value: 5 },
-      { title: "Instagram Posts", value: 50 },
-      { title: "Type", value: " Image | Carousel" },
+      { title: "Works", value: PERSONAL_MAX_POSTS },
+      { title: "Blocks", value: PERSONAL_MAX_BLOCKS },
+      { title: "Image type", value: "Single | Carousel | Video" },
+      { title: "Widget type", value: "Advanced" },
     ],
     detailedFeatures: [
-      { title: "Multiple Instagram accounts", included: true },
       { title: "Priority support", included: true },
-      // { title: "Analytics", included: false },
+      { title: "Analytics", included: true },
     ],
     buttonText: "Get Started",
     buttonType: "default",
     popular: true,
+    isPaused: true,
     priceId: { [ESubscriptionFrequency.month]: PERSONAL_MONTH_ID, [ESubscriptionFrequency.annual]: PERSONAL_YEAR_ID },
   },
   // {
@@ -71,9 +77,8 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
   //   monthlyPrice: BUSINESS_MONTHLY_PRICE,
   //   annualPrice: BUSINESS_ANNUAL_PRICE,
   //   mainFeatures: [
-  //     { title: "Blocks", value: 10 },
-  //     { title: "Instagram Posts", value: 100 },
-  //     { title: "Type", value: " Image | Carousel | Video" },
+  //     { title: "Works", value: 100 },
+  //     { title: "Image type", value: " Image | Carousel | Video" },
   //   ],
   //   detailedFeatures: [
   //     { title: "Multiple Instagram accounts", included: true },
@@ -92,16 +97,16 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
 
 export const SUBSCRIPTIONS_CONFIG = {
   [ESubscriptionPlan.free]: {
-    maxBlocks: 2,
+    maxBlocks: FREE_MAX_BLOCKS,
     excludedBlocks: [...PRO_BLOCKS, ...PERSONAL_BLOCKS],
-    maxUploadPosts: 10,
+    maxUploadPosts: FREE_MAX_POSTS,
     excludedInstagramType: [EInstagramType.CAROUSEL_ALBUM, EInstagramType.VIDEO],
     withAnimation: false,
   },
   [ESubscriptionPlan.personal]: {
-    maxBlocks: 5,
+    maxBlocks: PERSONAL_MAX_BLOCKS,
     excludedBlocks: PRO_BLOCKS,
-    maxUploadPosts: 50,
+    maxUploadPosts: PERSONAL_MAX_POSTS,
     excludedInstagramType: [EInstagramType.VIDEO],
     withAnimation: true,
   },

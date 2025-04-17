@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, Button, Switch, Badge, Typography, Row, Col } from "antd";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { CheckOutlined, CloseOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 
 import { ISubscriptionPlan } from "@entities/Subscription/model/types";
@@ -26,7 +26,11 @@ const SubscriptionPlans: React.FC = () => {
 
     return (
       <section key={plan.name}>
-        <Badge.Ribbon text="Best plan" color={PRIMARY_COLOR} style={{ display: plan.popular ? "block" : "none" }}>
+        <Badge.Ribbon
+          text={plan.isPaused ? "Coming soon" : "Best plan"}
+          color={PRIMARY_COLOR}
+          style={{ display: plan.popular ? "block" : "none" }}
+        >
           <Card className={`${s.planCard} ${plan.popular ? s.popularPlan : ""}`}>
             <div className={s.plan__header}>
               <Title level={3}>{plan.name}</Title>
@@ -62,7 +66,13 @@ const SubscriptionPlans: React.FC = () => {
               {plan.detailedFeatures.map((feature, index) => (
                 <div key={index} className={s.featureRow}>
                   <span>{feature.title}</span>
-                  {feature.included ? <CheckOutlined className={s.includedIcon} /> : <CloseOutlined />}
+                  {feature.included === "soon" ? (
+                    <ClockCircleOutlined />
+                  ) : feature.included ? (
+                    <CheckOutlined className={s.includedIcon} />
+                  ) : (
+                    <CloseOutlined />
+                  )}
                 </div>
               ))}
             </div>

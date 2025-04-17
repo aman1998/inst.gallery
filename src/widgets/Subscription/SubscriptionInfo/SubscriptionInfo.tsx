@@ -1,12 +1,10 @@
 "use client";
 
 import React from "react";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { CheckOutlined, CloseOutlined, ClockCircleOutlined } from "@ant-design/icons";
 
-import { ESubscriptionFrequency, ESubscriptionPlan } from "@entities/Subscription/model/types";
+import { ESubscriptionPlan } from "@entities/Subscription/model/types";
 import { subscriptionPlans } from "@entities/Subscription/lib/constants";
-
-import { useSubscriptionsInfo } from "@shared/providers/SubscriptionsProvider/lib/useSubscriptionsInfo";
 
 import s from "./SubscriptionInfo.module.scss";
 
@@ -39,7 +37,13 @@ const SubscriptionInfo: React.FC<Props> = ({ selectedPlan }) => {
       {subscriptionPlans[index]?.detailedFeatures.map((feature, index) => (
         <div key={index} className={s.info__item}>
           <span>{feature.title}</span>
-          {feature.included ? <CheckOutlined className={s.includedIcon} /> : <CloseOutlined />}
+          {feature.included === "soon" ? (
+            <ClockCircleOutlined />
+          ) : feature.included ? (
+            <CheckOutlined className={s.includedIcon} />
+          ) : (
+            <CloseOutlined />
+          )}
         </div>
       ))}
     </article>

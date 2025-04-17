@@ -19,8 +19,8 @@ import TextAreaControl from "@shared/controllers/TextAreaControl";
 import ContactsIcon from "@shared/ui/ContactsIcon";
 import { TProjectLink } from "@shared/ui/ContactsIcon/ContactsIcon";
 
-import s from "./UserSettings.module.scss";
 import { TUserSettingsSchema, userSettingsSchema } from "./lib/schema";
+import s from "./UserSettings.module.scss";
 
 const MAX_CONTACTS = 12;
 

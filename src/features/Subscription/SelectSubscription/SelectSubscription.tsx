@@ -85,6 +85,7 @@ const SelectSubscriptionPaddle: React.FC<Props> = ({ selectedPlan, setSelectedPl
             key={item.type}
             title={item.name}
             isActive={item.type === plan}
+            isPaused={!!item.isPaused}
             checked={item.type === selectedPlan}
             setChecked={() => {
               setSelectedPlan(item.type);
@@ -96,7 +97,7 @@ const SelectSubscriptionPaddle: React.FC<Props> = ({ selectedPlan, setSelectedPl
           />
         );
       })}
-      <div className={s.plans__btns}>
+      {/* <div className={s.plans__btns}>
         <Button
           size="large"
           type="primary"
@@ -108,9 +109,8 @@ const SelectSubscriptionPaddle: React.FC<Props> = ({ selectedPlan, setSelectedPl
         >
           Go to Checkout
         </Button>
-        {/* TODO: id*/}
         {!isCanceled && <CancelSubscription className={s.plans__btn} subscriptionId={"sd"} />}
-      </div>
+      </div> */}
     </article>
   );
 };

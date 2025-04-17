@@ -69,7 +69,7 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
       )}
 
       {!!linkContacts?.length && (
-        <div className={s.info__links}>
+        <div className={cn(s.info__links, linkContacts.length > 5 && s["info__links--grid"])}>
           {linkContacts?.map((item, i) => (
             <a href={item.value} target="_blank" rel="noopener noreferrer" key={i}>
               <FormItem>{<ContactsIcon type={item.type} />}</FormItem>

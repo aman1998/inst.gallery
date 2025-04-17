@@ -22,7 +22,7 @@ const SubscriptionsPricesPageContainer = () => {
         <SubscriptionInfo selectedPlan={selectedPlan} />
         <SelectSubscription selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan} />
       </div>
-      <SubscriptionsList />
+      {/* <SubscriptionsList /> */}
     </BlockLayout>
   );
 };

@@ -23,14 +23,11 @@ import BlockButtonForm from "@entities/Block/components/forms/BlockButtonForm";
 import Show from "@shared/ui/Show";
 import { TNullable } from "@shared/types/common";
 
-import BlockAdvancedForm from "../../../../../entities/Block/components/forms/BlockAdvancedForm";
 import BlockInstagramPostsSettings from "../../../../Instagram/SettingsBlockInstagramPosts";
 
 import s from "./CustomizeBlock2Widget.module.scss";
-import { log } from "console";
-import CreateInstagramPost from "@/features/Instagram/CreateInstagramPost";
 import { useModal } from "@/shared/hooks/useModal";
-import Button from "@/shared/ui/Button";
+import TextAreaControl from "@/shared/controllers/TextAreaControl";
 
 interface Props {
   isPosts?: boolean;
@@ -41,8 +38,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
   const selectedBlock = useBlockStore(selectedBlockSelector);
   const selectedOriginalBlock = useBlockStore(selectedOriginalBlockSelector);
 
-  const { isLoading, changeBlock: handleSave } = useChangeBlock();
-  const { isOpen: isOpenAdd, closeModal: closeModalAdd, openModal: openModalAdd } = useModal();
+  const { isLoading, changeBlock: handleSave, handleCustomizeChange } = useChangeBlock();
 
   const {
     control,
@@ -60,6 +56,7 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
   const values: TNullable<TCustomizeBlock2WidgetSchema> = React.useMemo(() => {
     if (!selectedOriginalBlock || !isBlock2(selectedOriginalBlock)) return null;
     return {
+      description: selectedOriginalBlock.customization.description,
       borderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
 
       postBorderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
@@ -98,6 +95,16 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
 
       {!isPosts ? (
         <>
+          <Divider>Text</Divider>
+          <TextAreaControl
+            onChange={(e) => handleCustomizeChange("description", e.target.value)}
+            rows={3}
+            control={control}
+            errorMessage={errors.description?.message as string}
+            name="description"
+            placeholder="Description"
+          />
+
           <BlockPostsForm control={control} errors={errors} type="edit" />
         </>
       ) : (

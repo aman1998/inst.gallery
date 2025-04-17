@@ -5,10 +5,9 @@ import type { ButtonType } from "antd/es/button/buttonHelpers";
 
 import { IInstagramDownloadedPost } from "@entities/Instagram/model/types";
 
-export type TCustomizeBlocks = ICustomizeBlock1 &
-  ICustomizeBlock4;
+export type TCustomizeBlocks = ICustomizeBlock1 & ICustomizeBlock2 & ICustomizeBlock4;
 
-export type TCustomizeBlock = ICustomizeBlock1 | ICustomizeBlock2 | ICustomizeBlock4
+export type TCustomizeBlock = ICustomizeBlock1 | ICustomizeBlock2 | ICustomizeBlock4;
 
 // BLOCK 1
 export interface ICustomizeBlock1 extends ICustomizeImage, ICustomizeHeader {
@@ -21,10 +20,10 @@ export interface ICustomizeBlock1 extends ICustomizeImage, ICustomizeHeader {
 
 // BLOCK 2
 export interface ICustomizeBlock2 extends ICustomizeImage {
+  description: string;
   posts: IInstagramDownloadedPost[];
   postsSettings: ICustomizePosts;
 }
-
 
 // BLOCK 4
 export interface ICustomizeBlock4 extends ICustomizeHeader {
@@ -34,7 +33,6 @@ export interface ICustomizeBlock4 extends ICustomizeHeader {
   items: object[];
   itemsStyle: React.CSSProperties;
 }
-
 
 export interface ICustomizeImage {
   imageWrapperStyle: Pick<React.CSSProperties, "borderRadius">;
