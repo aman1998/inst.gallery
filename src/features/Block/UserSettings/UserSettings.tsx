@@ -1,7 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Divider, Empty, Flex, Typography } from "antd";
+import { Divider, Empty, Flex, Typography, Button, Modal, Select, Input, Space } from "antd";
+import {
+  PlusOutlined,
+  DeleteOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  LinkedinOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
 
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 
@@ -21,9 +29,12 @@ import { SITE_NAME } from "@shared/config/appConfig";
 
 import s from "./UserSettings.module.scss";
 import { TUserSettingsSchema, userSettingsSchema } from "./lib/schema";
+import { TProjectLink } from "@/entities/Project/model/types";
 
 const UserSettings: React.FC = () => {
   const [linkValue, setLinkValue] = React.useState<string>("");
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [newLink, setNewLink] = React.useState<{ type: TProjectLink; value: string }>({ type: "email", value: "" });
 
   const project = useProjectStore(projectSelector);
   const originalProject = useProjectStore(originalProjectSelector);
@@ -36,12 +47,36 @@ const UserSettings: React.FC = () => {
     control,
     handleSubmit,
     formState: { isDirty, errors, isValid },
+    getValues,
     reset,
   } = useForm<TUserSettingsSchema>({
     defaultValues: {},
     mode: "onChange",
     resolver: zodResolver(userSettingsSchema),
   });
+
+  const linkIcons: Record<string, React.ReactNode> = {
+    email: <MailOutlined />,
+    phone: <PhoneOutlined />,
+    twitch: <VideoCameraOutlined />,
+    linkedin: <LinkedinOutlined />,
+  };
+
+  const handleAddLink = () => {
+    if (!newLink.value) return;
+
+    const updated = [...(project?.user_info?.links || []), newLink];
+    handleValueChange("user_info", { ...project?.user_info, links: updated });
+    reset({ ...getValues(), links: updated });
+    setNewLink({ type: "email", value: "" });
+    setIsModalOpen(false);
+  };
+
+  const handleRemoveLink = (index: number) => {
+    const updated = (project?.user_info?.links || []).filter((_, i) => i !== index);
+    handleValueChange("user_info", { ...project?.user_info, links: updated });
+    reset({ ...getValues(), links: updated });
+  };
 
   const values = React.useMemo(() => {
     if (!originalProject) return null;
@@ -50,6 +85,7 @@ const UserSettings: React.FC = () => {
       profession: originalProject?.user_info?.profession,
       description: originalProject?.user_info?.description,
       avatar: originalProject?.user_info?.avatar,
+      links: originalProject?.user_info?.links,
     };
   }, [originalProject]);
 
@@ -108,7 +144,7 @@ const UserSettings: React.FC = () => {
           }
         />
         <TextAreaControl
-          rows={7}
+          rows={5}
           size="middle"
           control={control}
           name="description"
@@ -122,6 +158,52 @@ const UserSettings: React.FC = () => {
           }
         />
       </FormItem>
+
+      <Divider>Links</Divider>
+      <FormItem>
+        <Flex vertical gap={8}>
+          {(project?.user_info?.links || []).map((link, index) => (
+            <Flex key={index} align="center" justify="space-between">
+              <Space>
+                {linkIcons[link.type]} <Typography.Text>{link.value}</Typography.Text>
+              </Space>
+              <Button size="small" danger icon={<DeleteOutlined />} onClick={() => handleRemoveLink(index)} />
+            </Flex>
+          ))}
+
+          <Button icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
+            Add Link
+          </Button>
+        </Flex>
+      </FormItem>
+
+      <Modal
+        title="Add Link"
+        open={isModalOpen}
+        onOk={handleAddLink}
+        onCancel={() => setIsModalOpen(false)}
+        okText="Add"
+        destroyOnClose
+      >
+        <Space direction="vertical" style={{ width: "100%" }}>
+          <Select
+            value={newLink.type}
+            onChange={(value) => setNewLink((prev) => ({ ...prev, type: value }))}
+            style={{ width: "100%" }}
+            options={[
+              { value: "email", label: "Email", icon: <MailOutlined /> },
+              { value: "phone", label: "Phone", icon: <PhoneOutlined /> },
+              { value: "twitch", label: "Twitch", icon: <VideoCameraOutlined /> },
+              { value: "linkedin", label: "LinkedIn", icon: <LinkedinOutlined /> },
+            ]}
+          />
+          <Input
+            placeholder="Enter value"
+            value={newLink.value}
+            onChange={(e) => setNewLink((prev) => ({ ...prev, value: e.target.value }))}
+          />
+        </Space>
+      </Modal>
     </form>
   );
 };

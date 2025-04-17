@@ -29,4 +29,10 @@ export interface IProjectUserInfo {
   description: string;
   profession: string;
   avatar: TNullable<string>;
+  links?: Array<{
+    type: TProjectLink;
+    value: string;
+  }>;
 }
+
+export type TProjectLink = "email" | "phone" | "twitch" | "linkedin";
