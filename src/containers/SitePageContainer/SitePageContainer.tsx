@@ -21,7 +21,7 @@ interface Props {
 const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
   if (!project.blocks.length) return null;
 
-  const { maxBlocks, excludedBlocks } = getSubscriptionsConfig(plan);;
+  const { maxBlocks, excludedBlocks } = getSubscriptionsConfig(plan);
 
   const blocks = project.blocks.slice(0, maxBlocks).filter((item) => !excludedBlocks.includes(item.type));
 
@@ -34,7 +34,7 @@ const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
 
         <main className={s.main}>
           {blocks.map((item) => (
-            <BlockWidget block={item} key={item.block_id} />
+            <BlockWidget project={project} block={item} key={item.block_id} />
           ))}
           {plan === ESubscriptionPlan.free && (
             <Button

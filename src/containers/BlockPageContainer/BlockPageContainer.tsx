@@ -49,7 +49,7 @@ const BlockPageContainer: React.FC = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           style={{ zoom: "0.7" }}
         >
-          <BlockWidget block={block} />
+          <BlockWidget project={project} block={block} />
         </motion.section>
       </AnimatePresence>
     </AntdProvider>

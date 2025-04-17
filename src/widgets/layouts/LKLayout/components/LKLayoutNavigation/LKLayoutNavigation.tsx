@@ -6,6 +6,8 @@ import {
   DesktopOutlined,
   InstagramOutlined,
   SettingOutlined,
+  UserOutlined,
+  ProfileOutlined,
 } from "@ant-design/icons";
 import cn from "classnames";
 
@@ -29,6 +31,11 @@ const LKLayoutNavigation: React.FC<Props> = ({ className }) => {
     //   type: EBlockNavigation.blocks,
     //   icon: <BlockOutlined />,
     // },
+    {
+      label: "Info",
+      type: EBlockNavigation.info,
+      icon: <ProfileOutlined />,
+    },
     {
       label: "Portfolio",
       type: EBlockNavigation.posts,

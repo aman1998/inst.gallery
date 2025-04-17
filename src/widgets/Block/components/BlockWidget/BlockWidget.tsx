@@ -5,14 +5,16 @@ import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
 import BlockCollapseWidget from "@widgets/Block/BlockCollapseWidget";
 
 import { EBlockType, IBlock } from "@entities/Block/model/types";
+import { IProject, TProjectInfo } from "@entities/Project/model/types";
 
 import { TNullable } from "@shared/types/common";
 import BlockListWidget from "../../BlockListWidget";
 
 interface Props {
+  project: IProject | TProjectInfo;
   block: TNullable<IBlock>;
 }
-const BlockWidget: React.FC<Props> = ({ block }) => {
+const BlockWidget: React.FC<Props> = ({ block, project }) => {
   const content = React.useMemo(() => {
     if (!block) return null;
 
@@ -20,7 +22,7 @@ const BlockWidget: React.FC<Props> = ({ block }) => {
       case EBlockType.type1:
         return <BlockFlexWidget block={block} />;
       case EBlockType.type2:
-        return <BlockListWidget block={block} />;
+        return <BlockListWidget project={project} block={block} />;
       case EBlockType.type4:
         return <BlockCollapseWidget block={block} />;
       default:

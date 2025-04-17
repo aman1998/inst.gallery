@@ -67,7 +67,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
 
   return (
     <>
-      <Divider>Work</Divider>
+      <Divider>Portfolio</Divider>
       <FormItem className={s.form__item}>
         <Flex justify="space-between" align="center" gap={8}>
           <Typography.Text strong>Type</Typography.Text>

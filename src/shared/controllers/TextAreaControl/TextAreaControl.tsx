@@ -17,6 +17,7 @@ const TextAreaControl = <T extends FieldValues>({
   name,
   errorMessage,
   isCustomTextArea,
+  rows,
   ...props
 }: Props<T>) => (
   <Controller
@@ -27,6 +28,7 @@ const TextAreaControl = <T extends FieldValues>({
         return (
           <textarea
             {...props}
+            rows={rows}
             placeholder={props.placeholder}
             onChange={(e) => {
               onChange(e);
@@ -39,6 +41,7 @@ const TextAreaControl = <T extends FieldValues>({
         return (
           <TextArea
             {...props}
+            rows={rows}
             status={!!errorMessage ? "error" : undefined}
             onChange={(e) => {
               onChange(e);

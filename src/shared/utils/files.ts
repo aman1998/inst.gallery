@@ -32,6 +32,7 @@ export const getFileById = async (settings: ISupabaseFileData): Promise<File> =>
 
 import imageCompression, { Options } from "browser-image-compression";
 import { TNullable } from "../types/common";
+import { RcFile } from "antd/lib/upload";
 
 export const getFileBlobId = async (filePath: string): Promise<Blob> =>
   await getFileFromSupabase({ filePath, bucket: EStorageKey.excel });

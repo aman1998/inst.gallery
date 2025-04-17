@@ -10,17 +10,19 @@ import Title from "@shared/ui/Title";
 
 import s from "./BlockListWidget.module.scss";
 import BlockUserInfo from "../components/BlockUserInfo";
+import { IProject, TProjectInfo } from "@/entities/Project/model/types";
 
 interface Props {
   block: IBlock;
+  project: TProjectInfo;
 }
 
-const BlockListWidget: React.FC<Props> = ({ block }) => {
+const BlockListWidget: React.FC<Props> = ({ block, project }) => {
   if (!block || !isBlock2(block)) return null;
 
   return (
     <div className={s.layout}>
-      <BlockUserInfo className={s.layout__user} />
+      {project?.user_info ? <BlockUserInfo user_info={project.user_info} className={s.layout__user} /> : <div />}
       <div className={s.block}>
         <Title level={2}>Portfolio</Title>
         <FormItem className={s.info__contacts}>

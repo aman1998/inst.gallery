@@ -25,6 +25,12 @@ export const DEMO_PROJECT: Omit<IProject, "blocks"> = {
   user_id: "1",
   instagram_id: "1",
   email: SITE_EMAIL,
+  user_info: {
+    name: "John Doe",
+    profession: "FullStack Developer",
+    description:
+      "Hello and welcome to my portfolio! I’m a passionate full-stack developer with a love for crafting elegant, modern web experiences. My journey through the ever-evolving world of web development has been both dynamic and deeply rewarding. I thrive on learning new technologies, embracing innovation, and continuously refining my skills to stay at the forefront of the digital landscape.",
+  },
   meta: {
     title: "Demo",
     description: SITE_DESCRIPTION,

@@ -13,6 +13,10 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 
+import { projectSelector } from "@entities/Project/model/selectors";
+import { useProjectStore } from "@entities/Project/model/store";
+import { IProjectUserInfo } from "@entities/Project/model/types";
+
 import FormItem from "@shared/ui/FormItem";
 
 import s from "./BlockUserInfo.module.scss";
@@ -20,10 +24,13 @@ import Image from "next/image";
 
 interface Props {
   className?: string;
+  user_info: IProjectUserInfo;
 }
 
-const BlockUserInfo: React.FC<Props> = ({ className }) => {
+const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
   const [avatarLoading, setAvatarLoading] = React.useState(true);
+
+  const project = useProjectStore(projectSelector);
 
   const links = [
     { icon: <GithubOutlined />, link: "https://github.com/aman1998" },
@@ -34,6 +41,10 @@ const BlockUserInfo: React.FC<Props> = ({ className }) => {
     // { icon: <MailOutlined />, link: "https://github.com/aman1998" },
     { icon: <TwitterOutlined />, link: "https://github.com/aman1998" },
   ];
+
+  if (!user_info) return null;
+
+  const { name, profession, description } = user_info;
 
   return (
     <section className={cn(s.info, className, "block-user-info")}>
@@ -53,9 +64,9 @@ const BlockUserInfo: React.FC<Props> = ({ className }) => {
       </div>
 
       <Typography.Title level={2} style={{ textAlign: "center", margin: "8px 0" }}>
-        Myrzabekov Amangeldi
+        {name}
       </Typography.Title>
-      <Typography.Text style={{ textAlign: "center", color: "gray" }}>FullStack Developer</Typography.Text>
+      <Typography.Text style={{ textAlign: "center", color: "gray" }}>{profession}</Typography.Text>
       <Typography.Text style={{ textAlign: "center", fontSize: 14, marginTop: 4 }}>
         <span>
           <PhoneOutlined /> 0555 82 28 37
@@ -76,12 +87,7 @@ const BlockUserInfo: React.FC<Props> = ({ className }) => {
           </a>
         ))}
       </div>
-      <FormItem className={s.info__contacts}>
-        Hello there! I'm thrilled to welcome you to my portfolio. I am a passionate and versatile full-stack developer
-        with a keen interest in exploring the latest cutting-edge technologies. My journey in the world of web
-        development has been nothing short of exhilarating, and I constantly strive to enhance my skills and embrace
-        emerging trends in the industry.
-      </FormItem>
+      <FormItem className={s.info__contacts}>{description}</FormItem>
     </section>
   );
 };

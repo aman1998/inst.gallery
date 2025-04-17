@@ -14,7 +14,6 @@ export const enum EBlockType {
   type1 = "type1", // About
   type2 = "type2", // Works
   type4 = "type4", // Collapse
-
 }
 
 export interface IBlock {
@@ -39,10 +38,10 @@ export interface IBlock4 extends IBlock {
   customization: ICustomizeBlock4;
 }
 
-
 export const enum EBlockNavigation {
   blocks = "blocks",
   customize = "customize",
+  info = "info",
   posts = "posts",
   advanced = "advanced",
 }

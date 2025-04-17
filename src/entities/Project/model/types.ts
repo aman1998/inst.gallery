@@ -9,6 +9,7 @@ export interface IProject {
   created_at: string;
   instagram_id: TNullable<string>;
   meta: TNullable<IProjectMetadata>;
+  user_info: TNullable<IProjectUserInfo>;
   primary_color: TNullable<string>;
   link: string;
   isPublish: boolean;
@@ -21,4 +22,11 @@ export interface IProjectMetadata {
   title: string;
   description: string;
   favicon?: string;
+}
+
+export interface IProjectUserInfo {
+  name: string;
+  description: string;
+  profession: string;
+  avatar: TNullable<string>;
 }

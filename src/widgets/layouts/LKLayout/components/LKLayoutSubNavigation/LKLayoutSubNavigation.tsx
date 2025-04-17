@@ -5,10 +5,12 @@ import cn from "classnames";
 
 import BlocksList from "@widgets/Block/components/BlocksList";
 import LkLayoutCustomize from "@widgets/layouts/LKLayout/components/LkLayoutCustomize";
-import LkLayoutAdvanced from "@widgets/layouts/LKLayout/components/LkLayoutAdvanced";
 import LkLayoutPosts from "@widgets/layouts/LKLayout/components/LkLayoutPosts";
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 import { ELKLayoutNavigation } from "@widgets/layouts/LKLayout/model/types";
+
+import BlockAdvancedSettings from "@features/Block/BlockAdvancedSettings";
+import UserSettings from "@features/Block/UserSettings";
 
 import { EBlockNavigation } from "@entities/Block/model/types";
 import { useBlockStore } from "@entities/Block/model/store";
@@ -30,7 +32,7 @@ const LKLayoutSubNavigation: React.FC<Props> = ({ className }) => {
   const { errorMessage } = useMessage();
 
   const { plan } = useSubscriptionsInfo();
-  const { maxBlocks } = getSubscriptionsConfig(plan);;
+  const { maxBlocks } = getSubscriptionsConfig(plan);
 
   const handleAddBlock = () => {
     if (maxBlocks <= blocks.length) {
@@ -66,7 +68,9 @@ const LKLayoutSubNavigation: React.FC<Props> = ({ className }) => {
         case EBlockNavigation.posts:
           return <LkLayoutPosts />;
         case EBlockNavigation.advanced:
-          return <LkLayoutAdvanced />;
+          return <BlockAdvancedSettings />;
+        case EBlockNavigation.info:
+          return <UserSettings />;
         default:
           return null;
       }
