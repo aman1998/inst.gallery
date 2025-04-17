@@ -16,8 +16,6 @@ export interface IProject {
   email: string;
 }
 
-// export type TProjectInfo = Omit<IProject, "blocks">;
-
 export interface IProjectMetadata {
   title: string;
   description: string;
@@ -29,10 +27,21 @@ export interface IProjectUserInfo {
   description: string;
   profession: string;
   avatar: TNullable<string>;
-  links?: Array<{
+  contacts?: Array<{
     type: TProjectLink;
     value: string;
   }>;
 }
 
-export type TProjectLink = "email" | "phone" | "twitch" | "linkedin";
+export type TProjectLink =
+  | "email"
+  | "phone"
+  | "twitch"
+  | "linkedin"
+  | "twitter"
+  | "instagram"
+  | "github"
+  | "gitlab"
+  | "youtube"
+  | "facebook"
+  | "whatsapp";

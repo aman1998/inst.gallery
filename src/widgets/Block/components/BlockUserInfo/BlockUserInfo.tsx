@@ -3,15 +3,7 @@
 import React from "react";
 import cn from "classnames";
 import { Avatar, Typography } from "antd";
-import {
-  GithubOutlined,
-  GitlabOutlined,
-  InstagramOutlined,
-  TwitchOutlined,
-  PhoneOutlined,
-  MailOutlined,
-  TwitterOutlined,
-} from "@ant-design/icons";
+import { PhoneOutlined, MailOutlined } from "@ant-design/icons";
 
 import { projectSelector } from "@entities/Project/model/selectors";
 import { useProjectStore } from "@entities/Project/model/store";
@@ -21,6 +13,7 @@ import FormItem from "@shared/ui/FormItem";
 
 import s from "./BlockUserInfo.module.scss";
 import Image from "next/image";
+import ContactsIcon from "@/shared/ui/ContactsIcon";
 
 interface Props {
   className?: string;
@@ -32,19 +25,15 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
 
   const project = useProjectStore(projectSelector);
 
-  const links = [
-    { icon: <GithubOutlined />, link: "https://github.com/aman1998" },
-    { icon: <GitlabOutlined />, link: "https://github.com/aman1998" },
-    { icon: <InstagramOutlined />, link: "https://github.com/aman1998" },
-    { icon: <TwitchOutlined />, link: "https://github.com/aman1998" },
-    // { icon: <PhoneOutlined />, link: "https://github.com/aman1998" },
-    // { icon: <MailOutlined />, link: "https://github.com/aman1998" },
-    { icon: <TwitterOutlined />, link: "https://github.com/aman1998" },
-  ];
-
   if (!user_info) return null;
 
-  const { name, profession, description } = user_info;
+  const { name, profession, description, contacts } = user_info;
+
+  // Разделение на текстовые и ссылочные
+  const textContacts = contacts?.filter((c) => c.type === "phone" || c.type === "email" || c.type === "whatsapp");
+  const linkContacts = contacts?.filter((c) => c.type !== "phone" && c.type !== "email" && c.type !== "whatsapp");
+
+  console.log("linkContacts =>", linkContacts);
 
   return (
     <section className={cn(s.info, className, "block-user-info")}>
@@ -67,27 +56,29 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
         {name}
       </Typography.Title>
       <Typography.Text style={{ textAlign: "center", color: "gray" }}>{profession}</Typography.Text>
-      <Typography.Text style={{ textAlign: "center", fontSize: 14, marginTop: 4 }}>
-        <span>
-          <PhoneOutlined /> 0555 82 28 37
-        </span>
-        ,{"  "}
-        <span>
-          <PhoneOutlined /> 0555 82 28 37
-        </span>
-        ,{"  "}
-        <span>
-          <MailOutlined /> 1998-amangeldi@gmail.com
-        </span>
-      </Typography.Text>
-      <div className={s.info__links}>
-        {links.map((item, i) => (
-          <a href={item.link} target="_blank" key={i}>
-            <FormItem>{item.icon}</FormItem>
-          </a>
-        ))}
-      </div>
-      <FormItem className={s.info__contacts}>{description}</FormItem>
+
+      {!!textContacts?.length && (
+        <Typography.Text style={{ textAlign: "center", fontSize: 14, marginTop: 4 }}>
+          {textContacts?.map((contact, idx) => (
+            <span key={idx} style={{ marginRight: 8 }}>
+              {<ContactsIcon type={contact.type} />} {contact.value}
+              {idx < textContacts.length - 1 && ","}
+            </span>
+          ))}
+        </Typography.Text>
+      )}
+
+      {!!linkContacts?.length && (
+        <div className={s.info__links}>
+          {linkContacts?.map((item, i) => (
+            <a href={item.value} target="_blank" rel="noopener noreferrer" key={i}>
+              <FormItem>{<ContactsIcon type={item.type} />}</FormItem>
+            </a>
+          ))}
+        </div>
+      )}
+
+      <FormItem className={s.info__description}>{description}</FormItem>
     </section>
   );
 };

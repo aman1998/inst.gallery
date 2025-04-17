@@ -39,7 +39,7 @@
     grid-gap: 8px;
     gap: 8px;
 
-    margin: 8px 0 22px 0;
+    margin-top: 8px;
     max-width: 80%;
 
     svg {
@@ -48,7 +48,8 @@
     }
   }
 
-  &__contacts {
+  &__description {
+    margin-top: 22px !important;
     width: 100%;
   }
 }
