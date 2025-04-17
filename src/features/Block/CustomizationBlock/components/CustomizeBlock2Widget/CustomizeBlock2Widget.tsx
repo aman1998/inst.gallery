@@ -102,8 +102,16 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
         </>
       ) : (
         <>
-          <Divider>Works</Divider>
-          <Button
+          <Divider>Portfolio</Divider>
+          <div className={s.form__item}>
+            <BlockInstagramPostsSettings
+              type="edit"
+              control={control}
+              name="posts"
+              errorMessage={errors.posts?.message}
+            />
+          </div>
+          {/* <Button
             iconPosition="start"
             // icon={<PlusOutlined />}
             type="dashed"
@@ -112,16 +120,8 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
             size="large"
           >
             Add
-          </Button>
-          {/* <div className={s.form__item}>
-            <BlockInstagramPostsSettings
-              type="edit"
-              control={control}
-              name="posts"
-              errorMessage={errors.posts?.message}
-            />
-          </div> */}
-          <CreateInstagramPost isOpen={isOpenAdd} onClose={closeModalAdd} />
+          </Button> */}
+          {/* <CreateInstagramPost isOpen={isOpenAdd} onClose={closeModalAdd} /> */}
         </>
       )}
     </form>

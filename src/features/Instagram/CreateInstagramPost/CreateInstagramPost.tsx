@@ -1,13 +1,21 @@
 import React from "react";
 import { Modal } from "antd";
 import cn from "classnames";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-import s from "./CreateInstagramPost.module.scss";
-import { MOCK_INSTAGRAM_POSTS } from "@/entities/Instagram/lib/constants";
 import CreateInstagramPostHeader from "./components/CreateInstagramPostHeader";
 import CreateInstagramPostForm from "./components/CreateInstagramPostForm";
+import { TCustomizeCreateInstagramPostSchema, customizeCreateInstagramPostSchema } from "./lib/schema";
+import s from "./CreateInstagramPost.module.scss";
 
 const IGNORE_CLASS = "antd-instagram-post";
+const defaultValues = {
+  title: "",
+  content: "",
+  link: "",
+  posts: [],
+};
 
 interface Props {
   isOpen: boolean;
@@ -17,8 +25,23 @@ interface Props {
 const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
 
+  const {
+    control,
+    handleSubmit,
+    formState: { isDirty, isValid, errors },
+    reset,
+  } = useForm<TCustomizeCreateInstagramPostSchema>({
+    defaultValues,
+    mode: "onChange",
+    resolver: zodResolver(customizeCreateInstagramPostSchema),
+  });
+
   const handleModalOutsideClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClose();
+  };
+
+  const onSubmit = (data: TCustomizeCreateInstagramPostSchema) => {
+    console.log("data =>", data);
   };
 
   return (
@@ -42,8 +65,14 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <div onClick={handleModalOutsideClick} className={s.modal__outside}>
         <div className={cn(s["modal__carousel-wrapper"], IGNORE_CLASS)} onClick={(e) => e.stopPropagation()}>
-          <CreateInstagramPostHeader className={IGNORE_CLASS} />
-          <CreateInstagramPostForm className={IGNORE_CLASS} />
+          <CreateInstagramPostHeader
+            isDirty={isDirty}
+            isValid={isValid}
+            className={IGNORE_CLASS}
+            onReset={() => reset(defaultValues)}
+            onSubmit={handleSubmit(onSubmit)}
+          />
+          <CreateInstagramPostForm control={control} className={IGNORE_CLASS} />
         </div>
       </div>
     </Modal>

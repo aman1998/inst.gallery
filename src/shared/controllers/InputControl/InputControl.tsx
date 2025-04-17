@@ -10,6 +10,7 @@ interface Props<T extends InputProps> extends InputProps {
   errorMessage?: string;
   name: Path<T>;
   isPassword?: boolean;
+  isCustomInput?: boolean;
 }
 
 const InputControl = <T extends FieldValues>({
@@ -17,22 +18,38 @@ const InputControl = <T extends FieldValues>({
   onChange: onChangeProp,
   name,
   errorMessage,
+  isCustomInput,
   ...props
 }: Props<T>) => (
   <Controller
     name={name}
     control={control}
-    render={({ field: { onChange, value } }) => (
-      <Input
-        {...props}
-        status={!!errorMessage ? "error" : undefined}
-        value={value}
-        onChange={(e) => {
-          onChange(e);
-          onChangeProp?.(e);
-        }}
-      />
-    )}
+    render={({ field: { onChange, value } }) => {
+      if (isCustomInput) {
+        return (
+          <input
+            placeholder={props.placeholder}
+            onChange={(e) => {
+              onChange(e);
+              onChangeProp?.(e);
+            }}
+            value={value}
+          />
+        );
+      } else {
+        return (
+          <Input
+            {...props}
+            status={!!errorMessage ? "error" : undefined}
+            value={value}
+            onChange={(e) => {
+              onChange(e);
+              onChangeProp?.(e);
+            }}
+          />
+        );
+      }
+    }}
   />
 );
 

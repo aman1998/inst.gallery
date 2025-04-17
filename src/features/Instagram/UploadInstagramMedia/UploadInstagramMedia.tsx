@@ -6,10 +6,10 @@ import { UploadFile } from "antd/es/upload/interface";
 import imageCompression from "browser-image-compression";
 
 import { EInstagramType, IInstagramPost } from "@entities/Instagram/model/types";
-import { MOCK_INSTAGRAM_POSTS } from "@entities/Instagram/lib/constants";
 
 import { useMessage } from "@shared/hooks/useMessage";
-import { log } from "console";
+import { INSTAGRAM_URL, SITE_NAME } from "@/shared/config/appConfig";
+import { uuidv4 } from "@/shared/utils/uuid";
 
 const { Dragger } = Upload;
 
@@ -36,12 +36,16 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
   };
 
   const createMockPost = (files: File[]): IInstagramPost => {
-    const id = `local-${Date.now()}`;
+    const id = uuidv4();
     const type = detectUploadType(files);
 
     if (type === EInstagramType.IMAGE) {
       return {
-        ...MOCK_INSTAGRAM_POSTS[0],
+        caption: "",
+        thumbnail_url: null,
+        timestamp: new Date().toString(),
+        username: SITE_NAME,
+        permalink: INSTAGRAM_URL,
         id,
         media_type: EInstagramType.IMAGE,
         media_url: URL.createObjectURL(files[0]),
@@ -50,7 +54,11 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
 
     if (type === EInstagramType.CAROUSEL_ALBUM) {
       return {
-        ...MOCK_INSTAGRAM_POSTS[0],
+        caption: "",
+        thumbnail_url: null,
+        timestamp: new Date().toString(),
+        username: SITE_NAME,
+        permalink: INSTAGRAM_URL,
         id,
         media_type: EInstagramType.CAROUSEL_ALBUM,
         media_url: URL.createObjectURL(files[0]),

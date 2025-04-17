@@ -4,9 +4,7 @@ import { Avatar, Typography } from "antd";
 import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import Image from "next/image";
-import { CaretRightFilled } from "@ant-design/icons";
-import { InboxOutlined } from "@ant-design/icons";
-
+import { Control, Controller } from "react-hook-form";
 import { EInstagramType, IInstagramPost } from "@entities/Instagram/model/types";
 
 import Button from "@shared/ui/Button";
@@ -15,20 +13,22 @@ import s from "./CreateInstagramPostForm.module.scss";
 import { uploadFileToSupabase } from "@/shared/config/supabase/actions";
 import UploadInstagramMedia from "@/features/Instagram/UploadInstagramMedia";
 import { TNullable } from "@/shared/types/common";
+import { TCustomizeCreateInstagramPostSchema } from "../../lib/schema";
+import InputControl from "@/shared/controllers/InputControl";
+import TextAreaControl from "@/shared/controllers/TextAreaControl";
 
 interface Props {
+  control: Control<TCustomizeCreateInstagramPostSchema>;
   className?: string;
 }
 
-const CreateInstagramPostForm: React.FC<Props> = ({ className }) => {
-  const [post, setPost] = React.useState<TNullable<IInstagramPost>>(null);
-
-  const renderMedia = React.useMemo(() => {
-    if (!post) return null;
+const CreateInstagramPostForm: React.FC<Props> = ({ className, control }) => {
+  const renderMedia = React.useCallback((post: TNullable<IInstagramPost>) => {
+    if (!post) return <div />;
 
     switch (post.media_type) {
       case EInstagramType.IMAGE:
-        if (!post.media_url) return null;
+        if (!post.media_url) return <div />;
         return (
           <Image
             loading="lazy"
@@ -40,7 +40,7 @@ const CreateInstagramPostForm: React.FC<Props> = ({ className }) => {
           />
         );
       case EInstagramType.VIDEO:
-        if (!post.media_url) return null;
+        if (!post.media_url) return <div />;
         return (
           <div style={{ height: "100%" }}>
             <video
@@ -73,25 +73,41 @@ const CreateInstagramPostForm: React.FC<Props> = ({ className }) => {
           </CarouselCustom>
         );
       default:
-        return null;
+        return <div />;
     }
-  }, [post]);
+  }, []);
 
   return (
     <div className={cn(s.post, className)}>
       <div className={cn(s.post__media, "post__media")}>
-        {post ? renderMedia : <UploadInstagramMedia onPostGenerated={setPost} />}
+        <Controller
+          control={control}
+          name="posts"
+          render={({ field: { value, onChange } }) => {
+            const post = value[0] as any;
+            if (post) {
+              return renderMedia(post);
+            }
+            return (
+              <UploadInstagramMedia
+                onPostGenerated={(post) => {
+                  console.log("post", post);
+                  onChange([post]);
+                }}
+              />
+            );
+          }}
+        />
       </div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
-          <input placeholder="Name" />
+          <InputControl isCustomInput control={control} name="title" placeholder="Name" />
         </div>
         <div className={s.post__content}>
-          <textarea placeholder="Content" />
+          <TextAreaControl isCustomTextArea control={control} name="content" placeholder="Content" />
         </div>
         <div className={s.post__btn}>
-          <input placeholder="Button text" />
-          <input placeholder="link" />
+          <InputControl isCustomInput control={control} name="link" placeholder="More details Link" />
         </div>
       </div>
     </div>

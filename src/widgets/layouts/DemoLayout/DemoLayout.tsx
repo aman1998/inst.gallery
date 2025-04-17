@@ -27,14 +27,12 @@ import { TNullable } from "@shared/types/common";
 
 import s from "../LKLayout/LKLayout.module.scss";
 import LKLayoutSubNavigation from "../LKLayout/components/LKLayoutSubNavigation";
+import CustomizeBlockLayout from "../LKLayout/components/CustomizeBlockLayout";
+import AdvancedCustomizeWidget from "@/widgets/AdvancedCustomizeWidget";
 
-const CustomizeBlockLayout = dynamic(() => import("../LKLayout/components/CustomizeBlockLayout"), {
-  ssr: false,
-});
-
-const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomizeWidget"), {
-  ssr: false,
-});
+// const CustomizeBlockLayout = dynamic(() => import("../LKLayout/components/CustomizeBlockLayout"), {
+//   ssr: false,
+// });
 
 // const LKLayoutSubNavigation = dynamic(() => import("@widgets/layouts/LKLayout/components/LKLayoutSubNavigation"), {
 //   ssr: false,
@@ -52,6 +50,10 @@ const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomize
 //       {/*<Divider>Loading</Divider>*/}
 //     </div>
 //   ),
+// });
+
+// const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomizeWidget"), {
+//   ssr: false,
 // });
 
 interface Props {

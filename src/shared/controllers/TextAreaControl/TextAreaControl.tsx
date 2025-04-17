@@ -9,28 +9,46 @@ interface Props<T extends FieldValues> extends Omit<ITextAreaProps, "value" | "o
   errorMessage?: string;
   name: Path<T>;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isCustomTextArea?: boolean;
 }
 const TextAreaControl = <T extends FieldValues>({
   control,
   onChange: onChangeProp,
   name,
   errorMessage,
+  isCustomTextArea,
   ...props
 }: Props<T>) => (
   <Controller
     name={name}
     control={control}
-    render={({ field: { onChange, value } }) => (
-      <TextArea
-        {...props}
-        status={!!errorMessage ? "error" : undefined}
-        onChange={(e) => {
-          onChange(e);
-          onChangeProp?.(e);
-        }}
-        value={value}
-      />
-    )}
+    render={({ field: { onChange, value } }) => {
+      if (isCustomTextArea) {
+        return (
+          <textarea
+            {...props}
+            placeholder={props.placeholder}
+            onChange={(e) => {
+              onChange(e);
+              onChangeProp?.(e);
+            }}
+            value={value}
+          />
+        );
+      } else {
+        return (
+          <TextArea
+            {...props}
+            status={!!errorMessage ? "error" : undefined}
+            onChange={(e) => {
+              onChange(e);
+              onChangeProp?.(e);
+            }}
+            value={value}
+          />
+        );
+      }
+    }}
   />
 );
 

@@ -32,14 +32,16 @@ import { ROUTES } from "@shared/config/routes";
 
 import s from "./LKLayout.module.scss";
 import LKLayoutSubNavigation from "./components/LKLayoutSubNavigation";
+import CustomizeBlockLayout from "./components/CustomizeBlockLayout";
+import AdvancedCustomizeWidget from "@/widgets/AdvancedCustomizeWidget";
 
-const CustomizeBlockLayout = dynamic(() => import("./components/CustomizeBlockLayout"), {
-  ssr: false,
-});
+// const CustomizeBlockLayout = dynamic(() => import("./components/CustomizeBlockLayout"), {
+//   ssr: false,
+// });
 
-const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomizeWidget"), {
-  ssr: false,
-});
+// const AdvancedCustomizeWidget = dynamic(() => import("@widgets/AdvancedCustomizeWidget"), {
+//   ssr: false,
+// });
 
 // const LKLayoutSubNavigation = dynamic(() => import("@widgets/layouts/LKLayout/components/LKLayoutSubNavigation"), {
 //   ssr: false,

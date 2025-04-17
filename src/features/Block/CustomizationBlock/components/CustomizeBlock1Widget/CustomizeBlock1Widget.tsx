@@ -71,12 +71,10 @@ const CustomizeBlock1Widget: React.FC<Props> = ({ isPosts }) => {
       bgColor: selectedOriginalBlock.customization.advancedSettings.bgColor,
       textColor: selectedOriginalBlock.customization.advancedSettings.textColor,
 
-
       postBorderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
       postsGap: Number(selectedOriginalBlock.customization.postsSettings.postsStyle.gap),
       postsLength: Number(selectedOriginalBlock.customization.postsSettings.postsLength),
       postsType: selectedOriginalBlock.customization.postsSettings.postsType,
-
 
       posts: selectedOriginalBlock.customization.posts,
 
@@ -160,7 +158,7 @@ const CustomizeBlock1Widget: React.FC<Props> = ({ isPosts }) => {
         </>
       ) : (
         <>
-          <Divider>Works</Divider>
+          <Divider>Portfolio</Divider>
           <div className={s.form__item}>
             <BlockInstagramPostsSettings
               type="edit"

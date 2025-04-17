@@ -30,14 +30,14 @@ const LKLayoutNavigation: React.FC<Props> = ({ className }) => {
     //   icon: <BlockOutlined />,
     // },
     {
+      label: "Portfolio",
+      type: EBlockNavigation.posts,
+      icon: <InstagramOutlined />,
+    },
+    {
       label: "Customize",
       type: EBlockNavigation.customize,
       icon: <DesktopOutlined />,
-    },
-    {
-      label: "Works",
-      type: EBlockNavigation.posts,
-      icon: <InstagramOutlined />,
     },
     {
       label: "Advanced",
