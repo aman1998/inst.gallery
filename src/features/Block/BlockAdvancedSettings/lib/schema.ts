@@ -38,7 +38,6 @@ export const blockAdvancedSettingsSchema = object({
   //   message: "Invalid word: not allowed",
   // }),
   primary_color: string().trim().min(1, { message: EMPTY_ERROR_TEXT }),
-  favicon: string().trim().min(0).optional(),
 
   isPublish: boolean(),
 });

@@ -32,7 +32,7 @@ const LKLayoutNavigation: React.FC<Props> = ({ className }) => {
     //   icon: <BlockOutlined />,
     // },
     {
-      label: "Info",
+      label: "About",
       type: EBlockNavigation.info,
       icon: <ProfileOutlined />,
     },

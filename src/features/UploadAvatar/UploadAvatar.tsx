@@ -1,62 +1,183 @@
-"use client";
-import { Upload, type UploadProps } from "antd";
+import React from "react";
+import { Modal, Button, Form, Upload, Image, message, Typography } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import { useForm, Controller } from "react-hook-form";
+import { RcFile } from "antd/lib/upload";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { UploadFile } from "antd/es/upload/interface";
 import imageCompression from "browser-image-compression";
 
+import { useProjectStore } from "@entities/Project/model/store";
+import { projectSelector } from "@entities/Project/model/selectors";
+
+import { uuidv4 } from "@shared/utils/uuid";
+import { TNullable } from "@shared/types/common";
 import { useMessage } from "@shared/hooks/useMessage";
+import { createClient } from "@shared/config/supabase/client";
+import { ESupabaseBucket } from "@shared/config/supabase/types";
+import { useUserInfo } from "@/shared/providers/UserProvider/lib/useUserInfo";
 
-const { Dragger } = Upload;
+const schema = z.object({
+  image: z.any(),
+});
 
-const UploadAvatar = () => {
+type FormData = z.infer<typeof schema>;
+
+type Props = {
+  defaultImageUrl?: TNullable<string>;
+  onSuccess?: (fileUrl: TNullable<string>) => void;
+};
+
+const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
+  const [loading, setLoading] = React.useState(false);
+  const [file, setFile] = React.useState<TNullable<UploadFile>>(null);
+  const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
+
   const { errorMessage, successMessage, infoMessage, loadingMessage, destroyMessage } = useMessage();
+  const project = useProjectStore(projectSelector);
+  const { user } = useUserInfo();
 
-  const props: UploadProps = {
-    name: "file",
-    action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-    multiple: false,
-    headers: {
-      authorization: "authorization-text",
-    },
-    beforeUpload: (file) => {
-      const maxSize = 50 * 1024 * 1024; // 50MB
-      if (file.size > maxSize) {
-        errorMessage(`${file.name} is too large. Maximum size is 50MB.`);
-        return Upload.LIST_IGNORE;
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors, isDirty, isValid },
+    setValue,
+  } = useForm<FormData>({
+    defaultValues: {},
+    resolver: zodResolver(schema),
+  });
+
+  React.useEffect(() => {
+    if (defaultImageUrl) {
+      const defaultFile: UploadFile = {
+        uid: "-1",
+        name: "default-image",
+        status: "done",
+        url: defaultImageUrl,
+      };
+      setFile(defaultFile);
+      setPreviewUrl(defaultImageUrl);
+      setValue("image", defaultFile); // для валидации
+    }
+  }, [defaultImageUrl, setValue]);
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      if (loading) return;
+
+      setLoading(true);
+      const supabase = createClient();
+
+      const file = data?.image?.originFileObj || data?.image;
+      const compressedFile = await imageCompression(file, {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true,
+      });
+
+      const filePath = "avatar.jpg";
+      const fullPath = `${user?.id}/${project?.id}/${filePath}`;
+
+      const { error } = await supabase.storage
+        .from(ESupabaseBucket.projectAvatar)
+        .upload(fullPath, compressedFile, { upsert: true });
+
+      if (error) {
+        errorMessage(`Failed to upload avatar to Supabase: ${error.message}`);
+        return;
       }
 
-      if (file.type.startsWith("video/")) {
-        errorMessage(`${file.name} is a video. Only photos are allowed.`);
-        return Upload.LIST_IGNORE;
-      }
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+      const avatarUrl = `${supabaseUrl}/storage/v1/object/public/${ESupabaseBucket.instagramAvatar}/${fullPath}`;
 
-      if (!file.type.startsWith("image/")) {
-        errorMessage(`${file.name} is not an image.`);
-        return Upload.LIST_IGNORE;
+      onSuccess?.(avatarUrl);
+      successMessage("Success uploaded!");
+    } catch (e: any) {
+      if (e?.message) {
+        errorMessage(e.message);
       }
-
-      return true;
-    },
-    customRequest: ({ file, onSuccess }) => {},
-    onChange: async (info) => {
-      const files = info.fileList.map((f) => f.originFileObj as File);
-      const compressFiles = await Promise.all(
-        files.map((file) =>
-          imageCompression(file, {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true,
-          })
-        )
-      );
-
-      if (info.file.status !== "uploading") {
-      }
-      if (info.file.status === "done") {
-      } else if (info.file.status === "error") {
-      }
-    },
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return <div>UploadAvatar</div>;
+  const handleBeforeUpload = (file: File) => {
+    const isImage = file.type.startsWith("image/");
+    if (!isImage) {
+      message.error("Only image!");
+      return false;
+    }
+
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      errorMessage(`${file.name} is too large. Maximum size is 5MB.`);
+      return Upload.LIST_IGNORE;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setPreviewUrl(e.target?.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    setFile({
+      uid: uuidv4(),
+      name: file.name,
+      status: "done",
+      url: URL.createObjectURL(file),
+      originFileObj: file as RcFile,
+    });
+
+    return true;
+  };
+
+  return (
+    <Form className="antd-upload-avatar" layout="vertical" onFinish={handleSubmit(onSubmit)}>
+      <Form.Item label="Image file" validateStatus={errors.image ? "error" : ""} help={errors.image?.message as string}>
+        <Controller
+          control={control}
+          name="image"
+          render={({ field: { onChange } }) => (
+            <Upload
+              listType="picture-card"
+              fileList={file ? [file] : []}
+              beforeUpload={(file) => {
+                const result = handleBeforeUpload(file);
+                console.log("result =>", result);
+                if (result !== false) {
+                  onChange({ target: { value: file } });
+                } else {
+                  onChange(null);
+                }
+                return false;
+              }}
+              onRemove={() => {
+                setFile(null);
+                setPreviewUrl(null);
+                onChange(null);
+              }}
+            >
+              <Typography.Text style={{ fontSize: 14 }}>Max (10mb)</Typography.Text>
+            </Upload>
+          )}
+        />
+      </Form.Item>
+
+      {previewUrl && (
+        <Form.Item label="Preview">
+          <Image src={previewUrl} alt="Preview" width={200} height={200} style={{ objectFit: "cover" }} />
+        </Form.Item>
+      )}
+
+      <Form.Item>
+        <Button disabled={!isValid || !isDirty} loading={loading} type="primary" htmlType="submit">
+          Save
+        </Button>
+      </Form.Item>
+    </Form>
+  );
 };
 
 export default UploadAvatar;

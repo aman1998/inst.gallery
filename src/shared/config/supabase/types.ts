@@ -25,6 +25,7 @@ export enum ESupabaseDB {
 }
 
 export const enum ESupabaseBucket {
+  projectAvatar = "project-avatar",
   instagramAvatar = "instagram-avatar",
   instagramMedia = "instagram-media",
 }

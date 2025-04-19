@@ -80,9 +80,9 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
     multiple: true,
     maxCount: 5,
     beforeUpload: (file) => {
-      const maxSize = 50 * 1024 * 1024; // 50MB
+      const maxSize = 10 * 1024 * 1024; // 10MB
       if (file.size > maxSize) {
-        errorMessage(`${file.name} is too large. Maximum size is 50MB.`);
+        errorMessage(`${file.name} is too large. Maximum size is 10MB.`);
         return Upload.LIST_IGNORE;
       }
 

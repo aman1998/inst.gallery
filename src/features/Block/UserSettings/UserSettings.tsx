@@ -7,6 +7,7 @@ import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 
 import { useChangeProject } from "@features/ChangeProject/lib/useChangeProject";
+import UploadAvatar from "@features/UploadAvatar";
 
 import BlockSaveCard from "@entities/Block/components/BlockSaveCard";
 import { useProjectStore } from "@entities/Project/model/store";
@@ -18,6 +19,8 @@ import Show from "@shared/ui/Show";
 import TextAreaControl from "@shared/controllers/TextAreaControl";
 import ContactsIcon from "@shared/ui/ContactsIcon";
 import { TProjectLink } from "@shared/ui/ContactsIcon/ContactsIcon";
+import { useModal } from "@shared/hooks/useModal";
+import { TNullable } from "@shared/types/common";
 
 import { TUserSettingsSchema, userSettingsSchema } from "./lib/schema";
 import s from "./UserSettings.module.scss";
@@ -34,6 +37,7 @@ const UserSettings: React.FC = () => {
 
   const { isLoading, handleValueChange, changeBlock: handleSave } = useChangeProject();
   const { isDemo } = useLKLayout();
+  const { isOpen, openModal, closeModal } = useModal();
 
   const {
     control,
@@ -64,6 +68,14 @@ const UserSettings: React.FC = () => {
     setProject({ project: originalProject });
   };
 
+  const handleUploadAvatar = (avatar: TNullable<string>) => {
+    closeModal();
+    handleValueChange("user_info", {
+      ...project?.user_info,
+      avatar,
+    });
+  };
+
   React.useEffect(() => {
     if (!values) return;
 
@@ -82,6 +94,14 @@ const UserSettings: React.FC = () => {
           onReset={handleReset}
         />
       </Show>
+
+      <Divider>Avatar</Divider>
+      <Button style={{ display: "flex", margin: "0 auto" }} type="primary" size="small" onClick={openModal}>
+        Upload/Edit
+      </Button>
+      <Modal title="Upload avatar" open={isOpen} onCancel={closeModal} footer={null} destroyOnClose>
+        <UploadAvatar onSuccess={handleUploadAvatar} defaultImageUrl={project?.user_info?.avatar} />
+      </Modal>
 
       <Divider>About</Divider>
       <FormItem>

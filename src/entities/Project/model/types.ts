@@ -1,3 +1,4 @@
+import { TProjectLink } from "@/shared/ui/ContactsIcon/ContactsIcon";
 import { IBlock } from "@entities/Block/model/types";
 
 import { TNullable } from "@shared/types/common";
@@ -19,7 +20,6 @@ export interface IProject {
 export interface IProjectMetadata {
   title: string;
   description: string;
-  favicon?: string;
 }
 
 export interface IProjectUserInfo {
@@ -32,16 +32,3 @@ export interface IProjectUserInfo {
     value: string;
   }>;
 }
-
-export type TProjectLink =
-  | "email"
-  | "phone"
-  | "twitch"
-  | "linkedin"
-  | "twitter"
-  | "instagram"
-  | "github"
-  | "gitlab"
-  | "youtube"
-  | "facebook"
-  | "whatsapp";

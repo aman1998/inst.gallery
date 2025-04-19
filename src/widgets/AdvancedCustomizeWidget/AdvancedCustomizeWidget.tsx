@@ -35,7 +35,7 @@ const AdvancedCustomizeWidget: React.FC<Props> = ({ className, wrapperClassName,
   const fullUrl = `www.${url}`;
   const title = `${project?.meta?.title} | ${project?.meta?.description} | ${SITE_NAME}`;
   const description = project?.meta?.description || SITE_DESCRIPTION;
-  const favicon = project?.meta?.favicon ?? "/logo.png";
+  const favicon = project?.user_info?.avatar ?? "/logo.png";
 
   return (
     <>

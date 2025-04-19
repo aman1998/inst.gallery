@@ -59,7 +59,6 @@ const BlockAdvancedSettings: React.FC = () => {
       title: originalProject?.meta?.title,
       description: originalProject?.meta?.description,
       primary_color: originalProject?.primary_color ?? PRIMARY_COLOR,
-      favicon: originalProject?.meta?.favicon,
     };
   }, [originalProject]);
 
@@ -132,7 +131,7 @@ const BlockAdvancedSettings: React.FC = () => {
 
       <Divider>Metadata</Divider>
       <FormItem>
-        <Flex justify="space-between" gap={8}>
+        {/* <Flex justify="space-between" gap={8}>
           <Typography.Text strong>Favicon</Typography.Text>
           <SelectProjectFavicon
             control={control}
@@ -144,7 +143,7 @@ const BlockAdvancedSettings: React.FC = () => {
               })
             }
           />
-        </Flex>
+        </Flex> */}
         <InputControl
           size="middle"
           addonAfter={<div>| «description» | {SITE_NAME}</div>}

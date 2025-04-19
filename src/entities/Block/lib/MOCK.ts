@@ -62,6 +62,7 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
 };
 
 export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
+  description: "My works",
   imageWrapperStyle: {
     borderRadius: 12,
   },
@@ -117,4 +118,3 @@ export const MOCK_BLOCK_4_CUSTOMIZATION: ICustomizeBlock4 = {
   ],
   itemsStyle: {},
 };
-
