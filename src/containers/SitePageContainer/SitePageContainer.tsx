@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import BlockWidget from "@widgets/Block/components/BlockWidget";
+import BlockBasicWidget from "@/widgets/Block/components/BlockBasicWidget";
 
 import { IProject } from "@entities/Project/model/types";
 import { ESubscriptionPlan } from "@entities/Subscription/model/types";
@@ -34,7 +34,7 @@ const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
 
         <main className={s.main}>
           {blocks.map((item) => (
-            <BlockWidget project={project} block={item} key={item.block_id} />
+            <BlockBasicWidget project={project} block={item} key={item.block_id} />
           ))}
           {plan === ESubscriptionPlan.free && (
             <Button

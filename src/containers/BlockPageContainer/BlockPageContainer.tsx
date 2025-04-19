@@ -11,9 +11,8 @@ import { useProjectStore } from "@entities/Project/model/store";
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import Spinner from "@shared/ui/Spinner";
 import AntdProvider, { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
-import AdvancedCustomizeWidget from "@/widgets/AdvancedCustomizeWidget";
 
-const BlockWidget = dynamic(() => import("@widgets/Block/components/BlockWidget"), {
+const BlockBasicWidget = dynamic(() => import("@/widgets/Block/components/BlockBasicWidget"), {
   ssr: false,
   loading: () => <Spinner style={{ display: "flex", justifyContent: "center", width: "100%" }} />,
 });
@@ -49,7 +48,7 @@ const BlockPageContainer: React.FC = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           style={{ zoom: "0.7" }}
         >
-          <BlockWidget project={project} block={block} />
+          <BlockBasicWidget project={project} block={block} />
         </motion.section>
       </AnimatePresence>
     </AntdProvider>

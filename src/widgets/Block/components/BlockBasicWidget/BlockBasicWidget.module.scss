@@ -1,0 +1,84 @@
+$margin-top: 150px;
+
+.navigation {
+  @include flex-gap(24px);
+  // justify-content: flex-end;
+
+  margin-bottom: 10px;
+
+  &__item {
+    @include flex-centered;
+    flex-direction: column;
+    gap: 4px;
+
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    background: var(--block-bg);
+    // padding: 16px;
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease-in;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+
+    &:hover {
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    &:nth-child(1) {
+      background: var(--primary-color);
+      color: var(--white);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.layout {
+  background: var(--block-bg);
+  padding: 20px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-gap: 32px;
+  flex: 1;
+
+  @include respond(tablet) {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    grid-gap: 16px;
+  }
+
+  &__right {
+    margin-top: $margin-top;
+    @include respond(tablet) {
+      margin-top: 32px;
+    }
+  }
+
+  &__logo {
+    position: fixed;
+    top: 20px;
+
+    @include respond(tablet) {
+      position: static;
+      top: auto;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__user {
+    position: sticky;
+    top: $margin-top;
+    margin-top: $margin-top;
+    max-height: max-content;
+
+    @include respond(tablet) {
+      position: static;
+      margin-top: 120px;
+    }
+  }
+}

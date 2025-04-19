@@ -5,8 +5,6 @@ import cn from "classnames";
 import { Typography } from "antd";
 import Image from "next/image";
 
-import { projectSelector } from "@entities/Project/model/selectors";
-import { useProjectStore } from "@entities/Project/model/store";
 import { IProjectUserInfo } from "@entities/Project/model/types";
 
 import FormItem from "@shared/ui/FormItem";
@@ -21,8 +19,6 @@ interface Props {
 
 const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
   const [avatarLoading, setAvatarLoading] = React.useState(true);
-
-  const project = useProjectStore(projectSelector);
 
   if (!user_info) return null;
 

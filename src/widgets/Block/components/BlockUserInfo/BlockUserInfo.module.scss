@@ -45,7 +45,12 @@
 
     &--grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fill, 56px);
+
+      @include respond(tablet) {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 100%;
+      }
     }
 
     svg {

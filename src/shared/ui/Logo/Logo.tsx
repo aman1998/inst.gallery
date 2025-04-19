@@ -23,7 +23,7 @@ const Logo: React.FC<Props> = ({ onClick, className, href, style, color = PRIMAR
     </div>
   );
 
-  if (!href) return content;
+  if (!href) return <div className={className}>{content}</div>;
 
   return (
     <Link href={href} className={className}>

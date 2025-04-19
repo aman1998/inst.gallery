@@ -9,7 +9,6 @@ import {
 } from "@entities/Block/model/customizeTypes";
 
 import { INSTAGRAM_URL } from "@shared/config/appConfig";
-import { PRIMARY_COLOR, SITE_PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 const buttonSettings: ICustomizeButton = {
   buttonVisible: true,

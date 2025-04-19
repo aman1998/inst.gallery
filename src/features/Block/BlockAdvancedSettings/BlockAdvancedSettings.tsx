@@ -22,7 +22,7 @@ import FormItem from "@shared/ui/FormItem";
 import SwitchControl from "@shared/controllers/SwitchControl";
 import Show from "@shared/ui/Show";
 import TextAreaControl from "@shared/controllers/TextAreaControl";
-import { PRIMARY_COLOR, SITE_PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
+import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 import ColorPickerControl from "@shared/controllers/ColorPickerControl";
 import { SITE_NAME } from "@shared/config/appConfig";
 
@@ -114,19 +114,19 @@ const BlockAdvancedSettings: React.FC = () => {
           setError={setError}
           clearErrors={clearErrors}
         />
-        {/*<Flex justify="space-between" gap={8}>*/}
-        {/*  <Typography.Text strong>Logo color</Typography.Text>*/}
-        {/*  <ColorPickerControl*/}
-        {/*    control={control}*/}
-        {/*    errorMessage={errors.primary_color?.message}*/}
-        {/*    name="primary_color"*/}
-        {/*    defaultValue={project?.primary_color ?? SITE_PRIMARY_COLOR}*/}
-        {/*    size="small"*/}
-        {/*    showText*/}
-        {/*    style={{ justifyContent: "flex-start", width: "100%", maxWidth: 140 }}*/}
-        {/*    onChange={(value, css) => handleValueChange("primary_color", css)}*/}
-        {/*  />*/}
-        {/*</Flex>*/}
+        <Flex justify="space-between" gap={8}>
+          <Typography.Text strong>Primary color</Typography.Text>
+          <ColorPickerControl
+            control={control}
+            errorMessage={errors.primary_color?.message}
+            name="primary_color"
+            defaultValue={project?.primary_color ?? PRIMARY_COLOR}
+            size="small"
+            showText
+            style={{ justifyContent: "flex-start", width: "100%", maxWidth: 140 }}
+            onChange={(value, css) => handleValueChange("primary_color", css)}
+          />
+        </Flex>
       </FormItem>
 
       <Divider>Metadata</Divider>
