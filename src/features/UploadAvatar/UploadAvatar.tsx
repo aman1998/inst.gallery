@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { UploadFile } from "antd/es/upload/interface";
 import imageCompression from "browser-image-compression";
 
+import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
+
 import { useProjectStore } from "@entities/Project/model/store";
 import { projectSelector } from "@entities/Project/model/selectors";
 
@@ -16,7 +18,7 @@ import { TNullable } from "@shared/types/common";
 import { useMessage } from "@shared/hooks/useMessage";
 import { createClient } from "@shared/config/supabase/client";
 import { ESupabaseBucket } from "@shared/config/supabase/types";
-import { useUserInfo } from "@/shared/providers/UserProvider/lib/useUserInfo";
+import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 
 const schema = z.object({
   image: z.any(),
@@ -25,11 +27,18 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 type Props = {
-  defaultImageUrl?: TNullable<string>;
-  onSuccess?: (fileUrl: TNullable<string>) => void;
+  defaultUrl?: TNullable<string>;
+  onChange?: (fileUrl: TNullable<string>) => void;
+  maxWidthOrHeight?: number;
+  maxSizeMB?: number;
 };
 
-const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
+const UploadAvatar: React.FC<Props> = ({
+  defaultUrl,
+  onChange: onChangeProp,
+  maxWidthOrHeight = 500,
+  maxSizeMB = 1,
+}) => {
   const [loading, setLoading] = React.useState(false);
   const [file, setFile] = React.useState<TNullable<UploadFile>>(null);
   const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
@@ -37,6 +46,7 @@ const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
   const { errorMessage, successMessage, infoMessage, loadingMessage, destroyMessage } = useMessage();
   const project = useProjectStore(projectSelector);
   const { user } = useUserInfo();
+  const { isDemo } = useLKLayout();
 
   const {
     control,
@@ -50,30 +60,40 @@ const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
   });
 
   React.useEffect(() => {
-    if (defaultImageUrl) {
+    if (defaultUrl) {
       const defaultFile: UploadFile = {
         uid: "-1",
         name: "default-image",
         status: "done",
-        url: defaultImageUrl,
+        url: defaultUrl,
       };
       setFile(defaultFile);
-      setPreviewUrl(defaultImageUrl);
+      setPreviewUrl(defaultUrl);
       setValue("image", defaultFile); // для валидации
     }
-  }, [defaultImageUrl, setValue]);
+  }, [defaultUrl, setValue]);
 
   const onSubmit = async (data: FormData) => {
     try {
       if (loading) return;
+
+      if (!data.image) {
+        onChangeProp?.(null);
+        return;
+      }
+
+      if (isDemo) {
+        onChangeProp?.(previewUrl);
+        return;
+      }
 
       setLoading(true);
       const supabase = createClient();
 
       const file = data?.image?.originFileObj || data?.image;
       const compressedFile = await imageCompression(file, {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
+        maxSizeMB,
+        maxWidthOrHeight,
         useWebWorker: true,
       });
 
@@ -90,9 +110,9 @@ const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
       }
 
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-      const avatarUrl = `${supabaseUrl}/storage/v1/object/public/${ESupabaseBucket.instagramAvatar}/${fullPath}`;
+      const avatarUrl = `${supabaseUrl}/storage/v1/object/public/${ESupabaseBucket.projectAvatar}/${fullPath}?t=${Date.now()}`;
 
-      onSuccess?.(avatarUrl);
+      onChangeProp?.(avatarUrl);
       successMessage("Success uploaded!");
     } catch (e: any) {
       if (e?.message) {
@@ -139,24 +159,23 @@ const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
         <Controller
           control={control}
           name="image"
-          render={({ field: { onChange } }) => (
+          render={({ field }) => (
             <Upload
               listType="picture-card"
               fileList={file ? [file] : []}
               beforeUpload={(file) => {
                 const result = handleBeforeUpload(file);
-                console.log("result =>", result);
                 if (result !== false) {
-                  onChange({ target: { value: file } });
+                  field.onChange({ target: { value: file } });
                 } else {
-                  onChange(null);
+                  field.onChange(null);
                 }
                 return false;
               }}
               onRemove={() => {
                 setFile(null);
                 setPreviewUrl(null);
-                onChange(null);
+                field.onChange(null);
               }}
             >
               <Typography.Text style={{ fontSize: 14 }}>Max (10mb)</Typography.Text>
@@ -172,7 +191,7 @@ const UploadAvatar: React.FC<Props> = ({ defaultImageUrl, onSuccess }) => {
       )}
 
       <Form.Item>
-        <Button disabled={!isValid || !isDirty} loading={loading} type="primary" htmlType="submit">
+        <Button iconPosition="end" disabled={!isValid || !isDirty} loading={loading} type="primary" htmlType="submit">
           Save
         </Button>
       </Form.Item>

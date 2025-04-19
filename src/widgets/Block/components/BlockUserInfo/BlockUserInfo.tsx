@@ -2,18 +2,17 @@
 
 import React from "react";
 import cn from "classnames";
-import { Avatar, Typography } from "antd";
-import { PhoneOutlined, MailOutlined } from "@ant-design/icons";
+import { Typography } from "antd";
+import Image from "next/image";
 
 import { projectSelector } from "@entities/Project/model/selectors";
 import { useProjectStore } from "@entities/Project/model/store";
 import { IProjectUserInfo } from "@entities/Project/model/types";
 
 import FormItem from "@shared/ui/FormItem";
+import ContactsIcon from "@shared/ui/ContactsIcon";
 
 import s from "./BlockUserInfo.module.scss";
-import Image from "next/image";
-import ContactsIcon from "@/shared/ui/ContactsIcon";
 
 interface Props {
   className?: string;
@@ -33,23 +32,29 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
   const textContacts = contacts?.filter((c) => c.type === "phone" || c.type === "email" || c.type === "whatsapp");
   const linkContacts = contacts?.filter((c) => c.type !== "phone" && c.type !== "email" && c.type !== "whatsapp");
 
-  console.log("linkContacts =>", linkContacts);
+  console.log("user_info?.avatar =>", user_info?.avatar);
 
   return (
     <section className={cn(s.info, className, "block-user-info")}>
       <div
-        className={cn(s["info__avatar-wrapper"], avatarLoading && s["info__avatar-wrapper--loading"])}
+        className={cn(
+          s["info__avatar-wrapper"],
+          avatarLoading && s["info__avatar-wrapper--loading"],
+          !user_info?.avatar && s["info__avatar-wrapper--empty"]
+        )}
         style={{ width: 200, height: 200 }}
       >
-        <Image
-          className={s.info__avatar}
-          style={{ width: 200, minWidth: 200, height: 200 }}
-          width={200}
-          height={200}
-          alt="avatar"
-          onLoad={() => setAvatarLoading(false)}
-          src="https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/18343023511179378/images/18343023511179378.jpg"
-        />
+        {!!user_info?.avatar && (
+          <Image
+            className={s.info__avatar}
+            style={{ width: 200, minWidth: 200, height: 200 }}
+            width={200}
+            height={200}
+            alt="avatar"
+            onLoad={() => setAvatarLoading(false)}
+            src={user_info?.avatar}
+          />
+        )}
       </div>
 
       <Typography.Title level={2} style={{ textAlign: "center", margin: "8px 0" }}>

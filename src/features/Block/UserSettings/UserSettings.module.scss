@@ -4,4 +4,19 @@
   &__item {
     @include flex-column-gap(8px);
   }
+  &__avatar {
+    @include flex-gap(8px);
+    justify-content: center;
+    img,
+    div {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background-color: var(--lk-bg);
+      object-fit: cover;
+    }
+    button div {
+      display: none !important;
+    }
+  }
 }

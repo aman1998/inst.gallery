@@ -23,7 +23,8 @@
       }
     }
 
-    &--loading {
+    &--loading,
+    &--empty {
       background-color: var(--lk-bg);
 
       img {

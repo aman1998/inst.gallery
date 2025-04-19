@@ -32,21 +32,22 @@ export const useChangeProject = () => {
     });
   }, 300);
 
-  const changeBlock = () => {
-    if (!project) return;
+  const changeBlock = (value?: IProject) => {
+    const data = value ?? project;
+    if (!data) return;
 
     if (isDemo) {
-      setProject({ project, withOriginal: true });
+      setProject({ project: data, withOriginal: true });
       successMessage("Successfully changed!");
       return;
     }
 
     loadingMessage();
     changeProjectRequest({
-      data: project,
+      data,
       onSuccessCallback: () => {
         destroyMessage();
-        setProject({ project, withOriginal: true });
+        setProject({ project: data, withOriginal: true });
         successMessage("Successfully changed!");
       },
       onErrorCallback: () => {

@@ -32,7 +32,6 @@ interface Props {
 }
 
 const ContactsIcon: React.FC<Props> = ({ type }) => {
-  console.log("type =>", type);
   switch (type) {
     case "linkedin":
       return <LinkedinOutlined />;

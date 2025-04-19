@@ -17,8 +17,8 @@ export const ignoreLinks = [
 
 export const userSettingsSchema = object({
   name: string().trim().min(2, { message: "Min 2 symbols" }).max(50, { message: "Max 50 symbols" }),
-  profession: string().trim().min(2, { message: "Min 2 symbols" }).max(50, { message: "Max 50 symbols" }),
-  description: string().trim().min(2, { message: "Min 2 symbols" }).max(500, { message: "Max 500 symbols" }),
+  profession: string().trim().min(0, { message: "Min 0 symbols" }).max(50, { message: "Max 50 symbols" }),
+  description: string().trim().min(0, { message: "Min 0 symbols" }).max(500, { message: "Max 500 symbols" }),
   avatar: string().nullable().optional(),
   contacts: z
     .array(

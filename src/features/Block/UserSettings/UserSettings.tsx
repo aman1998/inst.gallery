@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Divider, Empty, Flex, Typography, Button, Modal, Select, Input, Space } from "antd";
+import { Divider, Empty, Flex, Typography, Button, Modal, Select, Input, Space, Image, Avatar } from "antd";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
@@ -70,10 +70,16 @@ const UserSettings: React.FC = () => {
 
   const handleUploadAvatar = (avatar: TNullable<string>) => {
     closeModal();
-    handleValueChange("user_info", {
-      ...project?.user_info,
-      avatar,
-    });
+
+    if (!project?.user_info) return;
+
+    const updatedProject = {
+      ...project,
+      user_info: { ...project.user_info, avatar },
+    };
+
+    setProject({ project: updatedProject });
+    handleSave(updatedProject);
   };
 
   React.useEffect(() => {
@@ -96,11 +102,28 @@ const UserSettings: React.FC = () => {
       </Show>
 
       <Divider>Avatar</Divider>
-      <Button style={{ display: "flex", margin: "0 auto" }} type="primary" size="small" onClick={openModal}>
-        Upload/Edit
-      </Button>
+      <div className={s.form__avatar}>
+        {/* {!project.user_info?.avatar ? <div /> : <Image width={48} height={48} src={project.user_info.avatar} />} */}
+        <Button style={{ display: "flex" }} type="primary" size="small" onClick={openModal}>
+          Upload/Edit
+        </Button>
+      </div>
+
       <Modal title="Upload avatar" open={isOpen} onCancel={closeModal} footer={null} destroyOnClose>
-        <UploadAvatar onSuccess={handleUploadAvatar} defaultImageUrl={project?.user_info?.avatar} />
+        <UploadAvatar onChange={handleUploadAvatar} defaultUrl={project?.user_info?.avatar} />
+        {/* <Controller
+          control={control}
+          name="avatar"
+          render={({ field: { onChange } }) => (
+            <UploadAvatar
+              onChange={(val) => {
+                onChange(val);
+                handleUploadAvatar(val);
+              }}
+              defaultUrl={project?.user_info?.avatar}
+            />
+          )}
+        /> */}
       </Modal>
 
       <Divider>About</Divider>
