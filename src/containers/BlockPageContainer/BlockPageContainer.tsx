@@ -9,6 +9,7 @@ import { projectSelector } from "@entities/Project/model/selectors";
 import { useProjectStore } from "@entities/Project/model/store";
 
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
+import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import Spinner from "@shared/ui/Spinner";
 import AntdProvider, { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
@@ -48,7 +49,9 @@ const BlockPageContainer: React.FC = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           style={{ zoom: "0.7" }}
         >
+          {/* <SmoothScrollProvider> */}
           <BlockBasicWidget project={project} block={block} />
+          {/* </SmoothScrollProvider> */}
         </motion.section>
       </AnimatePresence>
     </AntdProvider>

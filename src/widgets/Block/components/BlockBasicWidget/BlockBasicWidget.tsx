@@ -45,12 +45,13 @@ const BlockBasicWidget: React.FC<Props> = ({ block, project }) => {
     <div className={s.layout}>
       <Logo className={s.layout__logo} color={project.primary_color ?? PRIMARY_COLOR} name={project.meta?.title} />
 
-      <div className={s.layout__left}>
-        {project?.user_info ? <BlockUserInfo user_info={project.user_info} className={s.layout__user} /> : <div />}
-      </div>
+      <div className={s.layout__content}>
+        <div className={s.layout__left}>
+          {project?.user_info ? <BlockUserInfo user_info={project.user_info} className={s.layout__user} /> : <div />}
+        </div>
 
-      <div className={s.layout__right}>
-        {/* <nav className={s.navigation}>
+        <div className={s.layout__right}>
+          {/* <nav className={s.navigation}>
           <div
             className={s.navigation__item}
             style={{
@@ -75,7 +76,8 @@ const BlockBasicWidget: React.FC<Props> = ({ block, project }) => {
             <Typography.Text>Home</Typography.Text>
           </div>
         </nav> */}
-        <div className={s.layout__main}>{content}</div>
+          {content}
+        </div>
       </div>
     </div>
   );

@@ -40,15 +40,10 @@ $margin-top: 150px;
 .layout {
   background: var(--block-bg);
   padding: 20px 50px;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  grid-gap: 32px;
   flex: 1;
 
   @include respond(tablet) {
-    grid-template-columns: 1fr;
     padding: 16px;
-    grid-gap: 16px;
   }
 
   &__right {
@@ -58,13 +53,22 @@ $margin-top: 150px;
     }
   }
 
-  &__logo {
-    position: fixed;
-    top: 20px;
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-gap: 32px;
 
     @include respond(tablet) {
+      grid-template-columns: 1fr;
+      grid-gap: 16px;
+    }
+  }
+
+  &__logo {
+    position: sticky;
+    top: 20px;
+    @include respond(tablet) {
       position: static;
-      top: auto;
       display: flex;
       justify-content: center;
     }
@@ -72,7 +76,7 @@ $margin-top: 150px;
 
   &__user {
     position: sticky;
-    top: $margin-top;
+    top: 200px;
     margin-top: $margin-top;
     max-height: max-content;
 
