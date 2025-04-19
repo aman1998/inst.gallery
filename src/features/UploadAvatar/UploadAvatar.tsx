@@ -27,14 +27,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 type Props = {
-  defaultUrl?: TNullable<string>;
+  defaultValue?: TNullable<string>;
   onChange?: (fileUrl: TNullable<string>) => void;
   maxWidthOrHeight?: number;
   maxSizeMB?: number;
 };
 
 const UploadAvatar: React.FC<Props> = ({
-  defaultUrl,
+  defaultValue: defaultUrl,
   onChange: onChangeProp,
   maxWidthOrHeight = 500,
   maxSizeMB = 1,

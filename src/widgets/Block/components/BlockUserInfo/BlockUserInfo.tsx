@@ -31,7 +31,7 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
   console.log("user_info?.avatar =>", user_info?.avatar);
 
   return (
-    <section className={cn(s.info, className, "block-user-info")}>
+    <aside className={cn(s.info, className, "block-user-info")}>
       <div
         className={cn(
           s["info__avatar-wrapper"],
@@ -80,7 +80,7 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
       )}
 
       <FormItem className={s.info__description}>{description}</FormItem>
-    </section>
+    </aside>
   );
 };
 

@@ -20,6 +20,7 @@ const defaultValues = {
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
 }
 
 const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose }) => {

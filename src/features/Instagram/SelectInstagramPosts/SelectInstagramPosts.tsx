@@ -1,9 +1,9 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 import cn from "classnames";
+import { PlusOutlined } from "@ant-design/icons";
 
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
-
-import AddInstagramPostLink from "@features/Instagram/AddInstagramPostLink";
 
 import { useInstagramStore } from "@entities/Instagram/model/store";
 import {
@@ -17,24 +17,32 @@ import { MOCK_INSTAGRAM_POSTS } from "@entities/Instagram/lib/constants";
 
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import { useMessage } from "@shared/hooks/useMessage";
+import { useModal } from "@shared/hooks/useModal";
+import Button from "@shared/ui/Button";
+import { ROUTES } from "@shared/config/routes";
 
 import s from "./SelectInstagramPosts.module.scss";
+import CreateInstagramPost from "../CreateInstagramPost";
+import { Form } from "antd";
 
 interface Props {
   selectedPosts: IInstagramDownloadedPost[];
   setSelectedPosts: (val: IInstagramDownloadedPost[]) => void;
 
   limit?: number;
+  isCustomPosts?: boolean;
 }
 
-const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts, limit = 10 }) => {
+const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts, limit = 10, isCustomPosts }) => {
   const isLoading = useInstagramStore(instagramDownloadedPostsIsLoadingSelector);
   const posts = useInstagramStore(instagramDownloadedPostsSelector);
   const getInstagramPosts = useInstagramStore(getInstagramDownloadedPostsSelector);
 
+  const router = useRouter();
   const { user } = useUserInfo();
   const { errorMessage } = useMessage();
   const { isDemo } = useLKLayout();
+  const { isOpen, openModal, closeModal } = useModal();
 
   const handleSelect = (post: IInstagramDownloadedPost) => {
     const newSelectedPosts = selectedPosts.some((p) => p.id === post.id)
@@ -47,6 +55,14 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
   };
 
   const isSelected = (postId: string) => selectedPosts.some((p) => p.id === postId);
+
+  const handleAddClick = () => {
+    if (isCustomPosts) {
+      openModal();
+    } else {
+      router.push(ROUTES.instagramSelectAccount);
+    }
+  };
 
   React.useEffect(() => {
     if (!posts?.length && user?.id) {
@@ -66,7 +82,7 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
 
   if (isDemo) {
     return (
-      <div className={s.posts}>
+      <div className={s.posts__list}>
         {MOCK_INSTAGRAM_POSTS?.map((post) => (
           <div className={s["post-wrapper"]} key={post.id}>
             <InstagramImage
@@ -83,20 +99,40 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
   }
 
   return (
-    <div className={s.posts}>
-      <AddInstagramPostLink className={s.posts__link} />
-      {posts?.map((post) => (
-        <div className={s["post-wrapper"]} key={post.id}>
-          <InstagramImage
-            classNameWrapper={cn(s["post__image-wrapper"], isSelected(post.id) && s["post__image-wrapper--checked"])}
-            onClick={() => handleSelect(post)}
-            hoveredAction={false}
-            ActionComponent={null}
-            post={post}
+    <>
+      <div className={s.posts}>
+        <Form.Item layout="vertical" label="Upload new work">
+          <Button
+            type="dashed"
+            icon={<PlusOutlined />}
+            iconPosition="start"
+            onClick={handleAddClick}
+            className={s.posts__link}
+            style={{ height: "auto" }}
           />
-        </div>
-      ))}
-    </div>
+        </Form.Item>
+
+        <Form.Item layout="vertical" label="Uploaded works">
+          <div className={s.posts__list}>
+            {posts?.map((post) => (
+              <div className={s["post-wrapper"]} key={post.id}>
+                <InstagramImage
+                  classNameWrapper={cn(
+                    s["post__image-wrapper"],
+                    isSelected(post.id) && s["post__image-wrapper--checked"]
+                  )}
+                  onClick={() => handleSelect(post)}
+                  hoveredAction={false}
+                  ActionComponent={null}
+                  post={post}
+                />
+              </div>
+            ))}
+          </div>
+        </Form.Item>
+      </div>
+      <CreateInstagramPost isOpen={isOpen} onClose={closeModal} />
+    </>
   );
 };
 

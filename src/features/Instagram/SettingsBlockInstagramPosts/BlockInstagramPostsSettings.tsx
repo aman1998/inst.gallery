@@ -106,17 +106,16 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
           {errorMessage && <p className="error">{errorMessage}</p>}
 
           <Modal
-            closeIcon={null}
-            width={1000}
             open={isOpenAdd}
             onCancel={closeModalAdd}
             onClose={closeModalAdd}
-            title={`Add (${selectedPosts.length})`}
+            title={`Works (${selectedPosts.length})`}
             destroyOnClose
             afterClose={() => setSelectedPosts([])}
             footer={
               <Button
                 type="primary"
+                size="small"
                 disabled={!selectedPosts.length}
                 onClick={() => {
                   if (!selectedPosts.length) return;
@@ -133,6 +132,7 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
             }
           >
             <SelectInstagramPosts
+              isCustomPosts
               limit={uploadLimit - value.length}
               selectedPosts={selectedPosts}
               setSelectedPosts={setSelectedPosts}
@@ -140,17 +140,16 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
           </Modal>
 
           <Modal
-            closeIcon={null}
-            width={1000}
             open={isOpenEdit}
             onCancel={closeModalEdit}
             onClose={closeModalEdit}
-            title="Edit selected post"
+            title="Works"
             destroyOnClose
             afterClose={() => setSelectedPosts([])}
             footer={
               <Button
                 type="primary"
+                size="small"
                 disabled={selectedPosts.length !== 1}
                 onClick={() => {
                   if (editableIndex === null || selectedPosts.length > 1) return;
@@ -166,7 +165,12 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
               </Button>
             }
           >
-            <SelectInstagramPosts limit={1} selectedPosts={selectedPosts} setSelectedPosts={setSelectedPosts} />
+            <SelectInstagramPosts
+              isCustomPosts
+              limit={1}
+              selectedPosts={selectedPosts}
+              setSelectedPosts={setSelectedPosts}
+            />
           </Modal>
         </div>
       )}

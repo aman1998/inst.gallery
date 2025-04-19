@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { InstagramOutlined } from "@ant-design/icons";
 
 import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
 import BlockCollapseWidget from "@widgets/Block/BlockCollapseWidget";
@@ -16,8 +15,6 @@ import s from "./BlockBasicWidget.module.scss";
 
 import BlockListWidget from "../../BlockListWidget";
 import BlockUserInfo from "../BlockUserInfo";
-import FormItem from "@/shared/ui/FormItem";
-import { Typography } from "antd";
 
 interface Props {
   project: IProject;
@@ -31,7 +28,7 @@ const BlockBasicWidget: React.FC<Props> = ({ block, project }) => {
       case EBlockType.type1:
         return <BlockFlexWidget block={block} />;
       case EBlockType.type2:
-        return <BlockListWidget project={project} block={block} />;
+        return <BlockListWidget block={block} className={s.layout__widget} />;
       case EBlockType.type4:
         return <BlockCollapseWidget block={block} />;
       default:

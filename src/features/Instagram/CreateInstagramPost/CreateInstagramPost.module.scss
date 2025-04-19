@@ -15,7 +15,7 @@
   &__carousel-wrapper {
     @include flex-centered;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     width: 70vw;
 
     @include respond(tablet) {

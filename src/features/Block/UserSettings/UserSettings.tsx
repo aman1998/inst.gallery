@@ -110,20 +110,7 @@ const UserSettings: React.FC = () => {
       </div>
 
       <Modal title="Upload avatar" open={isOpen} onCancel={closeModal} footer={null} destroyOnClose>
-        <UploadAvatar onChange={handleUploadAvatar} defaultUrl={project?.user_info?.avatar} />
-        {/* <Controller
-          control={control}
-          name="avatar"
-          render={({ field: { onChange } }) => (
-            <UploadAvatar
-              onChange={(val) => {
-                onChange(val);
-                handleUploadAvatar(val);
-              }}
-              defaultUrl={project?.user_info?.avatar}
-            />
-          )}
-        /> */}
+        <UploadAvatar onChange={handleUploadAvatar} defaultValue={project?.user_info?.avatar} />
       </Modal>
 
       <Divider>About</Divider>

@@ -118,17 +118,6 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
               errorMessage={errors.posts?.message}
             />
           </div>
-          {/* <Button
-            iconPosition="start"
-            // icon={<PlusOutlined />}
-            type="dashed"
-            onClick={openModalAdd}
-            style={{ marginBottom: 16, width: "100%" }}
-            size="large"
-          >
-            Add
-          </Button> */}
-          {/* <CreateInstagramPost isOpen={isOpenAdd} onClose={closeModalAdd} /> */}
         </>
       )}
     </form>
