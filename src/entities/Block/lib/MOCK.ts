@@ -31,6 +31,7 @@ const advancedSettings: ICustomizeAdvanced = {
 };
 
 const postsSettings: ICustomizePosts = {
+  postsWithBg: true,
   postsLength: 6,
   postsType: EPostsListType.gallery,
   postsStyle: {
@@ -69,6 +70,7 @@ export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
 
   posts: [],
   postsSettings: {
+    postsWithBg: true,
     postsLength: 3,
     postsType: EPostsListType.grid,
     postsStyle: {

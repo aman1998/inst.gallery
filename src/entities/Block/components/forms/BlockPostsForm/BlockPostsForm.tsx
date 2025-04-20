@@ -1,7 +1,7 @@
 import React from "react";
 import type { Control, FieldErrors, Path } from "react-hook-form";
-import { Divider, Flex, Typography } from "antd";
-import { number, object, string, z } from "zod";
+import { Divider, Flex, Switch, Typography } from "antd";
+import { boolean, number, object, string, z } from "zod";
 
 import { useChangeBlock } from "@features/ChangeProject/lib/useChangeBlock";
 import { useCreateBlock } from "@features/Block/CreateBlock/lib/useCreateBlock";
@@ -9,7 +9,7 @@ import { useCreateBlockStore } from "@features/Block/CreateBlock/model/store";
 import { createdBlockSelector } from "@features/Block/CreateBlock/model/selectors";
 import BlockInstagramPostsSettings from "@features/Instagram/SettingsBlockInstagramPosts";
 
-import { TCustomizeBlocks } from "@entities/Block/model/customizeTypes";
+import { EPostsListType, TCustomizeBlocks } from "@entities/Block/model/customizeTypes";
 import { useBlockStore } from "@entities/Block/model/store";
 import { selectedBlockSelector } from "@entities/Block/model/selectors";
 import { isBlock1, isBlock2 } from "@entities/Block/model/types";
@@ -21,8 +21,10 @@ import FormItem from "@shared/ui/FormItem";
 import SliderControl from "@shared/controllers/SliderControl";
 
 import s from "./BlockPostsForm.module.scss";
+import SwitchControl from "@/shared/controllers/SwitchControl";
 
 export const postsCustomization = object({
+  postsWithBg: boolean(),
   postsLength: number().min(1, { message: "Min 1" }).max(6, { message: "Max 6" }),
   postsType: string().min(1, { message: "Min 1" }),
   postsGap: number().min(0, { message: "Min 0" }).max(24, { message: "Max 24" }),
@@ -120,6 +122,25 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
             name={"postsGap" as Path<T>}
             style={{ maxWidth: 100, height: 40, textAlign: "center" }}
           />
+        </Flex>
+
+        <Flex justify="space-between" align="center" gap={8}>
+          <Typography.Text strong>With Content</Typography.Text>
+          {block.customization.postsSettings.postsType !== EPostsListType.grid ? (
+            <Switch value={false} disabled />
+          ) : (
+            <SwitchControl
+              onChange={(value) =>
+                handleChange("postsSettings", {
+                  ...block?.customization.postsSettings,
+                  postsWithBg: value,
+                })
+              }
+              control={control}
+              errorMessage={errors.postsWithBg?.message as string}
+              name={"postsWithBg" as Path<T>}
+            />
+          )}
         </Flex>
 
         <Typography.Text strong>Border Radius</Typography.Text>

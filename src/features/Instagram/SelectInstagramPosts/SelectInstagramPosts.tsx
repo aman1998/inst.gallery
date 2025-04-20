@@ -72,28 +72,58 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
 
   if (isLoading && !isDemo) {
     return (
-      <div className={s.posts}>
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div className={s.posts__skeleton} style={{ width: "100%", height: 280 }} key={i} />
-        ))}
+      <div>
+        <Form.Item layout="vertical" label="Upload new work">
+          <Button
+            type="dashed"
+            icon={<PlusOutlined />}
+            iconPosition="start"
+            className={s.posts__link}
+            style={{ height: "auto" }}
+          />
+        </Form.Item>
+
+        <div className={s.posts__list}>
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div className={s.posts__skeleton} style={{ width: "100%", height: 100 }} key={i} />
+          ))}
+        </div>
       </div>
     );
   }
 
   if (isDemo) {
     return (
-      <div className={s.posts__list}>
-        {MOCK_INSTAGRAM_POSTS?.map((post) => (
-          <div className={s["post-wrapper"]} key={post.id}>
-            <InstagramImage
-              classNameWrapper={cn(s["post__image-wrapper"], isSelected(post.id) && s["post__image-wrapper--checked"])}
-              onClick={() => handleSelect(post)}
-              hoveredAction={false}
-              ActionComponent={null}
-              post={post}
-            />
+      <div className={s.posts}>
+        <Form.Item layout="vertical" label="Upload new work">
+          <Button
+            type="dashed"
+            icon={<PlusOutlined />}
+            iconPosition="start"
+            disabled={isDemo}
+            onClick={handleAddClick}
+            className={s.posts__link}
+            style={{ height: "auto" }}
+          />
+        </Form.Item>
+        <Form.Item layout="vertical" label="Uploaded works">
+          <div className={s.posts__list}>
+            {MOCK_INSTAGRAM_POSTS?.map((post) => (
+              <div className={s["post-wrapper"]} key={post.id}>
+                <InstagramImage
+                  classNameWrapper={cn(
+                    s["post__image-wrapper"],
+                    isSelected(post.id) && s["post__image-wrapper--checked"]
+                  )}
+                  onClick={() => handleSelect(post)}
+                  hoveredAction={false}
+                  ActionComponent={null}
+                  post={post}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        </Form.Item>
       </div>
     );
   }

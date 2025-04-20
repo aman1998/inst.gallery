@@ -67,6 +67,7 @@ export interface ICustomizeAdvanced {
 }
 
 export interface ICustomizePosts {
+  postsWithBg: boolean;
   postsLength: number;
   postsType: EPostsListType;
   postsStyle: Pick<React.CSSProperties, "gap">;

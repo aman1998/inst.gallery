@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import BlockBasicWidget from "@/widgets/Block/components/BlockBasicWidget";
+import BlockBasicWidget from "@/widgets/Block/widgets/BasicWidget";
 
 import { IProject } from "@entities/Project/model/types";
 import { ESubscriptionPlan } from "@entities/Subscription/model/types";
@@ -42,7 +42,7 @@ const SitePageContainer: React.FC<Props> = ({ project, plan }) => {
               href={ROUTES.home}
               target="_blank"
               type="default"
-              style={{ height: 30, fontSize: 12, padding: "0 8px" }}
+              style={{ height: 30, fontSize: 14, padding: "0 8px" }}
             >
               Want a page like this?
             </Button>

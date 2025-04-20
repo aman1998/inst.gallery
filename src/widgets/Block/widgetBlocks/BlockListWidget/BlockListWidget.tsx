@@ -9,6 +9,7 @@ import { IBlock, isBlock2 } from "@entities/Block/model/types";
 import FormItem from "@shared/ui/FormItem";
 
 import s from "./BlockListWidget.module.scss";
+import { Typography } from "antd";
 
 interface Props {
   block: IBlock;
@@ -20,7 +21,9 @@ const BlockListWidget: React.FC<Props> = ({ block, className }) => {
 
   return (
     <section className={cn(s.block, className)}>
-      {/* <Title level={3}>Portfolio</Title> */}
+      {/* <Typography.Title level={3} style={{ margin: 0 }}>
+        Portfolio
+      </Typography.Title> */}
       {block.customization.description && (
         <FormItem className={s.info__contacts}>{block.customization.description}</FormItem>
       )}

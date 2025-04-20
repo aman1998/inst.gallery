@@ -38,8 +38,8 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     annualPrice: 0,
     mainFeatures: [
       { title: "Works", value: FREE_MAX_POSTS },
-      { title: "Blocks", value: FREE_MAX_BLOCKS },
-      { title: "Image type", value: "Single" },
+      // { title: "Blocks", value: FREE_MAX_BLOCKS },
+      { title: "Image", value: "Single" },
       { title: "Widget type", value: "Basic" },
     ],
     detailedFeatures: [
@@ -57,8 +57,8 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     annualPrice: PERSONAL_ANNUAL_PRICE,
     mainFeatures: [
       { title: "Works", value: PERSONAL_MAX_POSTS },
-      { title: "Blocks", value: PERSONAL_MAX_BLOCKS },
-      { title: "Image type", value: "Single | Carousel | Video" },
+      // { title: "Blocks", value: PERSONAL_MAX_BLOCKS },
+      { title: "Image", value: "Single | Carousel | Video" },
       { title: "Widget type", value: "Advanced" },
     ],
     detailedFeatures: [
@@ -78,7 +78,7 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
   //   annualPrice: BUSINESS_ANNUAL_PRICE,
   //   mainFeatures: [
   //     { title: "Works", value: 100 },
-  //     { title: "Image type", value: " Image | Carousel | Video" },
+  //     { title: "Image", value: " Image | Carousel | Video" },
   //   ],
   //   detailedFeatures: [
   //     { title: "Multiple Instagram accounts", included: true },

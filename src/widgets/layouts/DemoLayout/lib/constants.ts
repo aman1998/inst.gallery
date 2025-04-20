@@ -5,7 +5,7 @@ import { IProject } from "@entities/Project/model/types";
 
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 import { ROUTES } from "@shared/config/routes";
-import { SITE_DESCRIPTION, SITE_EMAIL } from "@shared/config/appConfig";
+import { INSTAGRAM_URL, SITE_DESCRIPTION, SITE_EMAIL } from "@shared/config/appConfig";
 
 export const DEMO_BLOCKS: IBlock[] = [
   {
@@ -30,7 +30,13 @@ export const DEMO_PROJECT: IProject = {
     profession: "FullStack Developer",
     description:
       "Hello and welcome to my portfolio! I’m a passionate full-stack developer with a love for crafting elegant, modern web experiences. My journey through the ever-evolving world of web development has been both dynamic and deeply rewarding. I thrive on learning new technologies, embracing innovation, and continuously refining my skills to stay at the forefront of the digital landscape.",
-    avatar: null,
+    avatar: "/images/ronaldo.jpg",
+    contacts: [
+      {
+        type: "instagram",
+        value: INSTAGRAM_URL,
+      },
+    ],
   },
   blocks: DEMO_BLOCKS,
   meta: {

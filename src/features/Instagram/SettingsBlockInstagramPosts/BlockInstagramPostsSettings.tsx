@@ -109,7 +109,8 @@ const BlockInstagramPostsSettings = <T extends FieldValues>({
             open={isOpenAdd}
             onCancel={closeModalAdd}
             onClose={closeModalAdd}
-            title={`Works (${selectedPosts.length})`}
+            // title={`Works (${selectedPosts.length})`}
+            title="Works"
             destroyOnClose
             afterClose={() => setSelectedPosts([])}
             footer={

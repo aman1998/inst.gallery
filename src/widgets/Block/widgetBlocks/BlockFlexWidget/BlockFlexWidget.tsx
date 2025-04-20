@@ -9,9 +9,8 @@ import BlockButton from "@entities/Block/components/BlockButton";
 import Title from "@shared/ui/Title";
 import Show from "@shared/ui/Show";
 
-import BlockPosts from "../components/BlockPosts";
-
 import s from "./BlockFlexWidget.module.scss";
+import BlockPosts from "../../components/BlockPosts";
 
 interface Props {
   block: IBlock;

@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
+import BlockFlexWidget from "@widgets/Block/widgetBlocks/BlockFlexWidget";
 import VideoPlayerWidget from "@widgets/VideoPlayerWidget";
 
 import { MOCK_BLOCK_1_CUSTOMIZATION, MOCK_BLOCK_4_CUSTOMIZATION } from "@entities/Block/lib/MOCK";
@@ -22,7 +22,7 @@ const SubscriptionPlans = dynamic(() => import("@widgets/Subscription/Subscripti
   ssr: false,
 });
 
-const BlockCollapseWidget = dynamic(() => import("@widgets/Block/BlockCollapseWidget"), {
+const BlockCollapseWidget = dynamic(() => import("@/widgets/Block/widgetBlocks/BlockCollapseWidget"), {
   ssr: false,
 });
 

@@ -19,4 +19,9 @@
       display: none !important;
     }
   }
+  &-contacts__value {
+    @include textEllipsis;
+    display: block;
+    max-width: 200px;
+  }
 }

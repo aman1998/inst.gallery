@@ -66,7 +66,7 @@ const DemoLayout: React.FC<Props> = ({ children }) => {
   const [navigation, setNavigation] = React.useState<ELKLayoutNavigation>(ELKLayoutNavigation.main);
   const [subNavigation, setSubNavigation] = React.useState<EBlockNavigation>(EBlockNavigation.blocks);
   const [subscriptions, setSubscription] = React.useState<TNullable<TSubscriptionPaddle[]>>([]);
-  const [plan, setPlan] = React.useState<ESubscriptionPlan>(ESubscriptionPlan.business);
+  const [plan, setPlan] = React.useState<ESubscriptionPlan>(ESubscriptionPlan.free);
   const [frequency, setFrequency] = React.useState<ESubscriptionFrequency>(ESubscriptionFrequency.annual);
 
   const setBlocks = useBlockStore(setBlocksSelector);

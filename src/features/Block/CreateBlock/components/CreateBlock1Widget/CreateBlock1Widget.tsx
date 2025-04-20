@@ -53,12 +53,12 @@ const CreateBlock1Widget: React.FC = () => {
     postsGap: Number(MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsStyle.gap),
     postsLength: Number(MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsLength),
     postsType: MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsType,
+    postsWithBg: MOCK_BLOCK_1_CUSTOMIZATION.postsSettings.postsWithBg,
+    posts: selectedPosts?.length ? selectedPosts : MOCK_BLOCK_1_CUSTOMIZATION.posts,
 
     withBg: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.withBg,
     bgColor: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.bgColor,
     textColor: MOCK_BLOCK_1_CUSTOMIZATION.advancedSettings.textColor,
-
-    posts: selectedPosts?.length ? selectedPosts : MOCK_BLOCK_1_CUSTOMIZATION.posts,
 
     buttonVisible: MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings.buttonVisible,
     buttonWithArrow: MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings.buttonWithArrow,

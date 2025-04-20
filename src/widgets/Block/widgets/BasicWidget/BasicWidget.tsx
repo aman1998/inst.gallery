@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import BlockFlexWidget from "@widgets/Block/BlockFlexWidget";
-import BlockCollapseWidget from "@widgets/Block/BlockCollapseWidget";
+import BlockCollapseWidget from "@/widgets/Block/widgetBlocks/BlockCollapseWidget";
+import { InstagramOutlined } from "@ant-design/icons";
 
 import { EBlockType, IBlock } from "@entities/Block/model/types";
 import { IProject } from "@entities/Project/model/types";
@@ -11,10 +11,12 @@ import { TNullable } from "@shared/types/common";
 import Logo from "@shared/ui/Logo";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
-import s from "./BlockBasicWidget.module.scss";
+import s from "./BasicWidget.module.scss";
 
-import BlockListWidget from "../../BlockListWidget";
-import BlockUserInfo from "../BlockUserInfo";
+import BlockFlexWidget from "../../widgetBlocks/BlockFlexWidget";
+import BlockListWidget from "../../widgetBlocks/BlockListWidget";
+import BlockUserInfo from "../../components/BlockUserInfo";
+import { Typography } from "antd";
 
 interface Props {
   project: IProject;
@@ -49,30 +51,30 @@ const BlockBasicWidget: React.FC<Props> = ({ block, project }) => {
 
         <div className={s.layout__right}>
           {/* <nav className={s.navigation}>
-          <div
-            className={s.navigation__item}
-            style={{
-              color: "var(--white)",
-              background: project.primary_color ?? PRIMARY_COLOR,
-              boxShadow: "0 0 12px rgba(0, 0, 0, 0.3)",
-            }}
-          >
-            <InstagramOutlined />
-            <Typography.Text>Portfolio</Typography.Text>
-          </div>
-          <div className={s.navigation__item}>
-            <InstagramOutlined />
-            <Typography.Text>Home</Typography.Text>
-          </div>
-          <div className={s.navigation__item}>
-            <InstagramOutlined />
-            <Typography.Text>Home</Typography.Text>
-          </div>
-          <div className={s.navigation__item}>
-            <InstagramOutlined />
-            <Typography.Text>Home</Typography.Text>
-          </div>
-        </nav> */}
+            <div
+              className={s.navigation__item}
+              style={{
+                color: "var(--white)",
+                background: project.primary_color ?? PRIMARY_COLOR,
+                boxShadow: "0 0 12px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              <InstagramOutlined />
+              <Typography.Text>Portfolio</Typography.Text>
+            </div>
+            <div className={s.navigation__item}>
+              <InstagramOutlined />
+              <Typography.Text>Home</Typography.Text>
+            </div>
+            <div className={s.navigation__item}>
+              <InstagramOutlined />
+              <Typography.Text>Home</Typography.Text>
+            </div>
+            <div className={s.navigation__item}>
+              <InstagramOutlined />
+              <Typography.Text>Home</Typography.Text>
+            </div>
+          </nav> */}
           {content}
         </div>
       </div>

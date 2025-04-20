@@ -167,7 +167,8 @@ const UserSettings: React.FC = () => {
               {value.map((link, index) => (
                 <Flex key={index} align="center" justify="space-between">
                   <Space>
-                    <ContactsIcon type={link.type} /> <Typography.Text>{link.value}</Typography.Text>
+                    <ContactsIcon type={link.type} />{" "}
+                    <Typography.Text className={s["form-contacts__value"]}>{link.value}</Typography.Text>
                   </Space>
                   <Button
                     size="small"

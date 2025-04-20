@@ -7,6 +7,7 @@ import { getInstagramPostImage } from "@entities/Instagram/lib/utils";
 import { EPostsListType, ICustomizeBlock1, ICustomizeBlock2 } from "@entities/Block/model/customizeTypes";
 
 import s from "./BlockPosts.module.scss";
+import { Typography } from "antd";
 
 interface Props {
   customization: ICustomizeBlock1 | ICustomizeBlock2;
@@ -16,7 +17,7 @@ interface Props {
 const BlockPosts: React.FC<Props> = ({ customization, className }) => {
   const {
     posts,
-    postsSettings: { postsStyle, postsLength, postsType },
+    postsSettings: { postsStyle, postsLength, postsType, postsWithBg },
     imageStyle,
     imageWrapperStyle,
   } = customization;
@@ -57,7 +58,7 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
     return (
       <div className={cn(s.grid, s[`grid--${postsLength}`], className)} style={postsStyle}>
         {posts.map((post, index) => (
-          <div key={index} className={s["grid-card"]}>
+          <div key={index} className={cn(s["grid-card"], postsWithBg && s["grid-card--bg"])}>
             <InstagramImageCard
               index={index}
               wrapperStyle={imageWrapperStyle}
@@ -68,6 +69,16 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
               alt="image"
               fill
             />
+            {postsWithBg && (
+              <>
+                <Typography.Title level={5} style={{ margin: 0 }} className={s["grid-card__title"]}>
+                  {post.username}
+                </Typography.Title>
+                <Typography.Paragraph style={{ margin: 0 }} className={s["grid-card__text"]}>
+                  {post.caption}
+                </Typography.Paragraph>
+              </>
+            )}
           </div>
         ))}
       </div>
@@ -76,15 +87,15 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
 
   return (
     <div className={cn(s.gallery, s[`gallery--${posts.length}`], className)} style={postsStyle}>
-      {posts?.map((item, index) => {
-        const mediaUrl = getInstagramPostImage(item);
+      {posts?.map((post, index) => {
+        const mediaUrl = getInstagramPostImage(post);
 
         if (!mediaUrl) return null;
 
         return (
           <div
             className={cn(s.gallery__item, s[`grid__item--${index + 1}`])}
-            key={item.id}
+            key={post.id}
             style={{ ...imageWrapperStyle, borderRadius: `${imageWrapperStyle?.borderRadius}%` }}
           >
             <InstagramImageCard

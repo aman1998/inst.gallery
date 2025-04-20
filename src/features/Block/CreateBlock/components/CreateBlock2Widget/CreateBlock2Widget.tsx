@@ -40,6 +40,7 @@ const CreateBlock2Widget: React.FC = () => {
     postsGap: Number(MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsStyle.gap),
     postsLength: Number(MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsLength),
     postsType: MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsType,
+    postsWithBg: MOCK_BLOCK_2_CUSTOMIZATION.postsSettings.postsWithBg,
     posts: selectedPosts?.length ? selectedPosts : MOCK_BLOCK_2_CUSTOMIZATION.posts,
   };
 

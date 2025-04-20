@@ -75,6 +75,7 @@ const CustomizeBlock1Widget: React.FC<Props> = ({ isPosts }) => {
       postsGap: Number(selectedOriginalBlock.customization.postsSettings.postsStyle.gap),
       postsLength: Number(selectedOriginalBlock.customization.postsSettings.postsLength),
       postsType: selectedOriginalBlock.customization.postsSettings.postsType,
+      postsWithBg: !!selectedOriginalBlock.customization.postsSettings?.postsWithBg,
 
       posts: selectedOriginalBlock.customization.posts,
 

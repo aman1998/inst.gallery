@@ -13,7 +13,7 @@ import SmoothScrollProvider from "@shared/providers/SmoothScrollProvider";
 import Spinner from "@shared/ui/Spinner";
 import AntdProvider, { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
-const BlockBasicWidget = dynamic(() => import("@/widgets/Block/components/BlockBasicWidget"), {
+const BlockBasicWidget = dynamic(() => import("@/widgets/Block/widgets/BasicWidget"), {
   ssr: false,
   loading: () => <Spinner style={{ display: "flex", justifyContent: "center", width: "100%" }} />,
 });
