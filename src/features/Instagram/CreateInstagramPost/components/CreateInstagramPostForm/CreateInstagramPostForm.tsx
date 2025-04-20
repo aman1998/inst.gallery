@@ -91,7 +91,6 @@ const CreateInstagramPostForm: React.FC<Props> = ({ className, control }) => {
             return (
               <UploadInstagramMedia
                 onPostGenerated={(post) => {
-                  console.log("post", post);
                   onChange([post]);
                 }}
               />

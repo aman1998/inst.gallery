@@ -28,8 +28,6 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
   const textContacts = contacts?.filter((c) => c.type === "phone" || c.type === "email" || c.type === "whatsapp");
   const linkContacts = contacts?.filter((c) => c.type !== "phone" && c.type !== "email" && c.type !== "whatsapp");
 
-  console.log("user_info?.avatar =>", user_info?.avatar);
-
   return (
     <aside className={cn(s.info, className, "block-user-info")}>
       <div

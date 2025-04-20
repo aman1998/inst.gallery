@@ -41,10 +41,10 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
 
     if (type === EInstagramType.IMAGE) {
       return {
+        username: "",
         caption: "",
         thumbnail_url: null,
         timestamp: new Date().toString(),
-        username: SITE_NAME,
         permalink: INSTAGRAM_URL,
         id,
         media_type: EInstagramType.IMAGE,
@@ -115,9 +115,6 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
           })
         )
       );
-
-      console.log("compressFiles =>", compressFiles);
-      console.log("files =>", files);
 
       if (compressFiles === null) {
         errorMessage("Failed to generate post");

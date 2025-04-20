@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import cn from "classnames";
 
 import BlockCollapseWidget from "@/widgets/Block/widgetBlocks/BlockCollapseWidget";
 import { InstagramOutlined } from "@ant-design/icons";
@@ -42,7 +43,11 @@ const BlockBasicWidget: React.FC<Props> = ({ block, project }) => {
 
   return (
     <div className={s.layout}>
-      <Logo className={s.layout__logo} color={project.primary_color ?? PRIMARY_COLOR} name={project.meta?.title} />
+      <Logo
+        className={cn(s.layout__logo, "lk-layout__logo")}
+        color={project.primary_color ?? PRIMARY_COLOR}
+        name={project.meta?.title}
+      />
 
       <div className={s.layout__content}>
         <div className={s.layout__left}>

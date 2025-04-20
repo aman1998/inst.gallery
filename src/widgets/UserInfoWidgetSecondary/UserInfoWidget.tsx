@@ -24,7 +24,7 @@ interface Props {
 }
 const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
   const project = useProjectStore(projectSelector);
-  const selectedBlock = useBlockStore(selectedBlockSelector)
+  const selectedBlock = useBlockStore(selectedBlockSelector);
   const { isDemo } = useLKLayout();
   const { plan } = useSubscriptionsInfo();
   const { maxUploadPosts } = getSubscriptionsConfig(plan);
@@ -32,7 +32,9 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
   return (
     <div className={cn(s.card, className)}>
       <div className={s.card__header}>
-        <Typography.Title level={4} className={s.card__title} style={{ margin: 0 }}>{isDemo ? "DEMO" : "Page Settings"}</Typography.Title>
+        <Typography.Title level={4} className={s.card__title} style={{ margin: 0 }}>
+          {isDemo ? "DEMO" : "Page Settings"}
+        </Typography.Title>
         {ActionComponent}
       </div>
       <div className={s.stats}>
@@ -51,7 +53,9 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
         <div className={s.stat}>
           <p className={s.stat__title}>Works</p>
           {/* @ts-ignore */}
-          <p className={s.stat__text}>{!selectedBlock ? "" : `${selectedBlock?.customization?.posts?.length} / ${maxUploadPosts}`}</p>
+          <p className={s.stat__text}>
+            {!selectedBlock ? "" : `${selectedBlock?.customization?.posts?.length} / ${maxUploadPosts}`}
+          </p>
         </div>
       </div>
     </div>
