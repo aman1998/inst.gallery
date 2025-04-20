@@ -44,6 +44,7 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     ],
     detailedFeatures: [
       { title: "Priority support", included: false },
+      { title: "No service branding", included: false },
       { title: "Analytics", included: false },
     ],
     buttonText: "Get Started",
@@ -63,6 +64,7 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     ],
     detailedFeatures: [
       { title: "Priority support", included: true },
+      { title: "No service branding", included: true },
       { title: "Analytics", included: true },
     ],
     buttonText: "Get Started",

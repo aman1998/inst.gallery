@@ -75,20 +75,26 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
     return (
       <div>
         <Form.Item layout="vertical" label="Upload new work">
-          <Button
-            type="dashed"
-            icon={<PlusOutlined />}
-            iconPosition="start"
-            className={s.posts__link}
-            style={{ height: "auto" }}
-          />
+          <Button type="dashed" icon={<PlusOutlined />} iconPosition="start" className={s.posts__add} />
         </Form.Item>
 
-        <div className={s.posts__list}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div className={s.posts__skeleton} style={{ width: "100%", height: 100 }} key={i} />
-          ))}
-        </div>
+        <Form.Item
+          layout="vertical"
+          label={
+            <Flex justify="space-between" style={{ width: "100%" }}>
+              <p>Uploaded works</p>
+              <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
+                All works
+              </Link>
+            </Flex>
+          }
+        >
+          <div className={s.posts__list}>
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div className={s.posts__skeleton} style={{ width: "100%", height: 100 }} key={i} />
+            ))}
+          </div>
+        </Form.Item>
       </div>
     );
   }
@@ -104,7 +110,6 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
             disabled={isDemo}
             onClick={handleAddClick}
             className={s.posts__add}
-            style={{ height: "auto" }}
           />
         </Form.Item>
         <Form.Item
@@ -149,7 +154,6 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
             iconPosition="start"
             onClick={handleAddClick}
             className={s.posts__add}
-            style={{ height: "auto" }}
           />
         </Form.Item>
 

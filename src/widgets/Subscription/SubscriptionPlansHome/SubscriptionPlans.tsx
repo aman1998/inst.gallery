@@ -81,6 +81,7 @@ const SubscriptionPlans: React.FC = () => {
               onClick={() => {
                 window.open(ROUTES.signIn);
               }}
+              disabled={!!plan.isPaused}
               type={plan.buttonType}
               block
               className={s.plans__btn}
