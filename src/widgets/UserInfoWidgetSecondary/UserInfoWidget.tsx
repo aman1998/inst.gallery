@@ -50,13 +50,12 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
           <p className={s.stat__title}>Widget</p>
           <p className={s.stat__text}>Basic</p>
         </div>
-        <div className={s.stat}>
+        {/* <div className={s.stat}>
           <p className={s.stat__title}>Works</p>
-          {/* @ts-ignore */}
           <p className={s.stat__text}>
             {!selectedBlock ? "" : `${selectedBlock?.customization?.posts?.length} / ${maxUploadPosts}`}
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

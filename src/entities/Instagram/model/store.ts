@@ -152,7 +152,7 @@ const useInstagramStoreBase = create<InstagramStore>()(
       addInstagramDownloadedPostsInList: (post) => {
         set((state) => {
           if (!state.instagramDownloadedPosts.data) return;
-          const currentIndex = state.instagramDownloadedPosts?.data.findIndex((item) => item.id === post.id);
+          const currentIndex = state.instagramDownloadedPosts?.data.findIndex((item) => item.uuid === post.uuid);
 
           if (currentIndex !== -1) {
             state.instagramDownloadedPosts.data.splice(currentIndex, 1, post);
@@ -164,7 +164,7 @@ const useInstagramStoreBase = create<InstagramStore>()(
       deleteInstagramDownloadedPostsInList: (id) => {
         set((state) => {
           if (!state.instagramDownloadedPosts.data) return;
-          const currentIndex = state.instagramDownloadedPosts?.data.findIndex((item) => item.id === id);
+          const currentIndex = state.instagramDownloadedPosts?.data.findIndex((item) => item.uuid === id);
 
           if (currentIndex !== -1) {
             state.instagramDownloadedPosts.data.splice(currentIndex, 1);

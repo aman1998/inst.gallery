@@ -18,18 +18,18 @@ const InstagramPostsActionComponent: React.FC<Props> = ({ post }) => (
     destroyTooltipOnHide
     trigger="click"
     placement="bottomRight"
-    content={<InstagramPostPopoverInfo post={post} slug={post.accountId} />}
-    title={
+    // content={<InstagramPostPopoverInfo post={post} slug={post.accountId} />}
+    content={
       <div
         className={s["post__popover-header"]}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <Typography.Title level={5}>Post info</Typography.Title>
-        <DeleteInstagramPost id={post.id} />
+        <DeleteInstagramPost id={post.uuid} />
       </div>
     }
+    title={null}
   >
     <InfoCircleFilled
       onClick={(e) => {

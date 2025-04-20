@@ -24,6 +24,7 @@ import CreateInstagramPostHeader from "./components/CreateInstagramPostHeader";
 import CreateInstagramPostForm from "./components/CreateInstagramPostForm";
 import { TCustomizeCreateInstagramPostSchema, customizeCreateInstagramPostSchema } from "./lib/schema";
 import s from "./CreateInstagramPost.module.scss";
+import { useUserInfo } from "@/shared/providers/UserProvider/lib/useUserInfo";
 
 const IGNORE_CLASS = "antd-instagram-post";
 const defaultValues = {
@@ -52,6 +53,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
   const downloadedPosts = useInstagramStore(instagramDownloadedPostsSelector);
 
   const supabase = createClient();
+  const { user } = useUserInfo();
 
   const {
     control,
@@ -85,9 +87,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
     loadingMessage("In process");
 
     try {
-      // const newPost = { ...post, accountId: slug, downloaded_id: post.id + user?.id };
-
-      const newPost = post;
+      const newPost = { ...post, downloaded_id: post.id + user?.id };
 
       if (post.media_type === EInstagramType.IMAGE && post.media_url) {
         newPost.media_url =
@@ -151,6 +151,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
           </Link>
         </div>
       );
+      reset(defaultValues);
       onSuccess?.();
       onClose?.();
       setIsLoading(false);

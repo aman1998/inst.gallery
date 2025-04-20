@@ -18,7 +18,7 @@ export interface IInstagramPostChild {
 }
 
 export interface IInstagramPost {
-  id: string; // ID поста
+  id: string; // ID инстаграм поста
   caption?: string; // Текст поста (опционально)
   media_type: EInstagramType; // Тип медиа
   media_url?: string; // Ссылка на основное медиа
@@ -36,6 +36,7 @@ export interface IInstagramDownloadedPost<T extends object = object> extends IIn
   created_at: string;
   downloaded_id: string; // id поста + user id
   customData?: T; // Кастомные данные для поста (заголовок, описание и тд)
+  uuid: string; // Уникальный id сгенерированный на стороне supabase, по-нему советую удалять и изменять посты
 }
 
 export interface IInstagramAccount {

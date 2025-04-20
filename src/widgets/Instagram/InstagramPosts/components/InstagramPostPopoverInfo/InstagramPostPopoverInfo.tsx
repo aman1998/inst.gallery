@@ -11,8 +11,6 @@ import {
   PlusCircleFilled,
 } from "@ant-design/icons";
 
-import DeleteInstagramPost from "@features/Instagram/DeleteInstagramPost";
-
 import { IInstagramDownloadedPost } from "@entities/Instagram/model/types";
 import { useInstagramStore } from "@entities/Instagram/model/store";
 import {

@@ -10,7 +10,6 @@ import { EInstagramType, IInstagramPost } from "@entities/Instagram/model/types"
 import Button from "@shared/ui/Button";
 import CarouselCustom from "@shared/ui/CarouselCustom";
 import s from "./CreateInstagramPostForm.module.scss";
-import { uploadFileToSupabase } from "@/shared/config/supabase/actions";
 import UploadInstagramMedia from "@/features/Instagram/UploadInstagramMedia";
 import { TNullable } from "@/shared/types/common";
 import { TCustomizeCreateInstagramPostSchema } from "../../lib/schema";

@@ -41,10 +41,10 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
 
     if (type === EInstagramType.IMAGE) {
       return {
-        username: "",
         caption: "",
         thumbnail_url: null,
         timestamp: new Date().toString(),
+        username: "",
         permalink: INSTAGRAM_URL,
         id,
         media_type: EInstagramType.IMAGE,

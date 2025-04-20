@@ -23,7 +23,8 @@ import { ROUTES } from "@shared/config/routes";
 
 import s from "./SelectInstagramPosts.module.scss";
 import CreateInstagramPost from "../CreateInstagramPost";
-import { Form } from "antd";
+import { Flex, Form } from "antd";
+import Link from "next/link";
 
 interface Props {
   selectedPosts: IInstagramDownloadedPost[];
@@ -102,11 +103,21 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
             iconPosition="start"
             disabled={isDemo}
             onClick={handleAddClick}
-            className={s.posts__link}
+            className={s.posts__add}
             style={{ height: "auto" }}
           />
         </Form.Item>
-        <Form.Item layout="vertical" label="Uploaded works">
+        <Form.Item
+          layout="vertical"
+          label={
+            <Flex justify="space-between" style={{ width: "100%" }}>
+              <p>Uploaded works</p>
+              <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
+                All works
+              </Link>
+            </Flex>
+          }
+        >
           <div className={s.posts__list}>
             {MOCK_INSTAGRAM_POSTS?.map((post) => (
               <div className={s["post-wrapper"]} key={post.id}>
@@ -137,27 +148,41 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
             icon={<PlusOutlined />}
             iconPosition="start"
             onClick={handleAddClick}
-            className={s.posts__link}
+            className={s.posts__add}
             style={{ height: "auto" }}
           />
         </Form.Item>
 
-        <Form.Item layout="vertical" label="Uploaded works">
+        <Form.Item
+          layout="vertical"
+          label={
+            <Flex justify="space-between" style={{ width: "100%" }}>
+              <p>Uploaded works</p>
+              <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
+                All works
+              </Link>
+            </Flex>
+          }
+        >
           <div className={s.posts__list}>
-            {posts?.map((post) => (
-              <div className={s["post-wrapper"]} key={post.id}>
-                <InstagramImage
-                  classNameWrapper={cn(
-                    s["post__image-wrapper"],
-                    isSelected(post.id) && s["post__image-wrapper--checked"]
-                  )}
-                  onClick={() => handleSelect(post)}
-                  hoveredAction={false}
-                  ActionComponent={null}
-                  post={post}
-                />
-              </div>
-            ))}
+            {!posts?.length ? (
+              <p>Empty</p>
+            ) : (
+              posts?.map((post) => (
+                <div className={s["post-wrapper"]} key={post.id}>
+                  <InstagramImage
+                    classNameWrapper={cn(
+                      s["post__image-wrapper"],
+                      isSelected(post.id) && s["post__image-wrapper--checked"]
+                    )}
+                    onClick={() => handleSelect(post)}
+                    hoveredAction={false}
+                    ActionComponent={null}
+                    post={post}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </Form.Item>
       </div>

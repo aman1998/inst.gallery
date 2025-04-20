@@ -75,20 +75,23 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
           {/* <Avatar style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}>{post.username[0].toUpperCase()}</Avatar> */}
-          <Typography.Title level={5} onClick={() => window.open(post.permalink)} className={s.post__username}>
+          {/* <Typography.Title level={5} onClick={() => window.open(post.permalink)} className={s.post__username}> */}
+          <Typography.Title level={5} className={s.post__username}>
             {post.username}
           </Typography.Title>
         </div>
         <div className={s.post__content}>{post.caption}</div>
-        <Button
-          onClick={() => window.open(post.permalink)}
-          type="text"
-          icon={<DoubleRightOutlined />}
-          className={s.post__btn}
-        >
-          <div />
-          {/* More details */}
-        </Button>
+        {!!post.permalink && (
+          <Button
+            onClick={() => window.open(post.permalink)}
+            type="text"
+            icon={<DoubleRightOutlined />}
+            className={s.post__btn}
+          >
+            <div />
+            {/* More details */}
+          </Button>
+        )}
       </div>
     </div>
   );

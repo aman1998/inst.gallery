@@ -5,7 +5,7 @@
     grid-gap: 8px;
   }
 
-  &__link {
+  &__add {
     min-width: 100px;
     min-height: 100px;
 
@@ -15,9 +15,17 @@
     }
   }
 
+  &__link {
+    @include link;
+  }
+
   &__skeleton {
     background-color: var(--block-bg);
     border-radius: 12px;
+  }
+
+  label {
+    width: 100%;
   }
 }
 
