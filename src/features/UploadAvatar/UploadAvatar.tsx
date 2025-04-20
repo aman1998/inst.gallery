@@ -124,9 +124,9 @@ const UploadAvatar: React.FC<Props> = ({
   };
 
   const handleBeforeUpload = (file: File) => {
-    const isImage = file.type.startsWith("image/");
+    const isImage = file.type.startsWith("image/") && file.type !== "image/gif";
     if (!isImage) {
-      message.error("Only image!");
+      message.error("Only non-GIF images are allowed!");
       return false;
     }
 

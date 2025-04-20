@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { Avatar, Typography } from "antd";
 import Image from "next/image";
-import { CaretRightFilled } from "@ant-design/icons";
+import { CaretRightFilled, DoubleRightOutlined } from "@ant-design/icons";
 
 import Button from "@shared/ui/Button";
 import CarouselCustom from "@shared/ui/CarouselCustom";
@@ -83,10 +83,11 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
         <Button
           onClick={() => window.open(post.permalink)}
           type="text"
-          icon={<CaretRightFilled />}
+          icon={<DoubleRightOutlined />}
           className={s.post__btn}
         >
-          More details
+          <div />
+          {/* More details */}
         </Button>
       </div>
     </div>
