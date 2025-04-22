@@ -15,7 +15,7 @@ const Page: React.FC = () => {
 
   if (!project) return null;
 
-  return <SitePageContainer project={{ ...project, blocks }} plan={ESubscriptionPlan.free} />;
+  return <SitePageContainer project={{ ...project, blocks }} plan={ESubscriptionPlan.personal} isDemo />;
 };
 
 export default Page;

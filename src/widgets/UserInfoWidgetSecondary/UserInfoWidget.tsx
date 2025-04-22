@@ -31,7 +31,7 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
     <div className={cn(s.card, className)}>
       <div className={s.card__header}>
         <Typography.Title level={4} className={s.card__title} style={{ margin: 0 }}>
-          {isDemo ? "DEMO" : "Page Settings"}
+          Page Settings
         </Typography.Title>
         {ActionComponent}
       </div>
@@ -42,7 +42,7 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
         </div>
         <div className={s.stat}>
           <p className={s.stat__title}>Plan</p>
-          <p className={s.stat__text}>{capitalizeFirstLetter(plan)}</p>
+          <p className={s.stat__text}>{isDemo ? "Demo" : capitalizeFirstLetter(plan)}</p>
         </div>
         {/* <div className={s.stat}>
           <p className={s.stat__title}>Widget</p>
