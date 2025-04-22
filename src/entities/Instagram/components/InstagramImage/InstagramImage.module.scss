@@ -17,7 +17,6 @@
       backface-visibility: hidden;
     }
 
-
     &:hover {
       .image__action {
         opacity: 1;
@@ -25,7 +24,7 @@
     }
 
     &--loading {
-      background-color: var(--block-bg);
+      background-color: var(--img-loading-bg);
 
       img {
         opacity: 0;
@@ -75,7 +74,6 @@
       height: 20px;
       transition: color 0.3s ease-in-out;
     }
-
   }
 
   &__type {

@@ -26,6 +26,18 @@ $borderRadius: 12px;
     @include respond(tablet) {
       border-radius: $borderRadius $borderRadius 0 0;
     }
+
+    img {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &--loading {
+      background-color: var(--img-loading-bg);
+
+      img {
+        opacity: 0;
+      }
+    }
   }
   &__image {
     height: auto;

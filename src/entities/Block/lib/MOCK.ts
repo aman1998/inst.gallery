@@ -65,6 +65,8 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
 export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
   title: "Portfolio",
   subtitle: "My works",
+  headerStyle: {},
+  titleLevel: 3,
   imageWrapperStyle: {
     borderRadius: 12,
   },

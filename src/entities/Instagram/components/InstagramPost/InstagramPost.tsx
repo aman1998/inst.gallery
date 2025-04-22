@@ -17,6 +17,8 @@ interface Props {
 }
 
 const InstagramPost: React.FC<Props> = ({ post, className }) => {
+  const [loading, setLoading] = React.useState(true);
+
   const renderMedia = () => {
     switch (post.media_type) {
       case EInstagramType.IMAGE:
@@ -29,6 +31,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
             alt={post.caption || "Instagram Post"}
             className={s.post__image}
             quality={75}
+            onLoad={() => setLoading(false)}
           />
         );
       case EInstagramType.VIDEO:
@@ -60,6 +63,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
                 alt={post.caption || "Carousel Image"}
                 className={s.post__image}
                 quality={75}
+                onLoad={() => setLoading(false)}
               />
             ))}
           </CarouselCustom>
@@ -71,11 +75,9 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
 
   return (
     <div className={cn(s.post, className)}>
-      <div className={cn(s.post__media, "post__media")}>{renderMedia()}</div>
+      <div className={cn(s.post__media, loading && s["post__media--loading"], "post__media")}>{renderMedia()}</div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
-          {/* <Avatar style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}>{post.username[0].toUpperCase()}</Avatar> */}
-          {/* <Typography.Title level={5} onClick={() => window.open(post.permalink)} className={s.post__username}> */}
           <Typography.Title level={5} className={s.post__username}>
             {post.username}
           </Typography.Title>
