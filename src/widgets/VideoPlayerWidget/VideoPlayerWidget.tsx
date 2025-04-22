@@ -15,7 +15,7 @@ const VideoPlayerWidget: React.FC<Props> = ({ className }) => {
 
   return (
     <section className={className}>
-      <VideoPlayer src="/video/demo.mov" />
+      <VideoPlayer src="/video/demo.mp4" />
       <Button onClick={() => router.push(ROUTES.demoCustomize)} type="primary">
         Try it live
       </Button>

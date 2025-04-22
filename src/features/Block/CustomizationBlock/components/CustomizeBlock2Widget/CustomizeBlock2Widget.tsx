@@ -28,6 +28,8 @@ import BlockInstagramPostsSettings from "../../../../Instagram/SettingsBlockInst
 import s from "./CustomizeBlock2Widget.module.scss";
 import { useModal } from "@/shared/hooks/useModal";
 import TextAreaControl from "@/shared/controllers/TextAreaControl";
+import FormItem from "@/shared/ui/FormItem";
+import InputControl from "@/shared/controllers/InputControl";
 
 interface Props {
   isPosts?: boolean;
@@ -56,7 +58,8 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
   const values: TNullable<TCustomizeBlock2WidgetSchema> = React.useMemo(() => {
     if (!selectedOriginalBlock || !isBlock2(selectedOriginalBlock)) return null;
     return {
-      description: selectedOriginalBlock.customization.description,
+      title: selectedOriginalBlock.customization.title,
+      subtitle: selectedOriginalBlock.customization.subtitle,
       borderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
 
       postBorderRadius: Number(selectedOriginalBlock.customization.imageWrapperStyle.borderRadius),
@@ -97,14 +100,23 @@ const CustomizeBlock2Widget: React.FC<Props> = ({ isPosts }) => {
       {!isPosts ? (
         <>
           <Divider>Text</Divider>
-          <TextAreaControl
-            onChange={(e) => handleCustomizeChange("description", e.target.value)}
-            rows={3}
-            control={control}
-            errorMessage={errors.description?.message as string}
-            name="description"
-            placeholder="Description"
-          />
+          <FormItem>
+            <InputControl
+              onChange={(e) => handleCustomizeChange("title", e.target.value)}
+              control={control}
+              errorMessage={errors.title?.message as string}
+              name="title"
+              placeholder="Title"
+            />
+            <TextAreaControl
+              onChange={(e) => handleCustomizeChange("subtitle", e.target.value)}
+              rows={3}
+              control={control}
+              errorMessage={errors.subtitle?.message as string}
+              name="subtitle"
+              placeholder="Description"
+            />
+          </FormItem>
 
           <BlockPostsForm control={control} errors={errors} type="edit" />
         </>

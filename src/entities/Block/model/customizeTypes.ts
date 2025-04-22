@@ -19,8 +19,7 @@ export interface ICustomizeBlock1 extends ICustomizeImage, ICustomizeHeader {
 }
 
 // BLOCK 2
-export interface ICustomizeBlock2 extends ICustomizeImage {
-  description: string;
+export interface ICustomizeBlock2 extends ICustomizeImage, ICustomizeHeader {
   posts: IInstagramDownloadedPost[];
   postsSettings: ICustomizePosts;
 }

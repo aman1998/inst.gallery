@@ -102,7 +102,7 @@ const UploadInstagramMedia: React.FC<Props> = ({ onPostGenerated }) => {
     onChange: async (info) => {
       //   const filtered = info.fileList.filter((f) => f.status === "done");
 
-      loadingMessage("Uploading...");
+      loadingMessage("Uploading");
       setFileList(info.fileList);
 
       const files = info.fileList.map((f) => f.originFileObj as File);

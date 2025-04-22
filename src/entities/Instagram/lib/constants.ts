@@ -74,6 +74,7 @@ export const postDescription11 =
 export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   {
     id: "17895695668004550",
+    uuid: "17895695668004550",
     accountId: "17895695668004550",
     downloaded_id: "1",
     created_at: "2024-12-25T09:00:00+0000",
@@ -87,6 +88,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004551",
+    uuid: "17895695668004551",
     accountId: "17895695668004550",
     downloaded_id: "2",
     created_at: "2024-12-25T09:00:00+0000",
@@ -146,6 +148,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004552",
+    uuid: "17895695668004552",
     accountId: "17895695668004550",
     downloaded_id: "3",
     created_at: "2024-12-25T09:00:00+0000",
@@ -159,6 +162,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004554",
+    uuid: "17895695668004554",
     accountId: "17895695668004550",
     downloaded_id: "4",
     created_at: "2024-12-25T09:00:00+0000",
@@ -172,6 +176,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004555",
+    uuid: "17895695668004555",
     accountId: "17895695668004550",
     downloaded_id: "5",
     created_at: "2024-12-25T09:00:00+0000",
@@ -203,6 +208,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004556",
+    uuid: "17895695668004556",
     accountId: "17895695668004550",
     downloaded_id: "6",
     created_at: "2024-12-25T09:00:00+0000",
@@ -216,6 +222,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004557",
+    uuid: "17895695668004557",
     accountId: "17895695668004550",
     downloaded_id: "7",
     created_at: "2024-12-25T09:00:00+0000",
@@ -229,6 +236,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004558",
+    uuid: "17895695668004558",
     accountId: "17895695668004550",
     downloaded_id: "8",
     created_at: "2024-12-25T09:00:00+0000",
@@ -242,6 +250,7 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   },
   {
     id: "17895695668004559",
+    uuid: "17895695668004559",
     accountId: "17895695668004550",
     downloaded_id: "9",
     created_at: "2024-12-25T09:00:00+0000",

@@ -46,11 +46,12 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
   headerStyle: {
     alignItems: "center",
   },
-  title: "Visualize Your Instagram posts",
+  title: "Visualize Your Portfolio in Instagram Style",
   titleLevel: 1,
   subtitle:
-    "Upload your Instagram posts and turn them into stunning landing pages in seconds. " +
-    "Showcase your content, engage your audience, and grow your brand effortlessly.",
+    "Create stunning portfolio widgets inspired by Instagram’s aesthetic." +
+    "Perfect for showcasing your work, engaging your audience, and building your personal brand" +
+    "— all in a clean, minimal format.",
 
   imageWrapperStyle: {
     borderRadius: 12,
@@ -62,7 +63,8 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
 };
 
 export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
-  description: "My works",
+  title: "Portfolio",
+  subtitle: "My works",
   imageWrapperStyle: {
     borderRadius: 12,
   },
@@ -94,28 +96,37 @@ export const MOCK_BLOCK_4_CUSTOMIZATION: ICustomizeBlock4 = {
     {
       key: "1",
       label: "What is this site about?",
-      children: "This site allows you to turn your Instagram posts into beautiful landing pages in just a few clicks.",
+      children:
+        "This site helps you create a clean, Instagram-style widget to showcase your work — no need to upload actual posts (for now).",
     },
     {
       key: "2",
       label: "Do I need to know how to code?",
-      children: "Not at all! Our tool is designed for creators and influencers — no coding required.",
+      children: "Not at all! It's made for creators — no coding required.",
     },
     {
       key: "3",
       label: "Is it free to use?",
-      children: "Yes, you can create a basic landing page for free. For more features, we offer a premium plan.",
+      children: "Yes, you can start with a free version. More advanced features are available in the premium plan.",
     },
     {
       key: "4",
-      label: "Can I customize my landing page?",
-      children: " Absolutely. You can choose layouts, colors, and add your own content.",
+      label: "Can I customize my widget?",
+      children: "Definitely. Choose from different layouts, tweak colors, and add your own images and text.",
     },
     {
       key: "5",
-      label: "How do I share my landing page?",
-      children: "Each landing page gets a unique URL you can share anywhere — Instagram bio, stories, or messages.",
+      label: "How do I share my widget?",
+      children:
+        "You’ll get a unique link — perfect for your Instagram bio, link-in-bio tools, or anywhere else online.",
+    },
+    {
+      key: "6",
+      label: "Can I import my Instagram posts?",
+      children:
+        "Not yet — but this feature is on the way! Soon, you’ll be able to import your Instagram content with a click.",
     },
   ],
+
   itemsStyle: {},
 };

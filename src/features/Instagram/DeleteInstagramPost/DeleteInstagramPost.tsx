@@ -13,7 +13,6 @@ import { deleteInstagramDownloadedPostsInListSelector } from "@entities/Instagra
 import Button from "@shared/ui/Button";
 import { ESupabaseDB } from "@shared/config/supabase/types";
 import { useMessage } from "@shared/hooks/useMessage";
-import { ROUTES } from "@shared/config/routes";
 
 interface Props {
   id: string;
@@ -30,7 +29,7 @@ const DeleteInstagramPost: React.FC<Props> = ({ id }) => {
 
   const handleDelete = async () => {
     setIsLoading(true);
-    const { error } = await supabase.from(ESupabaseDB.instagramPosts).delete().eq("id", id);
+    const { error } = await supabase.from(ESupabaseDB.instagramPosts).delete().eq("uuid", id);
     if (error) {
       errorMessage(error.message);
     } else {
