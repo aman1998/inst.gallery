@@ -15,8 +15,6 @@ import { capitalizeFirstLetter } from "@shared/utils/text";
 import s from "./UserInfoWidget.module.scss";
 import { useBlockStore } from "@/entities/Block/model/store";
 import { selectedBlockSelector } from "@/entities/Block/model/selectors";
-import { checkIsBlockWithPosts } from "@/entities/Block/lib/utils";
-import { isBlock4 } from "@/entities/Block/model/types";
 
 interface Props {
   className?: string;
@@ -46,10 +44,10 @@ const UserInfoWidget: React.FC<Props> = ({ className, ActionComponent }) => {
           <p className={s.stat__title}>Plan</p>
           <p className={s.stat__text}>{capitalizeFirstLetter(plan)}</p>
         </div>
-        <div className={s.stat}>
+        {/* <div className={s.stat}>
           <p className={s.stat__title}>Widget</p>
           <p className={s.stat__text}>Basic</p>
-        </div>
+        </div> */}
         {/* <div className={s.stat}>
           <p className={s.stat__title}>Works</p>
           <p className={s.stat__text}>

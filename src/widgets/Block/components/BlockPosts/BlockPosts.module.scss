@@ -197,6 +197,12 @@
   &--6 {
     grid-template-columns: repeat(6, 1fr);
   }
+
+  &--with-bg {
+    @include respond(mobile) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
 
 .masonry {

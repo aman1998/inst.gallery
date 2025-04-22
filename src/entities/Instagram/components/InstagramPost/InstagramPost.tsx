@@ -75,7 +75,8 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
 
   return (
     <div className={cn(s.post, className)}>
-      <div className={cn(s.post__media, loading && s["post__media--loading"], "post__media")}>{renderMedia()}</div>
+      {/* <div className={cn(s.post__media, loading && s["post__media--loading"], "post__media")}>{renderMedia()}</div> */}
+      <div className={cn(s.post__media, "post__media")}>{renderMedia()}</div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
           <Typography.Title level={5} className={s.post__username}>

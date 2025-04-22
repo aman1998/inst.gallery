@@ -49,7 +49,7 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
   title: "Visualize Your Portfolio in Instagram Style",
   titleLevel: 1,
   subtitle:
-    "Create stunning portfolio widgets inspired by Instagram’s aesthetic." +
+    "Create stunning portfolio widget inspired by Instagram’s aesthetic." +
     "Perfect for showcasing your work, engaging your audience, and building your personal brand" +
     "— all in a clean, minimal format.",
 

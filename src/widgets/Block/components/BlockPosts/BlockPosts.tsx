@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import cn from "classnames";
+import { Typography } from "antd";
 
 import InstagramImageCard from "@entities/Instagram/components/InstagramImageCard";
 import { getInstagramPostImage } from "@entities/Instagram/lib/utils";
 import { EPostsListType, ICustomizeBlock1, ICustomizeBlock2 } from "@entities/Block/model/customizeTypes";
 
 import s from "./BlockPosts.module.scss";
-import { Typography } from "antd";
 
 interface Props {
   customization: ICustomizeBlock1 | ICustomizeBlock2;
@@ -56,7 +56,10 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
 
   if (postsType === EPostsListType.grid) {
     return (
-      <div className={cn(s.grid, s[`grid--${postsLength}`], className)} style={postsStyle}>
+      <div
+        className={cn(s.grid, s[`grid--${postsLength}`], postsWithBg && s["grid--with-bg"], className)}
+        style={postsStyle}
+      >
         {posts.map((post, index) => (
           <div key={index} className={cn(s["grid-card"], postsWithBg && s["grid-card--bg"])}>
             <InstagramImageCard

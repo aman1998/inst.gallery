@@ -12,7 +12,7 @@ export const DEMO_BLOCKS: IBlock[] = [
     type: EBlockType.type2,
     created_at: new Date(),
     block_id: "1",
-    customization: { ...MOCK_BLOCK_2_CUSTOMIZATION, posts: MOCK_INSTAGRAM_POSTS.slice(0, 9) },
+    customization: { ...MOCK_BLOCK_2_CUSTOMIZATION, posts: MOCK_INSTAGRAM_POSTS.slice(0, 6) },
   },
 ];
 

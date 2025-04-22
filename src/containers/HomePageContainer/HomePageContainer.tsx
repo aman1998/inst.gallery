@@ -44,7 +44,7 @@ const HomePageContainer: React.FC = () => (
                 withBg: true,
                 bgColor: `linear-gradient(135deg, ${PRIMARY_COLOR}, ${SITE_PRIMARY_COLOR})`,
                 // bgColor: PRIMARY_COLOR,
-                textColor: "var(--white)",
+                textColor: "var(--text-dark)",
               },
               buttonSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings,

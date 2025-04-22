@@ -24,11 +24,11 @@ export const BUSINESS_ANNUAL_PRICE = 8;
 export const PRO_BLOCKS = [] as EBlockType[];
 export const PERSONAL_BLOCKS = [EBlockType.type4] as EBlockType[];
 
-export const FREE_MAX_POSTS = 10;
-export const PERSONAL_MAX_POSTS = 100;
+export const FREE_MAX_POSTS = 6;
+export const PERSONAL_MAX_POSTS = 60;
 
 export const FREE_MAX_BLOCKS = 1;
-export const PERSONAL_MAX_BLOCKS = 10;
+export const PERSONAL_MAX_BLOCKS = 5;
 
 export const subscriptionPlans: ISubscriptionPlan[] = [
   {
@@ -40,7 +40,7 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
       { title: "Works", value: FREE_MAX_POSTS },
       // { title: "Blocks", value: FREE_MAX_BLOCKS },
       { title: "Image", value: "Single" },
-      { title: "Widget type", value: "Basic" },
+      // { title: "Widget type", value: "Basic" },
     ],
     detailedFeatures: [
       { title: "Priority support", included: false },
@@ -60,7 +60,7 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
       { title: "Works", value: PERSONAL_MAX_POSTS },
       // { title: "Blocks", value: PERSONAL_MAX_BLOCKS },
       { title: "Image", value: "Single | Carousel | Video" },
-      { title: "Widget type", value: "Advanced" },
+      // { title: "Widget type", value: "Advanced" },
     ],
     detailedFeatures: [
       { title: "Priority support", included: true },

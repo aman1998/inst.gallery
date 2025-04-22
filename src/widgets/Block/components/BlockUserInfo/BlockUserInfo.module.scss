@@ -62,5 +62,9 @@
   &__description {
     margin-top: 22px !important;
     width: 100%;
+
+    @include respond(mobile) {
+      text-align: center;
+    }
   }
 }

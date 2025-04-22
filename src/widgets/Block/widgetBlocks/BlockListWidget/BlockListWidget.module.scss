@@ -18,4 +18,10 @@
     // @include scrollYWithResetScrollBar;
     // max-height: 300px;
   }
+  &__title,
+  &__subtitle {
+    @include respond(mobile) {
+      text-align: center;
+    }
+  }
 }

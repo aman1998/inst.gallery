@@ -117,9 +117,6 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
           label={
             <Flex justify="space-between" style={{ width: "100%" }}>
               <p>Uploaded works</p>
-              <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
-                All works
-              </Link>
             </Flex>
           }
         >
