@@ -8,6 +8,12 @@
       @include h3;
     }
   }
+  &__oauth {
+    @include flex-column-gap(8px);
+  }
+  &__text {
+    text-align: center;
+  }
   &__btn {
     width: 100%;
   }

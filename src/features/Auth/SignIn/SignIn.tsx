@@ -97,7 +97,7 @@ const SignIn: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        style={{ margin: 0, marginBottom: 16, marginTop: 16 }}
+        style={{ margin: 0 }}
         validateStatus={errors.password?.message ? "error" : ""}
         help={errors.password?.message}
       >

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "antd";
 import Link from "next/link";
+import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
 
 import { signUpSchema, TSignUpSchema } from "@features/Auth/SignUp/lib/signUpSchema";
 import { signUpServer } from "@features/Auth/SignUp/model/actions";
@@ -14,6 +15,7 @@ import InputControl from "@shared/controllers/InputControl";
 import { ROUTES } from "@shared/config/routes";
 import CheckboxControl from "@shared/controllers/CheckboxControl";
 import { useMessage } from "@shared/hooks/useMessage";
+import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 import s from "./SignUp.module.scss";
 
@@ -51,6 +53,28 @@ const SignUp: React.FC = () => {
   return (
     <Form className={s.form} onFinish={handleSubmit(handleClick)}>
       <h1 className={s.form__title}>Sign Up</h1>
+
+      <div className={s.form__oauth}>
+        <Button
+          onClick={() => signInWithOAuth("google", window.location.origin + ROUTES.callback)}
+          type="default"
+          icon={<GoogleCircleFilled style={{ color: PRIMARY_COLOR }} />}
+          iconPosition="end"
+        >
+          Continue with Google
+        </Button>
+
+        {/*<Button*/}
+        {/*  onClick={() => signInWithOAuth("facebook", window.location.origin + ROUTES.callback)}*/}
+        {/*  type="outlined"*/}
+        {/*  icon={<FacebookFilled />}*/}
+        {/*  iconPosition="end"*/}
+        {/*>*/}
+        {/*  Continue with Facebook*/}
+        {/*</Button>*/}
+      </div>
+
+      <p className={s.form__text}>or</p>
 
       <Form.Item
         style={{ margin: 0 }}
