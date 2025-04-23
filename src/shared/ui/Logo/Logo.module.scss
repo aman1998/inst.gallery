@@ -1,5 +1,6 @@
 .logo {
   @include flex-gap(16px);
+  position: relative;
   &__name {
     @include h4;
   }
