@@ -85,7 +85,7 @@ BEGIN
       'name', 'John Doe',
       'description', 'Vision-driven CEO with a passion for innovation, team growth, and building products that make a real impact. I specialize in turning ambitious ideas into scalable businesses, aligning technology with user needs. With years of leadership experience, I focus on empowering teams, fostering creativity, and driving sustainable growth in competitive markets.',
       'profession', 'CEO (Chief Executive Officer)',
-      'avatar', '/images/avatar.png'
+      'avatar', '/logo.png'
     )
   );
 
