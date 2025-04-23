@@ -12,7 +12,7 @@ export const image3 =
   "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
   "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18086753704610757.jpg";
 
-export const image4 = "/images/img4.jpg";
+export const image4 = "/images/ronaldo.jpg";
 
 export const postDescription1 =
   "🌟 Create a Stunning Instagram-Style Portfolio! 🌟" +
