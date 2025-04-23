@@ -49,7 +49,9 @@ const useChangeProjectStoreBase = create<IChangeProject>()(
           return;
         }
 
-        onSuccessCallback?.();
+        console.log("supabaseData =>", supabaseData[0]);
+
+        onSuccessCallback?.(supabaseData.length ? supabaseData[0] : null);
       } catch {
         onErrorCallback?.();
       } finally {

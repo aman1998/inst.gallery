@@ -15,6 +15,9 @@ import {
 } from "@entities/Block/model/selectors";
 import { IBlock } from "@entities/Block/model/types";
 import { TCustomizeBlocks } from "@entities/Block/model/customizeTypes";
+import { useProjectStore } from "@entities/Project/model/store";
+import { setProjectSelector } from "@entities/Project/model/selectors";
+import { IProject } from "@entities/Project/model/types";
 
 import { useMessage } from "@shared/hooks/useMessage";
 
@@ -26,6 +29,7 @@ export const useChangeBlock = () => {
 
   const changeBlockRequest = useChangeProjectStore(changeProjectRequestSelector);
   const isLoading = useChangeProjectStore(changeProjectIsLoadingSelector);
+  const setProject = useProjectStore(setProjectSelector);
 
   const { loadingMessage, successMessage, destroyMessage, errorMessage } = useMessage();
   const { isDemo } = useLKLayout();
@@ -56,11 +60,15 @@ export const useChangeBlock = () => {
     loadingMessage();
     const updatedBlocks = blocks.map((item) => (item.block_id !== selectedBlock?.block_id ? item : selectedBlock));
 
-    const onSuccessCallback = () => {
+    const onSuccessCallback = (newProjectData?: IProject) => {
       destroyMessage();
       setSelectedBlock({ block: selectedBlock, withOriginal: true });
       setBlocks(updatedBlocks);
       successMessage("Successfully changed!");
+
+      if (newProjectData) {
+        setProject({ project: newProjectData, withOriginal: true });
+      }
     };
 
     if (isDemo) {

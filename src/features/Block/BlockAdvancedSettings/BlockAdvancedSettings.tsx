@@ -38,6 +38,8 @@ const BlockAdvancedSettings: React.FC = () => {
   const { isLoading, handleValueChange, changeBlock: handleSave } = useChangeProject();
   const { isDemo } = useLKLayout();
 
+  console.log("project =>", project);
+
   const {
     control,
     handleSubmit,
@@ -131,19 +133,6 @@ const BlockAdvancedSettings: React.FC = () => {
 
       <Divider>Metadata</Divider>
       <FormItem>
-        {/* <Flex justify="space-between" gap={8}>
-          <Typography.Text strong>Favicon</Typography.Text>
-          <SelectProjectFavicon
-            control={control}
-            name="favicon"
-            onChange={(value) =>
-              handleValueChange("meta", {
-                ...project?.meta,
-                favicon: value,
-              })
-            }
-          />
-        </Flex> */}
         <InputControl
           size="middle"
           addonAfter={<div>| «description» | {SITE_NAME}</div>}

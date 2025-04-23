@@ -15,16 +15,16 @@ export const image3 =
 export const image4 = "/images/img4.jpg";
 
 export const postDescription1 =
-  "🌟 Turn Your Instagram Posts into a Stunning Gallery! 🌟\n" +
-  "\n" +
-  "🚀 Upload your Instagram posts and transform them into a beautiful, shareable gallery in just seconds!\n" +
-  "\n" +
-  "✨ Showcase your content, engage your audience, and grow your brand effortlessly.\n" +
-  "\n" +
-  "🔥 No coding required – just pure creativity! 🔥\n" +
-  "\n" +
-  "🔗 Try it now & let your content shine!\n" +
-  "\n" +
+  "🌟 Create a Stunning Instagram-Style Portfolio! 🌟" +
+  "\n\n" +
+  "🚀 Upload your best photos and showcase them as beautiful, scrollable posts — just like on Instagram!" +
+  "\n\n" +
+  "✨ Perfect for creators, freelancers, and anyone who wants to impress with their work." +
+  "\n\n" +
+  "🔥 No coding, no hassle — just pure style and simplicity! 🔥" +
+  "\n\n" +
+  "🔗 Start building your portfolio today and let your visuals speak for you!" +
+  "\n\n" +
   "#instgallery";
 
 export const postDescription2 =

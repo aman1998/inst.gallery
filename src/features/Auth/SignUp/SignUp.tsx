@@ -7,6 +7,8 @@ import { Form } from "antd";
 import Link from "next/link";
 import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
 
+import { signInWithOAuth } from "@/app/(auth)/auth/actions";
+
 import { signUpSchema, TSignUpSchema } from "@features/Auth/SignUp/lib/signUpSchema";
 import { signUpServer } from "@features/Auth/SignUp/model/actions";
 

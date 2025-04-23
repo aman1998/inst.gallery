@@ -13,7 +13,7 @@ import {
   setIsModalOpenSelector,
 } from "@entities/Instagram/model/selectors";
 
-import DEFAULT_IMAGE from "../../../../../public/images/img2.jpeg";
+import DEFAULT_IMAGE from "../../../../../public/images/ronaldo.jpg";
 
 import s from "./InstagramImageCard.module.scss";
 interface Props extends Omit<ImageProps, "src"> {
