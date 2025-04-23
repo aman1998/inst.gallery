@@ -4,13 +4,9 @@ export const image1 =
   "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
   "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17961912371761026/images/17961912371761026.jpg";
 
-export const image2 =
-  "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-  "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17901289809141795/images/17901289809141795.jpg";
+export const image2 = "/images/ronaldo.jpg";
 
-export const image3 =
-  "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-  "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18086753704610757.jpg";
+export const image3 = "/images/ronaldo.jpg";
 
 export const image4 = "/images/ronaldo.jpg";
 
