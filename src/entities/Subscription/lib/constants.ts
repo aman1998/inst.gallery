@@ -15,11 +15,11 @@ export const freeIds = [FREE_MONTH_ID, FREE_MONTH_ID];
 export const personalIds = [PERSONAL_MONTH_ID, PERSONAL_MONTH_ID];
 export const businessIds = [BUSINESS_MONTH_ID, BUSINESS_YEAR_ID];
 
-export const PERSONAL_MONTHLY_PRICE = 10;
-export const PERSONAL_ANNUAL_PRICE = 6;
+export const PERSONAL_MONTHLY_PRICE = 5;
+export const PERSONAL_ANNUAL_PRICE = 3;
 
-export const BUSINESS_MONTHLY_PRICE = 15;
-export const BUSINESS_ANNUAL_PRICE = 8;
+export const BUSINESS_MONTHLY_PRICE = 10;
+export const BUSINESS_ANNUAL_PRICE = 6;
 
 export const PRO_BLOCKS = [] as EBlockType[];
 export const PERSONAL_BLOCKS = [EBlockType.type4] as EBlockType[];

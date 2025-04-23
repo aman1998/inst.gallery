@@ -22,6 +22,8 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
     imageWrapperStyle,
   } = customization;
 
+  if (!posts?.length) return null;
+
   if (postsType === EPostsListType.masonry) {
     return (
       <div

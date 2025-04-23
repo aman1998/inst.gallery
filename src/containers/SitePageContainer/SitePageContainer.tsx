@@ -21,8 +21,6 @@ interface Props {
 }
 
 const SitePageContainer: React.FC<Props> = ({ project, plan, isDemo }) => {
-  if (!project.blocks.length) return null;
-
   const { maxBlocks, excludedBlocks, maxUploadPosts, excludedInstagramType } = getSubscriptionsConfig(plan);
 
   const blocks = isDemo
@@ -30,20 +28,13 @@ const SitePageContainer: React.FC<Props> = ({ project, plan, isDemo }) => {
     : project.blocks
         .slice(0, maxBlocks) // Ограничиваем количество блоков по лимиту подписки
         .reduce((acc, block) => {
-          // Пропускаем блоки, если их тип в списке исключённых для текущей подписки
           if (excludedBlocks.includes(block.type)) return acc;
 
-          // Проверка на специфический тип блока (например, блок с Instagram-постами)
           if (isBlock2(block)) {
-            // Фильтруем посты по media_type, исключаем нежелательные типы (например, VIDEO, CAROUSEL)
             const filteredPosts = block.customization.posts
               .filter((post) => !excludedInstagramType.includes(post.media_type))
-              .slice(0, maxUploadPosts); // Обрезаем по максимальному количеству постов
+              .slice(0, maxUploadPosts);
 
-            // Если после фильтрации постов не осталось — блок не добавляем
-            if (filteredPosts.length === 0) return acc;
-
-            // Добавляем блок с обновлёнными постами
             acc.push({
               ...block,
               customization: {
@@ -52,7 +43,6 @@ const SitePageContainer: React.FC<Props> = ({ project, plan, isDemo }) => {
               },
             });
           } else {
-            // Если блок не требует фильтрации — просто добавляем его
             acc.push(block);
           }
 

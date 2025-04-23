@@ -45,31 +45,47 @@ BEGIN
     created_at,
     primary_color,
     instagram_id,
-    meta
+    meta,
+    user_info
   ) VALUES (
     NEW.id,
     final_link,
     user_email,
     ARRAY[
         jsonb_build_object(
-          'type', 'type6',
+          'type', 'type2',
           'block_id', gen_random_uuid(),  -- Генерация уникального block_id
           'created_at', NOW(),  -- Текущая дата и время для created_at
           'customization', jsonb_build_object(
-            'title', 'Visualize Your Instagram posts',
-            'subtitle', 'Upload your Instagram posts and turn them into stunning landing pages in seconds. Showcase your content, engage your audience, and grow your brand effortlessly.',
-            'titleLevel', 1,
-            'headerStyle', jsonb_build_object('alignItems', 'center')
+            'title', 'Portfolio',
+            'subtitle', 'A list of my works',
+            'titleLevel', 3,
+            'headerStyle', jsonb_build_object('alignItems', 'center'),
+            'imageWrapperStyle', jsonb_build_object('borderRadius', 12),
+            'imageStyle', '{}',
+            'posts', jsonb_build_array(),
+            'postsSettings', jsonb_build_object(
+              'postsWithBg', true,
+              'postsLength', 3,
+              'postsType', 'grid',
+              'postsStyle', jsonb_build_object('gap', 12)
+            )
           )
         )
     ]::jsonb[],
-    false,
+    true,
     now(),
     '#d5ac8a',  -- цвет по умолчанию
     NULL,  -- instagram_id по умолчанию NULL
     jsonb_build_object(
       'title', 'Unknown',  -- Значение по умолчанию для title
-      'description', 'Build Elegant Instagram Gallery'  -- Значение по умолчанию для description
+      'description', 'Build Elegant Portfolio Gallery'  -- Значение по умолчанию для description
+    ),
+    jsonb_build_object(
+      'name', 'John Doe',
+      'description', 'Vision-driven CEO with a passion for innovation, team growth, and building products that make a real impact. I specialize in turning ambitious ideas into scalable businesses, aligning technology with user needs. With years of leadership experience, I focus on empowering teams, fostering creativity, and driving sustainable growth in competitive markets.',
+      'profession', 'CEO (Chief Executive Officer)',
+      'avatar', '/images/avatar.png'
     )
   );
 
