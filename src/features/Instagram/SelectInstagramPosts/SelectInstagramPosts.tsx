@@ -10,6 +10,7 @@ import {
   getInstagramDownloadedPostsSelector,
   instagramDownloadedPostsIsLoadingSelector,
   instagramDownloadedPostsSelector,
+  setInstagramDownloadedPostsInListSelector,
 } from "@entities/Instagram/model/selectors";
 import { IInstagramDownloadedPost } from "@entities/Instagram/model/types";
 import InstagramImage from "@entities/Instagram/components/InstagramImage/InstagramImage";
@@ -38,6 +39,7 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
   const isLoading = useInstagramStore(instagramDownloadedPostsIsLoadingSelector);
   const posts = useInstagramStore(instagramDownloadedPostsSelector);
   const getInstagramPosts = useInstagramStore(getInstagramDownloadedPostsSelector);
+  const setInstagramPosts = useInstagramStore(setInstagramDownloadedPostsInListSelector);
 
   const router = useRouter();
   const { user } = useUserInfo();
@@ -66,10 +68,18 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
   };
 
   React.useEffect(() => {
-    if (!posts?.length && user?.id) {
+    if (posts?.length) return;
+
+    if (isDemo) {
+      setInstagramPosts(MOCK_INSTAGRAM_POSTS);
+      return;
+    }
+    if (user?.id) {
       getInstagramPosts(user.id, 100);
     }
-  }, [posts, getInstagramPosts, isDemo, user?.id]);
+  }, [posts, isDemo, user?.id]);
+
+  console.log("posts =>", posts);
 
   if (isLoading && !isDemo) {
     return (
@@ -99,48 +109,6 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
     );
   }
 
-  if (isDemo) {
-    return (
-      <div className={s.posts}>
-        <Form.Item layout="vertical" label="Upload new work">
-          <Button
-            type="dashed"
-            icon={<PlusOutlined />}
-            iconPosition="start"
-            disabled={isDemo}
-            onClick={handleAddClick}
-            className={s.posts__add}
-          />
-        </Form.Item>
-        <Form.Item
-          layout="vertical"
-          label={
-            <Flex justify="space-between" style={{ width: "100%" }}>
-              <p>Uploaded works</p>
-            </Flex>
-          }
-        >
-          <div className={s.posts__list}>
-            {MOCK_INSTAGRAM_POSTS?.map((post) => (
-              <div className={s["post-wrapper"]} key={post.id}>
-                <InstagramImage
-                  classNameWrapper={cn(
-                    s["post__image-wrapper"],
-                    isSelected(post.id) && s["post__image-wrapper--checked"]
-                  )}
-                  onClick={() => handleSelect(post)}
-                  hoveredAction={false}
-                  ActionComponent={null}
-                  post={post}
-                />
-              </div>
-            ))}
-          </div>
-        </Form.Item>
-      </div>
-    );
-  }
-
   return (
     <>
       <div className={s.posts}>
@@ -159,9 +127,11 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
           label={
             <Flex justify="space-between" style={{ width: "100%" }}>
               <p>Uploaded works</p>
-              <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
-                All works
-              </Link>
+              {!isDemo && (
+                <Link className={s.posts__link} href={ROUTES.works} prefetch={false}>
+                  All works
+                </Link>
+              )}
             </Flex>
           }
         >

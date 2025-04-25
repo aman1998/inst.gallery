@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 
+import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
+
 import {
   addInstagramDownloadedPostsInListSelector,
   instagramDownloadedPostsSelector,
@@ -19,12 +21,13 @@ import { uploadUrlToSupabase } from "@shared/config/supabase/actions";
 import { ROUTES } from "@shared/config/routes";
 import { ESupabaseDB } from "@shared/config/supabase/types";
 import { createClient } from "@shared/config/supabase/client";
+import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 
 import CreateInstagramPostHeader from "./components/CreateInstagramPostHeader";
 import CreateInstagramPostForm from "./components/CreateInstagramPostForm";
 import { TCustomizeCreateInstagramPostSchema, customizeCreateInstagramPostSchema } from "./lib/schema";
 import s from "./CreateInstagramPost.module.scss";
-import { useUserInfo } from "@/shared/providers/UserProvider/lib/useUserInfo";
+import { uuidv4 } from "@/shared/utils/uuid";
 
 const IGNORE_CLASS = "antd-instagram-post";
 const defaultValues = {
@@ -54,6 +57,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
 
   const supabase = createClient();
   const { user } = useUserInfo();
+  const { isDemo } = useLKLayout();
 
   const {
     control,
@@ -176,7 +180,20 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
       username: data.title,
     };
 
-    handleDownload(post);
+    if (isDemo) {
+      addInstagramDownloadedPostsInList({
+        ...post,
+        downloaded_id: uuidv4(),
+        accountId: uuidv4(),
+        uuid: uuidv4(),
+        created_at: new Date().toString(),
+      });
+      reset(defaultValues);
+      onSuccess?.();
+      onClose?.();
+    } else {
+      handleDownload(post);
+    }
   };
 
   return (

@@ -22,6 +22,7 @@ import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 import s from "./SignIn.module.scss";
 import { getSiteUrl } from "@/shared/utils/urls";
 import { createClient } from "@/shared/config/supabase/client";
+import { revalidatePath } from "next/cache";
 
 const SignIn: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
@@ -59,7 +60,7 @@ const SignIn: React.FC = () => {
 
       if (user) {
         setUser(user);
-        router.push(ROUTES.customize);
+        window.location.href = ROUTES.customize;
         successMessage("Welcome!");
       }
     } catch {

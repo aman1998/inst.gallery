@@ -19,6 +19,7 @@ import { getSiteUrl } from "@shared/utils/urls";
 import { createClient } from "@shared/config/supabase/client";
 
 import s from "./RestorePassword.module.scss";
+import { revalidatePath } from "next/cache";
 
 const RestorePassword: React.FC = () => {
   const [loading, setLoading] = React.useState(false);

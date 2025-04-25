@@ -15,6 +15,8 @@ export const instagramDownloadedPostsIsLoadingSelector = (state: InstagramStore)
   state.instagramDownloadedPosts.isLoading;
 export const instagramDownloadedPostsSelector = (state: InstagramStore) => state.instagramDownloadedPosts.data;
 export const getInstagramDownloadedPostsSelector = (state: InstagramStore) => state.getInstagramDownloadedPosts;
+export const setInstagramDownloadedPostsInListSelector = (state: InstagramStore) =>
+  state.setInstagramDownloadedPostsInList;
 export const addInstagramDownloadedPostsInListSelector = (state: InstagramStore) =>
   state.addInstagramDownloadedPostsInList;
 export const deleteInstagramDownloadedPostsInListSelector = (state: InstagramStore) =>

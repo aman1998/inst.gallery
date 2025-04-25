@@ -29,6 +29,7 @@ export interface InstagramStore {
   instagramDownloadedPosts: IDataDefault<IInstagramDownloadedPost[]>;
   getInstagramDownloadedPosts: (slug: string, limit: number, callbacks?: IRequestCallbacks) => Promise<void>;
   addInstagramDownloadedPostsInList: (post: IInstagramDownloadedPost) => void;
+  setInstagramDownloadedPostsInList: (posts: IInstagramDownloadedPost[]) => void;
   deleteInstagramDownloadedPostsInList: (id: string) => void;
   resetInstagramDownloaderPosts: () => void;
 
@@ -159,6 +160,11 @@ const useInstagramStoreBase = create<InstagramStore>()(
           } else {
             state.instagramDownloadedPosts.data.push(post);
           }
+        });
+      },
+      setInstagramDownloadedPostsInList: (posts) => {
+        set((state) => {
+          state.instagramDownloadedPosts.data = posts;
         });
       },
       deleteInstagramDownloadedPostsInList: (id) => {
