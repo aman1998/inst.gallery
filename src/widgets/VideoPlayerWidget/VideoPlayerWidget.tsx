@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Button from "@shared/ui/Button";
 import VideoPlayer from "@shared/ui/VideoPlayer";
 import { ROUTES } from "@shared/config/routes";
+import { pointYandexGoal } from "@/shared/config/analytics/YandexMetrica/lib/utils";
 
 interface Props {
   className?: string;
@@ -16,7 +17,13 @@ const VideoPlayerWidget: React.FC<Props> = ({ className }) => {
   return (
     <section className={className}>
       <VideoPlayer src="/video/demo.mp4" />
-      <Button onClick={() => router.push(ROUTES.demoCustomize)} type="primary">
+      <Button
+        onClick={() => {
+          router.push(ROUTES.demoCustomize);
+          pointYandexGoal("Try it live");
+        }}
+        type="primary"
+      >
         Try it live
       </Button>
     </section>
