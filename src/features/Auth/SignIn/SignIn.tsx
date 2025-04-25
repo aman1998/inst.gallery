@@ -21,6 +21,7 @@ import { useMessage } from "@shared/hooks/useMessage";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 import s from "./SignIn.module.scss";
+import { getSiteUrl } from "@/shared/utils/urls";
 
 const SignIn: React.FC = () => {
   const [isPending, startTransition] = React.useTransition();
@@ -51,8 +52,8 @@ const SignIn: React.FC = () => {
           router.push(ROUTES.customize);
           successMessage("Welcome!");
         }
-      } catch {
-        errorMessage("Failed to login");
+      } catch (e: any) {
+        errorMessage(e?.message || "Failed to login");
       }
     });
   };
@@ -63,7 +64,7 @@ const SignIn: React.FC = () => {
 
       <div className={s.form__oauth}>
         <Button
-          onClick={() => signInWithOAuth("google", window.location.origin + ROUTES.callback)}
+          onClick={() => signInWithOAuth("google", getSiteUrl() + ROUTES.callback)}
           type="default"
           icon={<GoogleCircleFilled style={{ color: PRIMARY_COLOR }} />}
           iconPosition="end"
@@ -72,7 +73,7 @@ const SignIn: React.FC = () => {
         </Button>
 
         {/*<Button*/}
-        {/*  onClick={() => signInWithOAuth("facebook", window.location.origin + ROUTES.callback)}*/}
+        {/*  onClick={() => signInWithOAuth("facebook", getSiteUrl() + ROUTES.callback)}*/}
         {/*  type="outlined"*/}
         {/*  icon={<FacebookFilled />}*/}
         {/*  iconPosition="end"*/}

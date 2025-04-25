@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,24 +18,13 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@shared/*": [
-        "./src/shared/*"
-      ],
-      "@features/*": [
-        "./src/features/*"
-      ],
-      "@widgets/*": [
-        "./src/widgets/*"
-      ],
-      "@containers/*": [
-        "./src/containers/*"
-      ],
-      "@entities/*": [
-        "./src/entities/*"
-      ]
+      "@/*": ["./src/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@features/*": ["./src/features/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@next/third-parties/google": ["./node_modules/@next/third-parties/dist/google"]
     },
     "target": "ES2017"
   },
@@ -47,9 +32,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/shared/config/analytics/YandexMetrikaInitializer/YandexMetrikaInitializer.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

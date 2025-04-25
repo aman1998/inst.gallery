@@ -20,6 +20,7 @@ import { useMessage } from "@shared/hooks/useMessage";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 import s from "./SignUp.module.scss";
+import { getSiteUrl } from "@/shared/utils/urls";
 
 const SignUp: React.FC = () => {
   const [isPending, startTransition] = React.useTransition();
@@ -44,10 +45,10 @@ const SignUp: React.FC = () => {
   const handleClick = (data: TSignUpSchema) => {
     startTransition(async () => {
       try {
-        await signUpServer({ email: data.email, password: data.password }, window.location.origin + ROUTES.callback);
+        await signUpServer({ email: data.email, password: data.password }, getSiteUrl() + ROUTES.callback);
         successMessage("Check your email");
-      } catch {
-        errorMessage("Failed to sign up server");
+      } catch (e: any) {
+        errorMessage(e?.message || "Failed to sign up server");
       }
     });
   };
@@ -58,7 +59,7 @@ const SignUp: React.FC = () => {
 
       <div className={s.form__oauth}>
         <Button
-          onClick={() => signInWithOAuth("google", window.location.origin + ROUTES.callback)}
+          onClick={() => signInWithOAuth("google", getSiteUrl() + ROUTES.callback)}
           type="default"
           icon={<GoogleCircleFilled style={{ color: PRIMARY_COLOR }} />}
           iconPosition="end"
@@ -67,7 +68,7 @@ const SignUp: React.FC = () => {
         </Button>
 
         {/*<Button*/}
-        {/*  onClick={() => signInWithOAuth("facebook", window.location.origin + ROUTES.callback)}*/}
+        {/*  onClick={() => signInWithOAuth("facebook",  getSiteUrl() + ROUTES.callback)}*/}
         {/*  type="outlined"*/}
         {/*  icon={<FacebookFilled />}*/}
         {/*  iconPosition="end"*/}

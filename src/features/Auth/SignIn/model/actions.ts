@@ -7,7 +7,6 @@ import { TUser } from "@entities/User/model/types";
 
 import { createClient } from "@shared/config/supabase/server";
 import { TNullable } from "@shared/types/common";
-import { ROUTES } from "@shared/config/routes";
 
 import { ISignIn } from "./types";
 
@@ -20,7 +19,7 @@ export const loginServer = async (data: ISignIn): Promise<TNullable<TUser>> => {
   } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    throw new Error("login error");
+    throw new Error(error.message);
   }
 
   revalidatePath("/", "layout");

@@ -45,8 +45,8 @@ const NewPassword: React.FC = () => {
           router.push(ROUTES.customize);
           successMessage("Welcome!");
         }
-      } catch {
-        errorMessage("Failed to login");
+      } catch (e: any) {
+        errorMessage(e?.message || "Failed to login");
       }
     });
   };

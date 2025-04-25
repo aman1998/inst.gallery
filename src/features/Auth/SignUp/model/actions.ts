@@ -18,7 +18,6 @@ export const signUpServer = async (data: ISignUp, emailRedirectTo: string) => {
   });
 
   if (error) {
-    console.log("error.message =>", error.message);
     throw new Error(error.message);
   }
   // revalidatePath(ROUTES.signUp, "Block");

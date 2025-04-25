@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "@shared/styles/globals.scss";
 
@@ -21,7 +22,6 @@ import Favicon from "../../public/favicon.ico";
 import Favicon32 from "../../public/favicon-32x32.png";
 import Favicon16 from "../../public/favicon-16x16.png";
 import AppleTouchIcon from "../../public/apple-touch-icon.png";
-import YandexMetrica from "@/shared/config/analytics/YandexMetrica";
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
@@ -61,10 +61,8 @@ export default async function RootLayout({
             <InstagramProvider>{children}</InstagramProvider>
           </AntdProvider>
         </LocaleProvider>
-        <React.Suspense>
-          <YandexMetrica id={101396424} />
-        </React.Suspense>
       </body>
+      <GoogleAnalytics gaId="G-T8W50755PB" />
     </html>
   );
 }

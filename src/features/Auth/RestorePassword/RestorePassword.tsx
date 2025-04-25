@@ -19,6 +19,7 @@ import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import { useMessage } from "@shared/hooks/useMessage";
 
 import s from "./RestorePassword.module.scss";
+import { getSiteUrl } from "@/shared/utils/urls";
 
 const RestorePassword: React.FC = () => {
   const [isPending, startTransition] = React.useTransition();
@@ -41,14 +42,14 @@ const RestorePassword: React.FC = () => {
   const handleClick = (data: TRestorePasswordSchema) => {
     startTransition(async () => {
       try {
-        const user = await restoreEmailServer(data.email, window.location.origin + ROUTES.newPassword);
+        const user = await restoreEmailServer(data.email, getSiteUrl() + ROUTES.newPassword);
         if (user) {
           setUser(user);
           router.push(ROUTES.restoreAuthConfirm);
           successMessage("Welcome!");
         }
-      } catch {
-        errorMessage("Failed to login");
+      } catch (e: any) {
+        errorMessage(e?.message || "Failed to login");
       }
     });
   };
