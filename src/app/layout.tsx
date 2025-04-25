@@ -21,6 +21,7 @@ import Favicon from "../../public/favicon.ico";
 import Favicon32 from "../../public/favicon-32x32.png";
 import Favicon16 from "../../public/favicon-16x16.png";
 import AppleTouchIcon from "../../public/apple-touch-icon.png";
+import YandexMetrikaProvider from "@/shared/providers/YandexMetricProvider/YandexMetrikaProvider";
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
@@ -55,6 +56,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={mainFontFamily.className} suppressHydrationWarning>
+        <React.Suspense>
+          <YandexMetrikaProvider />
+        </React.Suspense>
         <LocaleProvider>
           <AntdProvider primaryColor={PRIMARY_COLOR}>
             <InstagramProvider>{children}</InstagramProvider>
