@@ -10,21 +10,19 @@ import {
   restorePasswordSchema,
   TRestorePasswordSchema,
 } from "@features/Auth/RestorePassword/lib/restorePasswordSchema";
-import { restoreEmailServer } from "@features/Auth/RestorePassword/model/actions";
 
 import Button from "@shared/ui/Button";
 import InputControl from "@shared/controllers/InputControl";
 import { ROUTES } from "@shared/config/routes";
-import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import { useMessage } from "@shared/hooks/useMessage";
+import { getSiteUrl } from "@shared/utils/urls";
+import { createClient } from "@shared/config/supabase/client";
 
 import s from "./RestorePassword.module.scss";
-import { getSiteUrl } from "@/shared/utils/urls";
 
 const RestorePassword: React.FC = () => {
-  const [isPending, startTransition] = React.useTransition();
+  const [loading, setLoading] = React.useState(false);
   const router = useRouter();
-  const { setUser } = useUserInfo();
   const { successMessage, errorMessage } = useMessage();
 
   const {
@@ -39,19 +37,26 @@ const RestorePassword: React.FC = () => {
     mode: "onSubmit",
   });
 
-  const handleClick = (data: TRestorePasswordSchema) => {
-    startTransition(async () => {
-      try {
-        const user = await restoreEmailServer(data.email, getSiteUrl() + ROUTES.newPassword);
-        if (user) {
-          setUser(user);
-          router.push(ROUTES.restoreAuthConfirm);
-          successMessage("Welcome!");
-        }
-      } catch (e: any) {
-        errorMessage(e?.message || "Failed to login");
+  const handleClick = async (data: TRestorePasswordSchema) => {
+    try {
+      setLoading(true);
+      const supabase = createClient();
+
+      const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
+        redirectTo: getSiteUrl() + ROUTES.newPassword,
+      });
+
+      if (error) {
+        errorMessage(error.message || "Failed to login");
+      } else {
+        router.push(ROUTES.restoreAuthConfirm);
+        successMessage("Confirm please");
       }
-    });
+    } catch {
+      errorMessage("Failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,7 +78,7 @@ const RestorePassword: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={isPending} className={s.form__btn} type="primary" htmlType="submit">
+        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Reset Password
         </Button>
       </Form.Item>

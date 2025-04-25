@@ -11,7 +11,6 @@ import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
 import { signInWithOAuth } from "@/app/(auth)/auth/actions";
 
 import { signInSchema, TSignInSchema } from "@features/Auth/SignIn/lib/signInSchema";
-import { loginServer } from "@features/Auth/SignIn/model/actions";
 
 import Button from "@shared/ui/Button";
 import InputControl from "@shared/controllers/InputControl";
@@ -22,9 +21,10 @@ import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 import s from "./SignIn.module.scss";
 import { getSiteUrl } from "@/shared/utils/urls";
+import { createClient } from "@/shared/config/supabase/client";
 
 const SignIn: React.FC = () => {
-  const [isPending, startTransition] = React.useTransition();
+  const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const { setUser } = useUserInfo();
   const { successMessage, errorMessage } = useMessage();
@@ -43,19 +43,30 @@ const SignIn: React.FC = () => {
     mode: "onSubmit",
   });
 
-  const handleClick = (data: TSignInSchema) => {
-    startTransition(async () => {
-      try {
-        const user = await loginServer({ email: data.email, password: data.password });
-        if (user) {
-          setUser(user);
-          router.push(ROUTES.customize);
-          successMessage("Welcome!");
-        }
-      } catch (e: any) {
-        errorMessage(e?.message || "Failed to login");
+  const handleClick = async (data: TSignInSchema) => {
+    try {
+      setLoading(true);
+      const supabase = createClient();
+
+      const {
+        error,
+        data: { user },
+      } = await supabase.auth.signInWithPassword(data);
+
+      if (error) {
+        errorMessage(error.message || "Failed to login");
       }
-    });
+
+      if (user) {
+        setUser(user);
+        router.push(ROUTES.customize);
+        successMessage("Welcome!");
+      }
+    } catch {
+      errorMessage("Failed to login");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -116,7 +127,7 @@ const SignIn: React.FC = () => {
       </Link>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={isPending} className={s.form__btn} type="primary" htmlType="submit">
+        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Sign in
         </Button>
       </Form.Item>

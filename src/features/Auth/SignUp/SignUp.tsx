@@ -10,7 +10,6 @@ import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
 import { signInWithOAuth } from "@/app/(auth)/auth/actions";
 
 import { signUpSchema, TSignUpSchema } from "@features/Auth/SignUp/lib/signUpSchema";
-import { signUpServer } from "@features/Auth/SignUp/model/actions";
 
 import Button from "@shared/ui/Button";
 import InputControl from "@shared/controllers/InputControl";
@@ -21,11 +20,14 @@ import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 
 import s from "./SignUp.module.scss";
 import { getSiteUrl } from "@/shared/utils/urls";
+import { createClient } from "@/shared/config/supabase/client";
+import { useRouter } from "next/navigation";
 
 const SignUp: React.FC = () => {
-  const [isPending, startTransition] = React.useTransition();
+  const [loading, setLoading] = React.useState(false);
 
   const { successMessage, errorMessage } = useMessage();
+  const router = useRouter();
 
   const {
     control,
@@ -42,15 +44,29 @@ const SignUp: React.FC = () => {
     mode: "onSubmit",
   });
 
-  const handleClick = (data: TSignUpSchema) => {
-    startTransition(async () => {
-      try {
-        await signUpServer({ email: data.email, password: data.password }, getSiteUrl() + ROUTES.callback);
+  const handleClick = async (data: TSignUpSchema) => {
+    try {
+      setLoading(true);
+      const supabase = createClient();
+
+      const { error } = await supabase.auth.signUp({
+        ...data,
+        options: {
+          emailRedirectTo: getSiteUrl() + ROUTES.callback,
+        },
+      });
+
+      if (error) {
+        errorMessage(error?.message);
+      } else {
         successMessage("Check your email");
-      } catch (e: any) {
-        errorMessage(e?.message || "Failed to sign up server");
+        router.push(ROUTES.signUpConfirm);
       }
-    });
+    } catch {
+      errorMessage("Failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -121,7 +137,7 @@ const SignUp: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={isPending} className={s.form__btn} type="primary" htmlType="submit">
+        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Sign Up
         </Button>
       </Form.Item>

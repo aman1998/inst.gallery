@@ -34,7 +34,7 @@ const Header: React.FC<Props> = ({ className }) => {
   ];
 
   const rightContent = (
-    <Button type="primary" size="middle" onClick={() => window.open(ROUTES.customize)}>
+    <Button type="primary" size="middle" onClick={() => router.push(ROUTES.customize)}>
       Start
     </Button>
   );

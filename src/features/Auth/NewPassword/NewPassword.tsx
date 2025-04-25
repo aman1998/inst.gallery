@@ -7,7 +7,6 @@ import { Form } from "antd";
 import { useRouter } from "next/navigation";
 
 import { newPasswordSchema, TNewPasswordSchema } from "@features/Auth/NewPassword/lib/newPasswordSchema";
-import { newPasswordEmailServer } from "@features/Auth/NewPassword/model/actions";
 
 import Button from "@shared/ui/Button";
 import InputControl from "@shared/controllers/InputControl";
@@ -16,9 +15,11 @@ import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import { useMessage } from "@shared/hooks/useMessage";
 
 import s from "./NewPassword.module.scss";
+import { createClient } from "@/shared/config/supabase/client";
 
 const NewPassword: React.FC = () => {
-  const [isPending, startTransition] = React.useTransition();
+  const [loading, setLoading] = React.useState(false);
+
   const router = useRouter();
   const { setUser } = useUserInfo();
   const { successMessage, errorMessage } = useMessage();
@@ -36,19 +37,30 @@ const NewPassword: React.FC = () => {
     mode: "onSubmit",
   });
 
-  const handleClick = (data: TNewPasswordSchema) => {
-    startTransition(async () => {
-      try {
-        const user = await newPasswordEmailServer(data.password);
-        if (user) {
-          setUser(user);
-          router.push(ROUTES.customize);
-          successMessage("Welcome!");
-        }
-      } catch (e: any) {
-        errorMessage(e?.message || "Failed to login");
+  const handleClick = async (data: TNewPasswordSchema) => {
+    try {
+      setLoading(true);
+      const supabase = createClient();
+
+      const {
+        error,
+        data: { user },
+      } = await supabase.auth.updateUser({
+        password: data.password,
+      });
+
+      if (error) {
+        errorMessage(error.message || "Failed");
+      } else {
+        setUser(user);
+        router.push(ROUTES.customize);
+        successMessage("Welcome!");
       }
-    });
+    } catch {
+      errorMessage("Failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,7 +96,7 @@ const NewPassword: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={isPending} className={s.form__btn} type="primary" htmlType="submit">
+        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Change password
         </Button>
       </Form.Item>
