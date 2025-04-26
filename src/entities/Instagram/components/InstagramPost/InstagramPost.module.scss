@@ -13,6 +13,8 @@ $borderRadius: 12px;
 
   @include respond(mobile) {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     width: 300px;
   }
 

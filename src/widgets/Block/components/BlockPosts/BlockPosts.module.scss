@@ -164,8 +164,8 @@
     .grid-card--bg {
       .grid-card__image-wrapper {
         margin: 0 auto;
-        max-height: 350px;
-        max-width: 350px;
+        max-height: 200px;
+        max-width: 200px;
       }
       .grid-card__title,
       .grid-card__text {
@@ -201,6 +201,15 @@
   &--with-bg {
     @include respond(mobile) {
       grid-template-columns: repeat(1, 1fr);
+      .grid-card__image-wrapper {
+        margin: 0 auto;
+        max-height: 200px;
+        max-width: 200px;
+      }
+      .grid-card__title,
+      .grid-card__text {
+        text-align: center;
+      }
     }
   }
 }
