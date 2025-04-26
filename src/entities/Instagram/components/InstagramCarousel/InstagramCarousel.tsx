@@ -57,7 +57,12 @@ const InstagramCarousel: React.FC<Props> = ({ isOpen, onClose, feeds, initialSli
           arrows={feeds.length > 1}
         >
           {feeds.map((post) => (
-            <InstagramPost className={IGNORE_CLASS} post={post} key={post.id} />
+            <InstagramPost
+              classNames={{ mediaWrapperClassName: s.modal__media }}
+              className={IGNORE_CLASS}
+              post={post}
+              key={post.id}
+            />
           ))}
         </Carousel>
       </div>

@@ -79,7 +79,7 @@ const SubscriptionPlans: React.FC = () => {
 
             <Button
               onClick={() => {
-                window.open(ROUTES.signIn);
+                router.push(ROUTES.signIn);
               }}
               disabled={!!plan.isPaused}
               type={plan.buttonType}

@@ -11,12 +11,20 @@ import { IInstagramPost, EInstagramType, IInstagramDownloadedPost } from "../../
 
 import s from "./InstagramPost.module.scss";
 
+interface IClassname {
+  imageClassName?: string;
+  videoClassName?: string;
+  carouselClassName?: string;
+  mediaWrapperClassName?: string;
+}
+
 interface Props {
   post: IInstagramPost | IInstagramDownloadedPost;
+  classNames?: IClassname;
   className?: string;
 }
 
-const InstagramPost: React.FC<Props> = ({ post, className }) => {
+const InstagramPost: React.FC<Props> = ({ post, classNames, className }) => {
   const [loading, setLoading] = React.useState(true);
 
   const renderMedia = () => {
@@ -29,7 +37,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
             fill
             src={post.media_url}
             alt={post.caption || "Instagram Post"}
-            className={s.post__image}
+            className={cn(s.post__image, classNames?.imageClassName)}
             quality={75}
             onLoad={() => setLoading(false)}
           />
@@ -39,7 +47,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
         return (
           <div style={{ height: "100%" }}>
             <video
-              className={s.post__video}
+              className={cn(s.post__video, classNames?.videoClassName)}
               controls={true}
               autoPlay
               loop
@@ -61,7 +69,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
                 fill
                 src={child.media_url}
                 alt={post.caption || "Carousel Image"}
-                className={s.post__image}
+                className={cn(s.post__image, classNames?.carouselClassName)}
                 quality={75}
                 onLoad={() => setLoading(false)}
               />
@@ -76,7 +84,7 @@ const InstagramPost: React.FC<Props> = ({ post, className }) => {
   return (
     <div className={cn(s.post, className)}>
       {/* <div className={cn(s.post__media, loading && s["post__media--loading"], "post__media")}>{renderMedia()}</div> */}
-      <div className={cn(s.post__media, "post__media")}>{renderMedia()}</div>
+      <div className={cn(s.post__media, "post__media", classNames?.mediaWrapperClassName)}>{renderMedia()}</div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
           <Typography.Title level={5} className={s.post__username}>
