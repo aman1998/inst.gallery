@@ -1,14 +1,5 @@
+import { INSTAGRAM_URL } from "@/shared/config/appConfig";
 import { EInstagramType, IInstagramAccount, IInstagramDownloadedPost } from "@entities/Instagram/model/types";
-
-export const image1 =
-  "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-  "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17961912371761026/images/17961912371761026.jpg";
-
-export const image2 = "/images/ronaldo.jpg";
-
-export const image3 = "/images/ronaldo.jpg";
-
-export const image4 = "/images/ronaldo.jpg";
 
 export const postDescription1 =
   "🌟 Create a Stunning Instagram-Style Portfolio! 🌟" +
@@ -23,50 +14,6 @@ export const postDescription1 =
   "\n\n" +
   "#instgallery";
 
-export const postDescription2 =
-  "Turn your Instagram content into a professional website in just a few clicks.\n" +
-  "\n" +
-  '💻🌟 "Get started today and showcase your brand like never before!\n' +
-  "\n" +
-  "#instgallery";
-
-export const postDescription3 =
-  "No more limits on how you present your content! Our landing page builder " +
-  "lets you bring your Instagram posts to life with unlimited design possibilities.";
-
-export const postDescription4 =
-  "Want a website that works as hard as you do? Our platform converts your Instagram " +
-  "posts into custom landing pages – it's that simple. 🔥 #WebDesign";
-
-export const postDescription5 =
-  "Unlock the power of a personalized website. Customize, create, and launch a " +
-  "landing page directly from your Instagram content. 📲✨";
-
-export const postDescription6 =
-  "It’s time to elevate your Instagram game! " +
-  "Transform your posts into fully functional landing pages that represent your brand. Build yours now!";
-
-export const postDescription7 =
-  "From Instagram to website in minutes! 💡 Our easy-to-use platform " +
-  "turns your posts into professional landing pages that capture your audience’s attention.";
-
-export const postDescription8 =
-  "Looking to grow your brand? With our platform, turning your " +
-  "Instagram into a dynamic landing page is as easy as 1-2-3. Let’s build together!";
-
-export const postDescription9 =
-  "Create the landing page of your dreams by simply uploading your " +
-  "Instagram posts. Perfect for influencers, creators, and brands. Try it out today!";
-
-export const postDescription10 =
-  "Want a website but don't have time to code? Our platform " +
-  "lets you build a custom landing page from your Instagram posts without any hassle. 🚀 #WebDesignMadeEasy";
-
-export const postDescription11 =
-  "Create stunning landing pages with ease! 🚀 " +
-  "Our platform lets you transform your Instagram posts into beautiful, functional websites. " +
-  "Ready to build your brand?";
-
 export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
   {
     id: "17895695668004550",
@@ -76,11 +23,11 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     created_at: "2024-12-25T09:00:00+0000",
     caption: postDescription1,
     media_type: EInstagramType.IMAGE,
-    media_url: image1,
+    media_url: "/logo.png",
     thumbnail_url: null,
     timestamp: "2024-12-25T09:00:00+0000",
     username: "ins.t.gallery",
-    permalink: "https://www.instagram.com/p/DHwTm0ms4gh/",
+    permalink: INSTAGRAM_URL,
   },
   {
     id: "17895695668004551",
@@ -88,55 +35,26 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     accountId: "17895695668004550",
     downloaded_id: "2",
     created_at: "2024-12-25T09:00:00+0000",
-    caption: postDescription2,
+    caption:
+      "✨ Less is more! Clean, elegant product shots with a focus on shape, texture, and simplicity." +
+      "\n\n" +
+      "Perfect for premium brands looking for a timeless feel.",
     media_type: EInstagramType.CAROUSEL_ALBUM,
-    media_url: image3,
+    media_url: "/postsImages/image1.jpg",
     thumbnail_url: null,
     timestamp: "2024-12-24T08:30:00+0000",
-    username: "ins.t.gallery",
-    permalink: "https://www.instagram.com/p/DHxr6ivMkXL/",
+    username: "Minimalist Photography",
+    permalink: INSTAGRAM_URL,
     children: {
       data: [
         {
-          id: "18086753704610757",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-            "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18086753704610757.jpg",
-          media_type: EInstagramType.IMAGE,
-        },
-        {
           id: "18047391956592357",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-            "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18047391956592357.jpg",
+          media_url: "/postsImages/image1.jpg",
           media_type: EInstagramType.IMAGE,
         },
         {
           id: "18038421989241451",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-            "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18038421989241451.jpg",
-          media_type: EInstagramType.IMAGE,
-        },
-        {
-          id: "18056296210907077",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-            "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18056296210907077.jpg",
-          media_type: EInstagramType.IMAGE,
-        },
-        {
-          id: "18098901700522755",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/" +
-            "instagram-media/a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18098901700522755.jpg",
-          media_type: EInstagramType.IMAGE,
-        },
-        {
-          id: "18494383099055885",
-          media_url:
-            "https://jjvqbgslotretwtfjbzo.supabase.co/storage/v1/object/public/instagram-media/" +
-            "a4dfd1b6-8204-4ab5-b4a8-ba61d8838e71/17962889288864533/carousel/18494383099055885.jpg",
+          media_url: "/postsImages/image3.jpg",
           media_type: EInstagramType.IMAGE,
         },
       ],
@@ -148,13 +66,16 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     accountId: "17895695668004550",
     downloaded_id: "3",
     created_at: "2024-12-25T09:00:00+0000",
-    caption: "Дорога в осень 🍂",
+    caption:
+      "🏙️ Sleek lines, bold forms, and futuristic vibes. " +
+      "\n\n" +
+      "A visual journey through the world's most stunning modern architecture!",
     media_type: EInstagramType.IMAGE,
-    media_url: image3,
+    media_url: "/postsImages/image4.jpg",
     thumbnail_url: null,
     timestamp: "2024-12-23T07:45:00+0000",
-    username: "travel_journal",
-    permalink: "https://www.instagram.com/p/DHwTm0ms4gh/",
+    username: "Modern Architecture Shots",
+    permalink: INSTAGRAM_URL,
   },
   {
     id: "17895695668004554",
@@ -162,13 +83,16 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     accountId: "17895695668004550",
     downloaded_id: "4",
     created_at: "2024-12-25T09:00:00+0000",
-    caption: "Завтрак чемпиона 🥞🍓",
+    caption:
+      "✨ Full-cycle photoshoot for a premium skincare line. " +
+      "\n\n" +
+      "The goal was to create clean, minimalist product photos highlighting texture and elegance for their new website launch and Instagram ads.",
     media_type: EInstagramType.IMAGE,
-    media_url: image4,
+    media_url: "/postsImages/image5.jpg",
     thumbnail_url: null,
     timestamp: "2024-12-21T09:00:00+0000",
-    username: "foodies_unite",
-    permalink: "https://www.instagram.com/p/DHwTm0ms4gh/",
+    username: "Product Photography for Luxury Skincare Brand",
+    permalink: INSTAGRAM_URL,
   },
   {
     id: "17895695668004555",
@@ -176,28 +100,37 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     accountId: "17895695668004550",
     downloaded_id: "5",
     created_at: "2024-12-25T09:00:00+0000",
-    caption: "Гармония в каждой детали 🕊️",
+    caption:
+      "🍋	🍉 🍌 Styled and photographed a range of artisanal desserts and drinks for a bakery’s new seasonal menu. " +
+      "\n\n" +
+      "Focused on vibrant, mouthwatering visuals for posters, website, and Uber Eats promos.",
     media_type: EInstagramType.CAROUSEL_ALBUM,
     thumbnail_url: null,
     timestamp: "2024-12-20T10:45:00+0000",
-    username: "minimal_life",
-    permalink: "https://www.instagram.com/p/DHwTm0ms4gh/",
+    username: " Food Photography for Boutique Bakery Menu Update",
+    media_url: "/postsImages/image7.jpg",
+    permalink: INSTAGRAM_URL,
     children: {
       data: [
         {
           id: "17900000000000000",
           media_type: EInstagramType.IMAGE,
-          media_url: image1,
+          media_url: "/postsImages/image7.jpg",
         },
         {
           id: "17900000000000001",
           media_type: EInstagramType.IMAGE,
-          media_url: image2,
+          media_url: "/postsImages/image8.jpg",
+        },
+        {
+          id: "17900000000000002",
+          media_type: EInstagramType.IMAGE,
+          media_url: "/postsImages/image9.jpg",
         },
         {
           id: "17900000000000003",
           media_type: EInstagramType.IMAGE,
-          media_url: image3,
+          media_url: "/postsImages/image10.jpg",
         },
       ],
     },
@@ -208,13 +141,16 @@ export const MOCK_INSTAGRAM_POSTS: IInstagramDownloadedPost[] = [
     accountId: "17895695668004550",
     downloaded_id: "6",
     created_at: "2024-12-25T09:00:00+0000",
-    caption: "Горы зовут 🏔️",
+    caption:
+      "Dynamic on-the-go fashion portraits shot during City Fashion Week. " +
+      "\n\n" +
+      "The goal was to capture authentic street looks for blog features, press releases, and social media coverage.",
     media_type: EInstagramType.IMAGE,
-    media_url: image3,
+    media_url: "/postsImages/image6.jpg",
     thumbnail_url: null,
     timestamp: "2024-12-19T11:00:00+0000",
-    username: "mountain_lovers",
-    permalink: "https://www.instagram.com/p/DHwTm0ms4gh/",
+    username: "Street Style Editorial for Local Fashion Week",
+    permalink: INSTAGRAM_URL,
   },
 ];
 
