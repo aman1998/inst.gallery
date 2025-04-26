@@ -22,12 +22,13 @@ const BlockListWidget: React.FC<Props> = ({ block, className }) => {
   return (
     <section className={cn(s.block, className)}>
       {block.customization.title && (
-        <Typography.Title className={s.block__title} level={3} style={{ margin: 0 }}>
+        <Typography.Title className={s.block__title} level={2} style={{ margin: 0 }}>
           {block.customization.title}
         </Typography.Title>
       )}
       {block.customization.subtitle && (
-        <FormItem className={s.block__subtitle}>{block.customization.subtitle}</FormItem>
+        <Typography.Text className={s.block__subtitle}>{block.customization.subtitle}</Typography.Text>
+        // <FormItem className={s.block__subtitle}>{block.customization.subtitle}</FormItem>
       )}
       <BlockPosts customization={block.customization} className={s.block__list} />
     </section>

@@ -5,6 +5,7 @@ import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 import { SITE_NAME_SHORT } from "@shared/config/appConfig";
 
 import s from "./Logo.module.scss";
+import { Typography } from "antd";
 
 interface Props {
   className?: string;
@@ -17,9 +18,9 @@ interface Props {
 const Logo: React.FC<Props> = ({ onClick, className, href, style, color = PRIMARY_COLOR, name = SITE_NAME_SHORT }) => {
   const content = (
     <div className={s.logo} style={style} onClick={onClick}>
-      <p className={s.logo__name}>
+      <Typography.Title level={3} className={s.logo__name}>
         {name}.<span style={{ color }}>gallery</span>
-      </p>
+      </Typography.Title>
     </div>
   );
 
