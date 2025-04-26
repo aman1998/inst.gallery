@@ -62,7 +62,7 @@ BEGIN
             'titleLevel', 3,
             'headerStyle', jsonb_build_object('alignItems', 'center'),
             'imageWrapperStyle', jsonb_build_object('borderRadius', 12),
-            'imageStyle', '{}',
+            'imageStyle', jsonb_build_object(),
             'posts', jsonb_build_array(),
             'postsSettings', jsonb_build_object(
               'postsWithBg', true,

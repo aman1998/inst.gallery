@@ -52,12 +52,12 @@ const InstagramPostCard: React.FC<Props> = ({ post, index, posts, ActionsCompone
 
   return (
     <div
-      onClick={handleClick}
-      onMouseEnter={() => setSelectedPostIndex(index)}
-      onMouseLeave={() => setSelectedPostIndex(null)}
-      className={s.card}
+    // onClick={handleClick}
+    // onMouseEnter={() => setSelectedPostIndex(index)}
+    // onMouseLeave={() => setSelectedPostIndex(null)}
+    // className={s.card}
     >
-      {imageUrl && (
+      {/* {imageUrl && (
         <Image
           width={48}
           height={48}
@@ -67,7 +67,7 @@ const InstagramPostCard: React.FC<Props> = ({ post, index, posts, ActionsCompone
           className={s.card__image}
         />
       )}
-      {caption && <Typography.Text className={s.card__caption}>{caption}</Typography.Text>}
+      {caption && <Typography.Text className={s.card__caption}>{caption}</Typography.Text>} */}
 
       <div className={s.card__actions}>{ActionsComponent}</div>
     </div>

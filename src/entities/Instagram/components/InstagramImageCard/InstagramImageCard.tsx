@@ -61,6 +61,8 @@ const InstagramImageCard: React.FC<Props> = ({
     }
   };
 
+  console.log("style =>", { ...style, borderRadius: `${style?.borderRadius || 0}%` });
+
   return (
     <div
       className={cn(
@@ -73,7 +75,7 @@ const InstagramImageCard: React.FC<Props> = ({
       onClick={handleClick}
     >
       <Image
-        style={{ ...style, borderRadius: `${style?.borderRadius}%` }}
+        style={{ ...style, borderRadius: `${style?.borderRadius || 0}%` }}
         unoptimized={unoptimized}
         loading="lazy"
         alt={alt}
