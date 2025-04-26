@@ -52,7 +52,7 @@ const SubscriptionDetailHeader: React.FC<Props> = ({ subscription, transactions 
 
         <div className={s.detail__btns}>
           {subscription?.managementUrls?.updatePaymentMethod && !isCanceled && (
-            <Link target={"_blank"} href={subscription?.managementUrls?.updatePaymentMethod}>
+            <Link target={"_blank"} rel="noopener noreferrer" href={subscription?.managementUrls?.updatePaymentMethod}>
               <Button type="primary" size="small">
                 Update payment method
               </Button>

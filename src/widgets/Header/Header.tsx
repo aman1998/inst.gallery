@@ -28,8 +28,8 @@ const Header: React.FC<Props> = ({ className }) => {
       title: "Pricing",
     },
     {
-      route: ROUTES.demoCustomize,
-      title: "DEMO",
+      route: ROUTES.demoSite,
+      title: "Demo page",
     },
   ];
 
@@ -52,8 +52,6 @@ const Header: React.FC<Props> = ({ className }) => {
         <nav className={s.header__links}>
           {links.map((link) => (
             <Button
-              // href={link.route}
-              // target="_blank"
               onClick={() => router.push(link.route)}
               key={link.route}
               type="text"

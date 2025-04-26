@@ -65,6 +65,7 @@ const SitePageContainer: React.FC<Props> = ({ project, plan, isDemo }) => {
               className={s["page__home-btn"]}
               href={ROUTES.home}
               target="_blank"
+              rel="noopener noreferrer"
               type="default"
               style={{ height: 30, fontSize: 14, padding: "0 8px" }}
             >

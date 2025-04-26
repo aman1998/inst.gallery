@@ -5,8 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 
-import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
-
 import {
   addInstagramDownloadedPostsInListSelector,
   instagramDownloadedPostsSelector,
@@ -41,9 +39,10 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: () => void;
+  isDemo?: boolean;
 }
 
-const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) => {
+const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess, isDemo }) => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const modalRef = React.useRef<HTMLDivElement>(null);
@@ -57,7 +56,6 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess }) =>
 
   const supabase = createClient();
   const { user } = useUserInfo();
-  const { isDemo } = useLKLayout();
 
   const {
     control,

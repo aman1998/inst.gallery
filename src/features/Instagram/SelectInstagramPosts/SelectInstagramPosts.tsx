@@ -157,7 +157,7 @@ const SelectInstagramPosts: React.FC<Props> = ({ selectedPosts, setSelectedPosts
           </div>
         </Form.Item>
       </div>
-      <CreateInstagramPost isOpen={isOpen} onClose={closeModal} />
+      <CreateInstagramPost isDemo={isDemo} isOpen={isOpen} onClose={closeModal} />
     </>
   );
 };

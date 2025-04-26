@@ -35,12 +35,12 @@ const Footer: React.FC<Props> = ({ className }) => (
     </span>
     <span>-</span>
     <span>
-      <a href={INSTAGRAM_URL} target="_blank">
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
         <InstagramOutlined />
       </a>
     </span>
     <span>
-      <a href={`mailto:${SITE_EMAIL}`} target="_blank">
+      <a href={`mailto:${SITE_EMAIL}`} target="_blank" rel="noopener noreferrer">
         <MailOutlined />
       </a>
     </span>

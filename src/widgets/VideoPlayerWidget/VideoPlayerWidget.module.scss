@@ -1,0 +1,15 @@
+.widget {
+  .widget__btn {
+    &--desktop {
+      @include respond(mobile) {
+        display: none;
+      }
+    }
+    &--mobile {
+      display: none;
+      @include respond(mobile) {
+        display: block;
+      }
+    }
+  }
+}
