@@ -164,8 +164,8 @@
     .grid-card--bg {
       .grid-card__image-wrapper {
         margin: 0 auto;
-        max-height: 300px;
-        max-width: 300px;
+        max-height: 280px;
+        max-width: 280px;
       }
       .grid-card__title,
       .grid-card__text {
@@ -203,8 +203,8 @@
       grid-template-columns: repeat(1, 1fr);
       .grid-card__image-wrapper {
         margin: 0 auto;
-        max-height: 200px;
-        max-width: 200px;
+        max-height: 200px !important;
+        max-width: 200px !important;
       }
       .grid-card__title,
       .grid-card__text {
