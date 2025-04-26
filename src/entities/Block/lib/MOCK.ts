@@ -98,8 +98,7 @@ export const MOCK_BLOCK_4_CUSTOMIZATION: ICustomizeBlock4 = {
     {
       key: "1",
       label: "What is this site about?",
-      children:
-        "This site helps you create a clean, Instagram-style widget to showcase your work — no need to upload actual posts (for now).",
+      children: "This site helps you create a clean, Instagram-style widget to showcase your work.",
     },
     {
       key: "2",
@@ -109,7 +108,7 @@ export const MOCK_BLOCK_4_CUSTOMIZATION: ICustomizeBlock4 = {
     {
       key: "3",
       label: "Is it free to use?",
-      children: "Yes, you can start with a free version. More advanced features are available in the premium plan.",
+      children: "Yes, you can start with a free version. More advanced features are available in the personal plan.",
     },
     {
       key: "4",

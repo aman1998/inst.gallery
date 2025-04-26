@@ -1,8 +1,8 @@
 import React from "react";
 import cn from "classnames";
-import { Avatar, Typography } from "antd";
-import type { UploadProps } from "antd";
-import { message, Upload } from "antd";
+import { EmojiClickData, Theme } from "emoji-picker-react";
+import dynamic from "next/dynamic";
+
 import Image from "next/image";
 import { Control, Controller } from "react-hook-form";
 import { EInstagramType, IInstagramPost } from "@entities/Instagram/model/types";
@@ -15,6 +15,13 @@ import { TNullable } from "@/shared/types/common";
 import { TCustomizeCreateInstagramPostSchema } from "../../lib/schema";
 import InputControl from "@/shared/controllers/InputControl";
 import TextAreaControl from "@/shared/controllers/TextAreaControl";
+
+const EmojiPicker = dynamic(
+  () => {
+    return import("emoji-picker-react");
+  },
+  { ssr: false }
+);
 
 interface Props {
   control: Control<TCustomizeCreateInstagramPostSchema>;
@@ -102,6 +109,24 @@ const CreateInstagramPostForm: React.FC<Props> = ({ className, control }) => {
           <InputControl isCustomInput control={control} name="title" placeholder="Name" />
         </div>
         <div className={s.post__content}>
+          {/* <EmojiPicker
+            reactions={["hat", "dog"]}
+            theme={Theme.DARK}
+            searchDisabled
+            skinTonesDisabled
+            reactionsDefaultOpen={false}
+            allowExpandReactions
+            // open={false}
+            // open={false}
+            onEmojiClick={(emojiData: EmojiClickData) => {
+              console.log("emohieData =>", emojiData);
+              // const start = value.slice(0, cursorPosition ?? value.length);
+              // const end = value.slice(cursorPosition ?? value.length);
+              // const newText = `${start}${emojiData.emoji}${end}`;
+              // onChange(newText);
+              // setCursorPosition(start.length + emojiData.emoji.length);
+            }}
+          /> */}
           <TextAreaControl isCustomTextArea control={control} name="content" placeholder="Content" />
         </div>
         <div className={s.post__btn}>

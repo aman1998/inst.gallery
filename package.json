@@ -23,6 +23,7 @@
 		"class-variance-authority": "^0.7.1",
 		"classnames": "^2.5.1",
 		"date-fns": "^4.1.0",
+		"emoji-picker-react": "^4.12.2",
 		"framer-motion": "11.13.1",
 		"immer": "^10.1.1",
 		"intl-messageformat": "^10.5.0",
