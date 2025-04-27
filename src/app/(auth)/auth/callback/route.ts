@@ -5,7 +5,8 @@ import { EQueryParam } from "@shared/types/query";
 import { ROUTES } from "@shared/config/routes";
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
+  const origin = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const code = searchParams.get(EQueryParam.code);
   const next = searchParams.get("next") ?? ROUTES.customize;
 

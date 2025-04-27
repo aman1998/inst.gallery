@@ -103,7 +103,7 @@ const NewPassword: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
+        <Button disabled={!captchaToken} loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Change password
         </Button>
       </Form.Item>

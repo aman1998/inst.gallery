@@ -145,7 +145,7 @@ const SignUp: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
+        <Button disabled={!captchaToken} loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Sign Up
         </Button>
       </Form.Item>

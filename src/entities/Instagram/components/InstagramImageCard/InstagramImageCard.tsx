@@ -61,8 +61,6 @@ const InstagramImageCard: React.FC<Props> = ({
     }
   };
 
-  console.log("style =>", { ...style, borderRadius: `${style?.borderRadius || 0}%` });
-
   return (
     <div
       className={cn(

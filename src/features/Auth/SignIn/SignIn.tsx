@@ -142,7 +142,7 @@ const SignIn: React.FC = () => {
       </Link>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
+        <Button disabled={!captchaToken} loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Sign in
         </Button>
       </Form.Item>

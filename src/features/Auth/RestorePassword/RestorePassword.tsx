@@ -87,7 +87,7 @@ const RestorePassword: React.FC = () => {
       </Form.Item>
 
       <Form.Item style={{ margin: 0 }}>
-        <Button loading={loading} className={s.form__btn} type="primary" htmlType="submit">
+        <Button disabled={!captchaToken} loading={loading} className={s.form__btn} type="primary" htmlType="submit">
           Reset Password
         </Button>
       </Form.Item>
@@ -100,6 +100,7 @@ const RestorePassword: React.FC = () => {
         options={{ theme: "light", size: "flexible" }}
         siteKey={process.env.CAPTCHA_SITE_KEY as string}
         onSuccess={setCaptchaToken}
+        style={{ marginTop: 16 }}
       />
     </Form>
   );
