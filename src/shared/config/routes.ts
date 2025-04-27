@@ -122,6 +122,7 @@ export const authRoutes = [
   ROUTES.restoreAuth,
   ROUTES.restoreAuthConfirm,
   ROUTES.callback,
+  ROUTES.authConfirm,
   ROUTES.authError,
   // ROUTES.newPassword,
 ];

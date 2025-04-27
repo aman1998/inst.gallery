@@ -59,7 +59,7 @@ const SignUp: React.FC = () => {
       const { error } = await supabase.auth.signUp({
         ...data,
         options: {
-          emailRedirectTo: getSiteUrl() + ROUTES.authConfirm,
+          // emailRedirectTo: getSiteUrl() + ROUTES.authConfirm,
           captchaToken,
         },
       });
