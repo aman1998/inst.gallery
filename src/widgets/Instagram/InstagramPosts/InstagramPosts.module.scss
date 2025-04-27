@@ -18,6 +18,11 @@
   &__add {
     height: 150px !important;
     width: 150px !important;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   &--skeleton {
