@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const origin = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const code = searchParams.get(EQueryParam.code);
-  const next = searchParams.get("next") ?? ROUTES.customize;
+  const next = searchParams.get("next") || ROUTES.customize;
 
   if (code) {
     const supabase = createClient();

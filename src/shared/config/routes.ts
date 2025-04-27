@@ -23,6 +23,7 @@ export enum ELink {
   restoreAuth = "/auth/restore",
   restoreAuthConfirm = "/auth/restoreConfirm",
   callback = "/auth/callback",
+  authConfirm = "/auth/confirm",
   authError = "/auth/error",
 
   subscriptions = "/profile/subscriptions",
@@ -82,6 +83,7 @@ export const ROUTES: TRoutes = {
   restoreAuth: ELink.restoreAuth,
   restoreAuthConfirm: ELink.restoreAuthConfirm,
   callback: ELink.callback,
+  authConfirm: ELink.authConfirm,
   authError: ELink.authError,
 
   siteId: (id) => `/${id}`,
