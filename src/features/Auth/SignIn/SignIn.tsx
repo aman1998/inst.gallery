@@ -82,14 +82,13 @@ const SignIn: React.FC = () => {
     }
   };
 
-  console.log("token =>", captchaToken);
-
   return (
     <Form className={s.form} onFinish={handleSubmit(handleClick)}>
       <h1 className={s.form__title}>Login</h1>
 
       <div className={s.form__oauth}>
         <Button
+          disabled={!captchaToken}
           onClick={() => signInWithOAuth("google", getSiteUrl() + ROUTES.callback)}
           type="default"
           icon={<GoogleCircleFilled style={{ color: PRIMARY_COLOR }} />}

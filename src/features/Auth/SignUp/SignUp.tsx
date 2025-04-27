@@ -83,6 +83,7 @@ const SignUp: React.FC = () => {
 
       <div className={s.form__oauth}>
         <Button
+          disabled={!captchaToken}
           onClick={() => signInWithOAuth("google", getSiteUrl() + ROUTES.callback)}
           type="default"
           icon={<GoogleCircleFilled style={{ color: PRIMARY_COLOR }} />}
