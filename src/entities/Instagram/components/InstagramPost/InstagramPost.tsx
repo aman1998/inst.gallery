@@ -87,7 +87,7 @@ const InstagramPost: React.FC<Props> = ({ post, classNames, className }) => {
       <div className={cn(s.post__media, "post__media", classNames?.mediaWrapperClassName)}>{renderMedia()}</div>
       <div className={cn(s.post__info, "post__info")}>
         <div className={s.post__header}>
-          <Typography.Title level={5} className={s.post__username}>
+          <Typography.Title level={5} className={s.post__username} style={{ margin: 0 }}>
             {post.username}
           </Typography.Title>
         </div>

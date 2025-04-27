@@ -75,7 +75,7 @@ BEGIN
     ]::jsonb[],
     true,
     now(),
-    '#d5ac8a',  -- цвет по умолчанию
+    '#e3bf59',  -- цвет по умолчанию
     NULL,  -- instagram_id по умолчанию NULL
     jsonb_build_object(
       'title', 'Unknown',  -- Значение по умолчанию для title
