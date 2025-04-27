@@ -31,6 +31,11 @@ const Header: React.FC<Props> = ({ className }) => {
       route: ROUTES.demoSite,
       title: "Demo page",
     },
+    // TODO: remove in mobile
+    // {
+    //   route: ROUTES.demoCustomize,
+    //   title: "Try i live",
+    // },
   ];
 
   const rightContent = (

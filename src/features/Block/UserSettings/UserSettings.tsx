@@ -1,8 +1,9 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Divider, Empty, Flex, Typography, Button, Modal, Select, Input, Space, Image, Avatar } from "antd";
-import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import Image from "next/image";
+import { Divider, Empty, Flex, Typography, Button, Modal, Select, Input, Space } from "antd";
+import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import { useLKLayout } from "@widgets/layouts/LKLayout/lib/useLKLayout";
 
@@ -103,10 +104,14 @@ const UserSettings: React.FC = () => {
 
       <Divider>Avatar</Divider>
       <div className={s.form__avatar}>
-        {/* {!project.user_info?.avatar ? <div /> : <Image width={48} height={48} src={project.user_info.avatar} />} */}
-        <Button style={{ display: "flex" }} type="primary" size="small" onClick={openModal}>
-          Upload/Edit
-        </Button>
+        {!!project.user_info?.avatar ? (
+          <>
+            <Image width={48} height={48} src={project.user_info.avatar} alt="Avatar" onClick={openModal} />
+            {/* <Button style={{ display: "flex" }} size="small" onClick={openModal} icon={<EditOutlined />} /> */}
+          </>
+        ) : (
+          <Button type="dashed" icon={<PlusOutlined />} style={{ width: 48, height: 48 }} onClick={openModal} />
+        )}
       </div>
 
       <Modal title="Upload avatar" open={isOpen} onCancel={closeModal} footer={null} destroyOnClose>

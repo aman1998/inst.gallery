@@ -30,15 +30,15 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
 
   return (
     <aside className={cn(s.info, className, "block-user-info")}>
-      <div
-        className={cn(
-          s["info__avatar-wrapper"],
-          avatarLoading && s["info__avatar-wrapper--loading"],
-          !user_info?.avatar && s["info__avatar-wrapper--empty"]
-        )}
-        style={{ width: 200, height: 200 }}
-      >
-        {!!user_info?.avatar && (
+      {!!user_info?.avatar && (
+        <div
+          className={cn(
+            s["info__avatar-wrapper"],
+            avatarLoading && s["info__avatar-wrapper--loading"]
+            // !user_info?.avatar && s["info__avatar-wrapper--empty"]
+          )}
+          style={{ width: 200, height: 200 }}
+        >
           <Image
             className={s.info__avatar}
             style={{ width: 200, minWidth: 200, height: 200 }}
@@ -48,8 +48,8 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
             onLoad={() => setAvatarLoading(false)}
             src={user_info?.avatar}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <Typography.Title level={2} style={{ textAlign: "center", margin: "8px 0" }}>
         {name}
@@ -59,7 +59,7 @@ const BlockUserInfo: React.FC<Props> = ({ className, user_info }) => {
       {!!textContacts?.length && (
         <Typography.Text style={{ textAlign: "center", fontSize: 14, marginTop: 4 }}>
           {textContacts?.map((contact, idx) => (
-            <span key={idx} style={{ marginRight: 8 }}>
+            <span key={idx} style={{ display: "flex", gap: 4, marginRight: 8 }}>
               {<ContactsIcon type={contact.type} />} {contact.value}
               {idx < textContacts.length - 1 && ","}
             </span>
