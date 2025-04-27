@@ -26,7 +26,7 @@ const InstagramPostsActionComponent: React.FC<Props> = ({ post }) => (
           e.stopPropagation();
         }}
       >
-        <DeleteInstagramPost id={post.uuid} />
+        <DeleteInstagramPost post={post} />
       </div>
     }
     title={null}

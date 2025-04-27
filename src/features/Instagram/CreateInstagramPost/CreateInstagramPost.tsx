@@ -92,19 +92,16 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess, isDe
       const newPost = { ...post, downloaded_id: post.id + user?.id };
 
       if (post.media_type === EInstagramType.IMAGE && post.media_url) {
-        newPost.media_url =
-          (await uploadUrlToSupabase(post.media_url, `${post.id}/images/${post.id}.jpg`)) || post.media_url;
+        newPost.media_url = (await uploadUrlToSupabase(post.media_url, `images/${post.id}.jpg`)) || post.media_url;
       }
 
       if (post.media_type === EInstagramType.VIDEO) {
         if (post.media_url) {
-          newPost.media_url =
-            (await uploadUrlToSupabase(post.media_url, `${post.id}/videos/${post.id}.mp4`)) || post.media_url;
+          newPost.media_url = (await uploadUrlToSupabase(post.media_url, `videos/${post.id}.mp4`)) || post.media_url;
         }
         if (post.thumbnail_url) {
           newPost.thumbnail_url =
-            (await uploadUrlToSupabase(post.thumbnail_url, `${post.id}/thumbnails/${post.id}.jpg`)) ||
-            post.thumbnail_url;
+            (await uploadUrlToSupabase(post.thumbnail_url, `thumbnails/${post.id}.jpg`)) || post.thumbnail_url;
         }
       }
 
@@ -113,7 +110,7 @@ const CreateInstagramPost: React.FC<Props> = ({ isOpen, onClose, onSuccess, isDe
           post.children.data.map(async (child) => {
             const newChild = { ...child };
             newChild.media_url =
-              (await uploadUrlToSupabase(child.media_url, `${post.id}/carousel/${child.id}.jpg`)) || child.media_url;
+              (await uploadUrlToSupabase(child.media_url, `carousel/${child.id}.jpg`)) || child.media_url;
             return newChild;
           })
         );
