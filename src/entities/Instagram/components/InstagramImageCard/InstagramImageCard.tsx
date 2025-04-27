@@ -73,7 +73,7 @@ const InstagramImageCard: React.FC<Props> = ({
       onClick={handleClick}
     >
       <Image
-        style={{ ...style, borderRadius: `${style?.borderRadius || 0}%` }}
+        style={{ ...style, borderRadius: `${style?.borderRadius || wrapperStyle?.borderRadius || 0}%` }}
         unoptimized={unoptimized}
         loading="lazy"
         alt={alt}

@@ -2,7 +2,7 @@ import React from "react";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider, App } from "antd";
 
-export const SITE_PRIMARY_COLOR = "#d5ac8a";
+export const SITE_PRIMARY_COLOR = "#FAEBD7";
 // export const PRIMARY_COLOR = "rgb(120, 0, 22)";
 export const PRIMARY_COLOR = "#e3bf59";
 

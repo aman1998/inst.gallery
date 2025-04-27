@@ -1,7 +1,7 @@
 export const SITE_NAME = "Inst.Gallery";
 export const SITE_NAME_SHORT = "Inst";
 export const SITE_DESCRIPTION = "Build Elegant Instagram Gallery";
-export const SITE_TITLE = `${SITE_DESCRIPTION} | ${SITE_NAME}`;
+export const SITE_TITLE = `${SITE_NAME} | ${SITE_DESCRIPTION}`;
 export const SITE_URL = "inst.gallery";
 export const SITE_FULL_URL = "https://inst.gallery";
 export const SITE_EMAIL = "1998-amangeldi@gmail.com";

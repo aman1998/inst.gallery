@@ -64,7 +64,8 @@ export const MOCK_BLOCK_1_CUSTOMIZATION: ICustomizeBlock1 = {
 
 export const MOCK_BLOCK_2_CUSTOMIZATION: ICustomizeBlock2 = {
   title: "Portfolio",
-  subtitle: "My works",
+  subtitle:
+    "Here you’ll find a curated collection of my finest projects — each one a reflection of my passion, creativity, and commitment to quality. These works showcase my journey and the skills I've honed along the way.",
   headerStyle: {},
   titleLevel: 3,
   imageWrapperStyle: {

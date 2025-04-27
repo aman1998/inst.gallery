@@ -123,7 +123,10 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
             style={{ maxWidth: 100, height: 40, textAlign: "center" }}
           />
         </Flex>
+      </FormItem>
 
+      <Divider>Work</Divider>
+      <FormItem className={s.form__item}>
         <Flex justify="space-between" align="center" gap={8}>
           <Typography.Text strong>With Content</Typography.Text>
           {block.customization.postsSettings.postsType !== EPostsListType.grid ? (
@@ -145,6 +148,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
 
         <Typography.Text strong>Border Radius</Typography.Text>
         <SliderControl
+          // disabled
           control={control}
           name={"postBorderRadius" as Path<T>}
           onChange={(value) =>
@@ -153,6 +157,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
               borderRadius: value,
             })
           }
+          style={{ margin: 0 }}
         />
       </FormItem>
     </>

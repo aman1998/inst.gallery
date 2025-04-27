@@ -38,12 +38,11 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     annualPrice: 0,
     mainFeatures: [
       { title: "Works", value: FREE_MAX_POSTS },
-      // { title: "Blocks", value: FREE_MAX_BLOCKS },
-      { title: "Image", value: "Single" },
-      // { title: "Widget type", value: "Basic" },
+      { title: "Customize", value: "Basic" },
     ],
     detailedFeatures: [
-      { title: "Priority support", included: false },
+      { title: "QR code link", included: true },
+      { title: "Carousel / Video", included: false },
       { title: "No service branding", included: false },
       { title: "Analytics", included: false },
     ],
@@ -58,12 +57,11 @@ export const subscriptionPlans: ISubscriptionPlan[] = [
     annualPrice: PERSONAL_ANNUAL_PRICE,
     mainFeatures: [
       { title: "Works", value: PERSONAL_MAX_POSTS },
-      // { title: "Blocks", value: PERSONAL_MAX_BLOCKS },
-      { title: "Image", value: "Single | Carousel | Video" },
-      // { title: "Widget type", value: "Advanced" },
+      { title: "Customize", value: "Advanced" },
     ],
     detailedFeatures: [
-      { title: "Priority support", included: true },
+      { title: "QR code link", included: true },
+      { title: "Carousel / Video", included: true },
       { title: "No service branding", included: true },
       { title: "Analytics", included: true },
     ],
