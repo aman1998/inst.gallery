@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "antd";
 import { useRouter } from "next/navigation";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 import {
   restorePasswordSchema,
@@ -19,10 +20,11 @@ import { getSiteUrl } from "@shared/utils/urls";
 import { createClient } from "@shared/config/supabase/client";
 
 import s from "./RestorePassword.module.scss";
-import { revalidatePath } from "next/cache";
 
 const RestorePassword: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
+  const [captchaToken, setCaptchaToken] = React.useState<string | undefined>(undefined);
+
   const router = useRouter();
   const { successMessage, errorMessage } = useMessage();
 
@@ -40,11 +42,17 @@ const RestorePassword: React.FC = () => {
 
   const handleClick = async (data: TRestorePasswordSchema) => {
     try {
+      if (!captchaToken) {
+        errorMessage("Captcha error");
+        return;
+      }
+
       setLoading(true);
       const supabase = createClient();
 
       const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
         redirectTo: getSiteUrl() + ROUTES.newPassword,
+        captchaToken,
       });
 
       if (error) {
@@ -87,6 +95,12 @@ const RestorePassword: React.FC = () => {
       <Button type="link" onClick={() => router.push(ROUTES.signIn)}>
         Go Back
       </Button>
+
+      <Turnstile
+        options={{ theme: "light", size: "flexible" }}
+        siteKey={process.env.CAPTCHA_SITE_KEY as string}
+        onSuccess={setCaptchaToken}
+      />
     </Form>
   );
 };

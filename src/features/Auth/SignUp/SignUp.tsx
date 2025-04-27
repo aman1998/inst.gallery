@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "antd";
 import Link from "next/link";
 import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
+import { Turnstile } from "@marsidev/react-turnstile";
+import { useRouter } from "next/navigation";
 
 import { signInWithOAuth } from "@/app/(auth)/auth/actions";
 
@@ -21,10 +23,10 @@ import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
 import s from "./SignUp.module.scss";
 import { getSiteUrl } from "@/shared/utils/urls";
 import { createClient } from "@/shared/config/supabase/client";
-import { useRouter } from "next/navigation";
 
 const SignUp: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
+  const [captchaToken, setCaptchaToken] = React.useState<string | undefined>(undefined);
 
   const { successMessage, errorMessage } = useMessage();
   const router = useRouter();
@@ -46,6 +48,11 @@ const SignUp: React.FC = () => {
 
   const handleClick = async (data: TSignUpSchema) => {
     try {
+      if (!captchaToken) {
+        errorMessage("Captcha error");
+        return;
+      }
+
       setLoading(true);
       const supabase = createClient();
 
@@ -53,6 +60,7 @@ const SignUp: React.FC = () => {
         ...data,
         options: {
           emailRedirectTo: getSiteUrl() + ROUTES.callback,
+          captchaToken,
         },
       });
 
@@ -161,6 +169,12 @@ const SignUp: React.FC = () => {
         <p>Already have an account?</p>
         <Link href={ROUTES.signIn}>Login</Link>
       </div>
+
+      <Turnstile
+        options={{ theme: "light", size: "flexible" }}
+        siteKey={process.env.CAPTCHA_SITE_KEY as string}
+        onSuccess={setCaptchaToken}
+      />
     </Form>
   );
 };

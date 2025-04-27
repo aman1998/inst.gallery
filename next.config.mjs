@@ -7,6 +7,7 @@ const nextConfig = {
   skipMiddlewareUrlNormalize: true,
   env: {
     IMAGES_HOST: process.env.IMAGES_HOST,
+    CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY,
   },
   images: {
     unoptimized: true,

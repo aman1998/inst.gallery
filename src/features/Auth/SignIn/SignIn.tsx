@@ -7,6 +7,7 @@ import { Form } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GoogleCircleFilled, FacebookFilled } from "@ant-design/icons";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 import { signInWithOAuth } from "@/app/(auth)/auth/actions";
 
@@ -18,14 +19,15 @@ import { ROUTES } from "@shared/config/routes";
 import { useUserInfo } from "@shared/providers/UserProvider/lib/useUserInfo";
 import { useMessage } from "@shared/hooks/useMessage";
 import { PRIMARY_COLOR } from "@shared/providers/AntdProvider/AntdProvider";
+import { getSiteUrl } from "@shared/utils/urls";
+import { createClient } from "@shared/config/supabase/client";
 
 import s from "./SignIn.module.scss";
-import { getSiteUrl } from "@/shared/utils/urls";
-import { createClient } from "@/shared/config/supabase/client";
-import { revalidatePath } from "next/cache";
 
 const SignIn: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
+  const [captchaToken, setCaptchaToken] = React.useState<string | undefined>(undefined);
+
   const router = useRouter();
   const { setUser } = useUserInfo();
   const { successMessage, errorMessage } = useMessage();
@@ -46,13 +48,23 @@ const SignIn: React.FC = () => {
 
   const handleClick = async (data: TSignInSchema) => {
     try {
+      if (!captchaToken) {
+        errorMessage("Captcha error");
+        return;
+      }
+
       setLoading(true);
       const supabase = createClient();
 
       const {
         error,
         data: { user },
-      } = await supabase.auth.signInWithPassword(data);
+      } = await supabase.auth.signInWithPassword({
+        ...data,
+        options: {
+          captchaToken,
+        },
+      });
 
       if (error) {
         errorMessage(error.message || "Failed to login");
@@ -69,6 +81,8 @@ const SignIn: React.FC = () => {
       setLoading(false);
     }
   };
+
+  console.log("token =>", captchaToken);
 
   return (
     <Form className={s.form} onFinish={handleSubmit(handleClick)}>
@@ -152,6 +166,12 @@ const SignIn: React.FC = () => {
         <p>Don&#39;t have an account?</p>
         <Link href={ROUTES.signUp}>Sign up</Link>
       </div>
+
+      <Turnstile
+        options={{ theme: "light", size: "flexible" }}
+        siteKey={process.env.CAPTCHA_SITE_KEY as string}
+        onSuccess={setCaptchaToken}
+      />
     </Form>
   );
 };

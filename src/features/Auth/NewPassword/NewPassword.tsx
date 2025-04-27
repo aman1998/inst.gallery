@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "antd";
 import { useRouter } from "next/navigation";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 import { newPasswordSchema, TNewPasswordSchema } from "@features/Auth/NewPassword/lib/newPasswordSchema";
 
@@ -19,6 +20,7 @@ import { createClient } from "@/shared/config/supabase/client";
 
 const NewPassword: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
+  const [captchaToken, setCaptchaToken] = React.useState<string | undefined>(undefined);
 
   const router = useRouter();
   const { setUser } = useUserInfo();
@@ -39,6 +41,11 @@ const NewPassword: React.FC = () => {
 
   const handleClick = async (data: TNewPasswordSchema) => {
     try {
+      if (!captchaToken) {
+        errorMessage("Captcha error");
+        return;
+      }
+
       setLoading(true);
       const supabase = createClient();
 
@@ -100,6 +107,12 @@ const NewPassword: React.FC = () => {
           Change password
         </Button>
       </Form.Item>
+
+      <Turnstile
+        options={{ theme: "light", size: "flexible" }}
+        siteKey={process.env.CAPTCHA_SITE_KEY as string}
+        onSuccess={setCaptchaToken}
+      />
     </Form>
   );
 };
