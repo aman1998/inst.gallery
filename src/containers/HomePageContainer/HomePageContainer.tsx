@@ -48,6 +48,7 @@ const HomePageContainer: React.FC = () => (
               },
               buttonSettings: {
                 ...MOCK_BLOCK_1_CUSTOMIZATION.buttonSettings,
+                buttonTab: "current",
                 buttonText: "Start right now",
                 buttonLink: ROUTES.customize,
                 buttonColor: PRIMARY_COLOR,
