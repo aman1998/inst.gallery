@@ -71,7 +71,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
     <>
       <Divider>List</Divider>
       <FormItem className={s.form__item}>
-        <Flex justify="space-between" align="center" gap={8}>
+        {/* <Flex justify="space-between" align="center" gap={8}>
           <Typography.Text strong>Type</Typography.Text>
           <SelectControl
             onChange={(value) =>
@@ -86,7 +86,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
             name={"postsType" as Path<T>}
             style={{ minWidth: 96, height: 40, textAlign: "center" }}
           />
-        </Flex>
+        </Flex> */}
 
         <Flex justify="space-between" align="center" gap={8}>
           <Typography.Text strong>Length</Typography.Text>
@@ -146,7 +146,7 @@ const BlockPostsForm = <T extends TPostsCustomizationSchema>({ control, errors, 
           )}
         </Flex>
 
-        <Typography.Text strong>Border Radius</Typography.Text>
+        <Typography.Text strong>Rounded Corners</Typography.Text>
         <SliderControl
           // disabled
           control={control}

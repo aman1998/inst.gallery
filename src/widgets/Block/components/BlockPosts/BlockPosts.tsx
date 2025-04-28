@@ -59,11 +59,23 @@ const BlockPosts: React.FC<Props> = ({ customization, className }) => {
   if (postsType === EPostsListType.grid) {
     return (
       <div
-        className={cn(s.grid, s[`grid--${postsLength}`], postsWithBg && s["grid--with-bg"], className)}
+        className={cn(
+          s.grid,
+          s[`grid--${postsLength}`],
+          postsWithBg && s["grid--with-bg"],
+          postsWithBg && !postsStyle?.gap && s["grid--without-gap"],
+          className
+        )}
         style={postsStyle}
       >
         {posts.map((post, index) => (
-          <div key={index} className={cn(s["grid-card"], postsWithBg && s["grid-card--bg"])}>
+          <div
+            key={index}
+            className={cn(s["grid-card"], postsWithBg && s["grid-card--bg"])}
+            style={{
+              borderRadius: postsWithBg && postsStyle?.gap ? 12 : 0,
+            }}
+          >
             <InstagramImageCard
               index={index}
               wrapperStyle={imageWrapperStyle}
