@@ -35,7 +35,8 @@ export const postsCustomization = object({
         id: z.string(),
       })
     )
-    .min(1, { message: EMPTY_ERROR_TEXT }),
+    // .min(1, { message: EMPTY_ERROR_TEXT }),
+    .min(0),
 });
 
 export type TPostsCustomizationSchema = z.infer<typeof postsCustomization>;
