@@ -124,7 +124,10 @@ export const authRoutes = [
   ROUTES.callback,
   ROUTES.authConfirm,
   ROUTES.authError,
-  // ROUTES.newPassword,
+
+  /* TODO: в будущем если с профиля напрямую будем менять то надо создать другой роут для этого,
+   а этот только для незареганного */
+  ROUTES.newPassword,
 ];
 
 export const publicRoutes = [
